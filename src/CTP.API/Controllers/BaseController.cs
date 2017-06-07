@@ -7,7 +7,7 @@ using CTP.Redis;
 
 namespace CTP.API.Controllers
 {
-    [Route("Api/[controller]")]
+
     public class BaseController : Controller
     {
 

@@ -12,9 +12,11 @@ using CTP.Redis.Const;
 
 namespace CTP.API.Controllers
 {
+
     /// <summary>
     /// 网站所有信息
     /// </summary>
+    [Route("Api/[controller]")]
     public class SiteController : BaseController
     {
 

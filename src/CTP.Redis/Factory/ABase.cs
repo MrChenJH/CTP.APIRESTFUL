@@ -7,7 +7,7 @@ using CTP.Redis.Response;
 
 namespace CTP.Redis
 {
-    public abstract class ARedisBase
+    public abstract class ABase
     {
         #region 属性
         /// <summary>
@@ -22,30 +22,28 @@ namespace CTP.Redis
 
         #endregion
 
-
-
         #region  抽象方法
 
         /// <summary>
-        /// 查询
+        /// 查询拓展
         /// </summary>
         /// <param name="request">参数</param>
         /// <returns></returns>
-        public abstract Result Select(Object request);
-       
-        /// <summary>
-        /// 查询
-        /// </summary>
-        /// <param name="request">参数</param>
-        /// <returns></returns>
-        public abstract Result SelectList(Object request);
+        public abstract Result Specialquery(Object request);
 
         /// <summary>
         /// 查询
         /// </summary>
         /// <param name="request">参数</param>
         /// <returns></returns>
-        public abstract Result SelectPage(Object request);
+        public abstract Result Query(Object request);
+
+        /// <summary>
+        ///  翻页查询
+        /// </summary>
+        /// <param name="request">参数</param>
+        /// <returns></returns>
+        public abstract Result PageQuery(Object request);
 
         /// <summary>
         /// 添加
@@ -53,6 +51,13 @@ namespace CTP.Redis
         /// <param name="request"></param>
         /// <returns></returns>
         public abstract Result Add(Object request);
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public abstract Result Delete(Object request);
 
         #endregion
     }
