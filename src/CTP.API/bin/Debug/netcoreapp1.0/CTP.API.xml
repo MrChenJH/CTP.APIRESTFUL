@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CTP.API</name>
+    </assembly>
+    <members>
+        <member name="M:CTP.API.Controllers.BaseController.GridInvork``1(System.Func{CTP.Redis.RPage{``0}})">
+            <summary>
+            Grid
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="_func"></param>
+        </member>
+        <member name="M:CTP.API.Controllers.BaseController.ListInvork``1(System.Func{CTP.Redis.RList{``0}})">
+            <summary>
+            集合
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="_func"></param>
+        </member>
+        <member name="M:CTP.API.Controllers.BaseController.SingleInvork``1(System.Func{CTP.Redis.RSingle{``0}})">
+             <summary>
+            一条数据
+             </summary>
+             <typeparam name="T"></typeparam>
+             <param name="_func"></param>
+        </member>
+        <member name="M:CTP.API.Controllers.BaseController.DataToJson(System.String)">
+            <summary>
+            数据处理
+            </summary>
+            <param name="jsonData"></param>
+        </member>
+        <member name="M:CTP.API.Controllers.BaseController.ExceptionHook(System.Func{System.String})">
+            <summary>
+            错误钩子
+            </summary>
+            <param name="_fun"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.HandlerController.GetNodes(CTP.Redis.RequsetBase)">
+            <summary>
+            获取所有栏目信息
+            </summary>
+            <param name="requestParam">参数对象</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
