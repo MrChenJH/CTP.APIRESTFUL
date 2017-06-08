@@ -16,7 +16,21 @@ namespace CTP.API.Controllers
         /// 日记
         /// </summary>
         protected static Logger Logger = LogManager.GetCurrentClassLogger();
-       
+
+        /// <summary>
+        /// Text
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="_func"></param>
+        public string TextInvork<T>(Func<ReturnData> _func) where T : class
+        {
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            return ExceptionHook(() =>
+            {
+                return _func().ToJson().RedisDataToJson();
+            });
+        }
+
         /// <summary>
         /// Grid
         /// </summary>
@@ -25,12 +39,11 @@ namespace CTP.API.Controllers
         public string GridInvork<T>(Func<RPage<T>> _func) where T : class
         {
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
-
-            string result = ExceptionHook(() =>
+            return ExceptionHook(() =>
             {
-                return _func().ToJson(false);
+                return _func().ToJson().RedisDataToJson();
             });
-            return DataToJson(result);
+
         }
 
 
@@ -41,11 +54,10 @@ namespace CTP.API.Controllers
         /// <param name="_func"></param>
         public string ListInvork<T>(Func<RList<T>> _func) where T : class
         {
-            string result = ExceptionHook(() =>
+            return ExceptionHook(() =>
             {
-                return _func().ToJson(false);
+                return _func().ToJson().RedisDataToJson();
             });
-            return DataToJson(result);
         }
 
 
@@ -56,24 +68,13 @@ namespace CTP.API.Controllers
         /// <param name="_func"></param>
         public string SingleInvork<T>(Func<RSingle<T>> _func) where T : class
         {
-            string result = ExceptionHook(() =>
+            return ExceptionHook(() =>
             {
-                return _func().ToJson(false);
+                return _func().ToJson().RedisDataToJson();
             });
-            return DataToJson(result);
         }
 
 
-        /// <summary>
-        /// 数据处理
-        /// </summary>
-        /// <param name="jsonData"></param>
-        private string DataToJson(string jsonData)
-        {
-            var json = jsonData.Replace("[\"{", "[{").Replace("}\"]", "}]").Replace("\\\"", "\"").Replace("\"Result\":\"{", "\"Result\":{").Replace("}\"}", "}}");
-            Response.ContentType = "application/json";
-            return json;
-        }
 
         /// <summary>
         /// 错误钩子
@@ -86,11 +87,10 @@ namespace CTP.API.Controllers
             {
                 return _fun();
             }
-
             catch (Exception ex)
             {
-
-                return new RSingle<string> { code = ErrorCode.IllegalValueErrorCode, sucess = false }.ToJson(false);
+                Logger.Error(ex);
+                return new RSingle<string> { code = ErrorCode.IllegalValueErrorCode, sucess = false }.ToJson();
             }
         }
     }

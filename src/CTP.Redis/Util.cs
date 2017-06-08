@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,13 +11,12 @@ using System.Text.RegularExpressions;
 
 namespace CTP.Redis
 {
-    public class Util
+    public static class Util
     {
-
-
+        #region Ascii 转换
 
         private static String PREFIX = "\\u";
-        public static String native2Ascii(String str)
+        public static String native2Ascii(this String str)
         {
             return native2Ascii(str, false);
         }
@@ -27,7 +27,7 @@ namespace CTP.Redis
         /// <param name="str"></param>
         /// <param name="isSerc"></param>
         /// <returns></returns>
-        public static String native2Ascii(String str, Boolean isSerc)
+        public static String native2Ascii(this String str, Boolean isSerc)
         {
             if (!isSerc)
             {
@@ -70,6 +70,44 @@ namespace CTP.Redis
                 return c.ToString();
             }
         }
+
+        #endregion
+
+        #region 序列化Json字符串,生成查询字符串,Redis不规则数据生成Json
+
+        public static string ToJson<T>(this T value) where T : class
+        {
+            string json = string.Empty;
+            IsoDateTimeConverter dtConverter = new IsoDateTimeConverter { DateTimeFormat = "yyyy-MM-dd HH:mm:ss" };
+            json = JsonConvert.SerializeObject(value, dtConverter);
+            return JsonConvert.SerializeObject(value);
+        }
+
+        public static string ToQueryCondition<T>(this T value) where T : class
+        {
+            string json = string.Empty;
+            var setting = new JsonSerializerSettings();
+            setting.NullValueHandling = NullValueHandling.Ignore;
+            setting.DefaultValueHandling = DefaultValueHandling.Ignore;
+         
+            setting.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+            json = JsonConvert.SerializeObject(value, setting);
+            json = json.Replace(",", "*").Substring(1, json.Length);
+            return json.Substring(0, json.Length - 1);
+        }
+
+        /// <summary>
+        /// Redis 数据 处理成符合Json
+        /// </summary>
+        public static string RedisDataToJson(this string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                return string.Empty;
+            }
+            return value.Replace("[\"{", "[{").Replace("}\"]", "}]").Replace("\\\"", "\"").Replace("\"Result\":\"{", "\"Result\":{").Replace("}\"}", "}}");
+        }
+        #endregion
     }
 
     /// <summary>
@@ -370,17 +408,7 @@ namespace CTP.Redis
         }
 
 
-        /// <summary>
-        /// 转成Json
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="v"></param>
-        /// <returns></returns>
-        public static string ToJson<T>(this object v, T v1)
-        {
-            string json = JsonConvert.SerializeObject(v);
-            return json;
-        }
+
 
 
 
@@ -397,28 +425,6 @@ namespace CTP.Redis
             return result;
         }
 
-
-        /// <summary>
-        /// 将实体类转换成JSON字符串
-        /// </summary>
-        /// <typeparam name="T">实体类型</typeparam>
-        /// <param name="entity">实体类</param>
-        public static string ToJson<T>(this T entity, bool _transtime = true) where T : class, new()
-        {
-            if (entity == null) return "";
-            string jsonString = JsonConvert.SerializeObject(entity);
-            if (_transtime)
-            {
-                //替换Json的Date字符串    
-                string p = @"\\/Date\(-{0,1}(\d+)\+\d+\)\\/";
-                MatchEvaluator matchEvaluator = new MatchEvaluator(ConvertJsonDateToDateString);
-                Regex reg = new Regex(p);
-                jsonString = reg.Replace(jsonString, matchEvaluator);
-            }
-
-            return jsonString;
-
-        }
 
 
         /// <summary>

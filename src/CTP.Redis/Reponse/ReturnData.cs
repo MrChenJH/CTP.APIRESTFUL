@@ -7,7 +7,7 @@ namespace CTP.Redis
 {
 
 
-    public abstract class ReturnData
+    public class ReturnData
     {
         /// <summary>
         /// 是否成功
@@ -18,6 +18,11 @@ namespace CTP.Redis
         /// 错误编码
         /// </summary>
         public string code { get; set; }
+
+        /// <summary>
+        /// 异常信息
+        /// </summary>
+        public string Message { get; set; }
 
     }
 

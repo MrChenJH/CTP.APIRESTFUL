@@ -17,9 +17,24 @@ namespace CTP.Redis.Agent
 
         }
 
-        public FactoryAgent(string factoryName, RequsetBase request, string method)
+        public FactoryAgent(RequsetBase request, string method)
         {
-            this.FactoryName = factoryName;
+            PropertyInfo modelInfo = request.GetType().GetProperty("Model");
+            object value = modelInfo.GetValue(request, null);
+            if (modelInfo.PropertyType.IsConstructedGenericType)
+            {
+                Type objType = value.GetType();
+
+                object iValue = objType.GetProperty("Item").GetValue(value, new object[] { 0 });
+                Type itemType = iValue.GetType();
+                this.FactoryName = itemType.GetProperty("Factory").GetValue(iValue, null).Convert("");
+            }
+            else
+            {
+                Type objType = value.GetType();
+                this.FactoryName = objType.GetProperty("Factory").GetValue(value, null).Convert("");
+            }
+
             this.Request = request;
             this.Method = method;
         }
@@ -56,7 +71,6 @@ namespace CTP.Redis.Agent
         {
             try
             {
-
                 Assembly assembly = Assembly.Load(new AssemblyName("CTP.Redis"));
                 Type type = assembly.GetType(FactoryName);
                 object instance = assembly.CreateInstance(FactoryName);

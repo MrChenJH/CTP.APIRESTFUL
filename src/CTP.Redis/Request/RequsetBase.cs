@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CTP.Redis
 {
-    public abstract class RequsetBase
+    public class RequsetBase
     {
         /// <summary>
         /// Key值
@@ -16,6 +16,8 @@ namespace CTP.Redis
         /// 是否加密
         /// </summary>
         public int isSec { get; set; }
+
+
 
     }
 

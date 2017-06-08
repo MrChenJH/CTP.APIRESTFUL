@@ -1,4 +1,6 @@
-﻿using StackExchange.Redis;
+﻿using Microsoft.Extensions.Logging;
+using NLog;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,8 @@ namespace CTP.Redis
 {
     public class RedisClient
     {
+ 
+
         public RedisClient()
         {
             Result = new List<string>();
@@ -25,6 +29,12 @@ namespace CTP.Redis
         public List<string> Result { get; set; }
 
         public int Count { get; set; }
+
+        /// <summary>
+        /// 日记
+        /// </summary>
+        protected Logger Logger = LogManager.GetCurrentClassLogger();
+        #region 查询
 
         /// <summary>
         ///  判断 key 是否存在
@@ -222,6 +232,54 @@ namespace CTP.Redis
             Count = Result.Count;
         }
 
+        #endregion
+
+        #region 新增
+
+        /// <summary>
+        ///  判断 key 是否存在
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public bool AddZset(string key, List<KeyValuePair<long, string>> values)
+        {
+            Count = 0;
+            try
+            {
+                var client = Connection.GetDatabase();
+                SortedSetEntry[] entryArray = new SortedSetEntry[values.Count];
+                for (int i = 0; i < values.Count; i++)
+                {
+                    entryArray[i] = new SortedSetEntry(values[i].Value, values[i].Key);
+                }
+
+                var result = client.SortedSetAdd(key, entryArray);
+
+                if (result > 0)
+                {
+                    Sucess = true;
+                }
+                else
+                {
+                    Message = "没有添加任何值";
+                    Code = ErrorCode.NotExistKeyErrorCode;
+                    Sucess = false;
+                }
+
+            }
+            catch (Exception ex)
+            {   
+            
+                Message = ex.Message;
+                Code = ErrorCode.ReadRedisErrorCode;
+                Sucess = false;
+            }
+            return Sucess;
+        }
+
+        #endregion
+
+        #region 链接
 
         /// <summary>
         /// 链接
@@ -242,6 +300,8 @@ namespace CTP.Redis
             }
         }
         public IDatabase db { get; set; }
+
+        #endregion 
 
     }
 }

@@ -9,6 +9,13 @@
             日记
             </summary>
         </member>
+        <member name="M:CTP.API.Controllers.BaseController.TextInvork``1(System.Func{CTP.Redis.ReturnData})">
+            <summary>
+            Text
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="_func"></param>
+        </member>
         <member name="M:CTP.API.Controllers.BaseController.GridInvork``1(System.Func{CTP.Redis.RPage{``0}})">
             <summary>
             Grid
@@ -30,12 +37,6 @@
              <typeparam name="T"></typeparam>
              <param name="_func"></param>
         </member>
-        <member name="M:CTP.API.Controllers.BaseController.DataToJson(System.String)">
-            <summary>
-            数据处理
-            </summary>
-            <param name="jsonData"></param>
-        </member>
         <member name="M:CTP.API.Controllers.BaseController.ExceptionHook(System.Func{System.String})">
             <summary>
             错误钩子
@@ -47,13 +48,6 @@
             <summary>
             网站所有信息
             </summary>
-        </member>
-        <member name="M:CTP.API.Controllers.SiteController.GetChildNodes(CTP.Redis.Request.RequestNode)">
-            <summary>
-            获取当前栏目子栏目信息
-            </summary>
-            <param name="requestParam">参数</param>
-            <returns></returns>
         </member>
     </members>
 </doc>

@@ -5,8 +5,16 @@ using System.Text;
 
 namespace CTP.Redis.Request
 {
-    public class RequestPage : RequsetBase
+    public class RequestPage<T> : RequsetBase
+        where T : class
     {
+     
+
+        /// <summary>
+        ///对应Model
+        /// </summary>
+        public T Model { get; set; }
+
         /// <summary>
         /// 开始索引
         /// </summary>

@@ -8,24 +8,29 @@ namespace CTP.Redis.Const
 {
     public enum ExecMethod
     {
-        ///查询方法
-        GetRedisData,
-        ///增加
-        AddRedisData
-    }
+        /// <summary>
+        /// 特殊查询
+        /// </summary>
+        Specialquery,
 
-    /// <summary>
-    /// 工厂配置
-    /// </summary>
-    public class Config
-    {
+        /// <summary>
+        /// 查询
+        /// </summary>
+        Query,
 
-        public static string RedisPageFactoryName
-        {
-            get
-            {
-                return typeof(SiteNodeFactory).FullName;
-            }
-        }
+        /// <summary>
+        /// 翻页查询
+        /// </summary>
+        PageQuery,
+
+        /// <summary>
+        /// 新增
+        /// </summary>
+        Add,
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        Delete,
     }
 }
