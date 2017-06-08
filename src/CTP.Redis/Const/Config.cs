@@ -7,7 +7,8 @@ using CTP.Redis.Factory;
 namespace CTP.Redis.Const
 {
     public enum ExecMethod
-    {   ///查询方法
+    {
+        ///查询方法
         GetRedisData,
         ///增加
         AddRedisData
@@ -23,24 +24,7 @@ namespace CTP.Redis.Const
         {
             get
             {
-                return typeof(RedisPageFactory).FullName;
-            }
-        }
-
-
-        public static string RedisListFactoryName
-        {
-            get
-            {
-                return typeof(RedisListFactory).FullName;
-            }
-        }
-
-        public static string RedisSingleFactory
-        {
-           get
-            {
-                return typeof(RedisSingleFactory).FullName;
+                return typeof(SiteNodeFactory).FullName;
             }
         }
     }

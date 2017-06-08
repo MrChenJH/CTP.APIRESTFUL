@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CTP.Redis.Response;
-
+using NLog;
 
 namespace CTP.Redis
 {
@@ -14,6 +14,12 @@ namespace CTP.Redis
         /// 错误信息
         /// </summary>
         public string Message = string.Empty;
+
+
+        /// <summary>
+        /// 日记
+        /// </summary>
+        protected static Logger Logger = LogManager.GetCurrentClassLogger();
 
         /// <summary>
         /// Redis 连接客户端

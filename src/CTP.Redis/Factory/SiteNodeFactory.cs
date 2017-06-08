@@ -7,20 +7,23 @@ using CTP.Redis.Request;
 
 namespace CTP.Redis.Factory
 {
-    public class SiteNode : ABase
+    public class SiteNodeFactory : ABase
     {
         public override Result Add(object request)
         {
+            Logger.Info("Add");
             throw new NotImplementedException();
         }
 
         public override Result Delete(object request)
         {
+            Logger.Info("Delete");
             throw new NotImplementedException();
         }
 
         public override Result Query(object request)
         {
+            Logger.Info("Query");
             string reslutMsg = string.Empty;
 
             RequestNode s = (RequestNode)request;
@@ -47,14 +50,15 @@ namespace CTP.Redis.Factory
             return result;
         }
 
-
         public override Result PageQuery(object request)
         {
+          
             throw new NotImplementedException();
         }
 
         public override Result Specialquery(object request)
         {
+            Logger.Info("Specialquery");
             throw new NotImplementedException();
         }
     }

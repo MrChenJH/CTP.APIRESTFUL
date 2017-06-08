@@ -5,7 +5,8 @@
     "NETStandard.Library": "1.6.0",
     "Newtonsoft.Json": "10.0.2",
     "StackExchange.Redis": "1.2.3",
-    "System.Runtime.Serialization.Json": "4.0.1"
+    "System.Runtime.Serialization.Json": "4.0.1",
+    "NLog.Extensions.Logging": "1.0.0-rtm-alpha5"
   },
 
   "frameworks": {

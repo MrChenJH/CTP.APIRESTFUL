@@ -5,6 +5,8 @@ using System.Text;
 using System.Reflection;
 using CTP.Redis.Const;
 using CTP.Redis.Response;
+using Microsoft.Extensions.Logging;
+using NLog;
 
 namespace CTP.Redis.Agent
 {
@@ -23,6 +25,11 @@ namespace CTP.Redis.Agent
         }
 
         /// <summary>
+        /// 日记
+        /// </summary>
+        protected Logger Logger = LogManager.GetCurrentClassLogger();
+
+        /// <summary>
         /// 工厂名称
         /// </summary>
         public string FactoryName { get; set; }
@@ -36,8 +43,6 @@ namespace CTP.Redis.Agent
         /// 处理参数
         /// </summary>
         public RequsetBase Request { get; set; }
-
-
 
         /// <summary>
         /// 后台返回参数
@@ -63,6 +68,7 @@ namespace CTP.Redis.Agent
             }
             catch (Exception ex)
             {
+                Logger.Info("Agent" + ex.Message);
                 Result = new Result()
                 {
                     sucess = false,

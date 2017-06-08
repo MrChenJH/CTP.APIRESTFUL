@@ -153,7 +153,6 @@ namespace CTP.Redis
                 }
                 else
                 {
-
                     var result = client.SortedSetRangeByRank(key, 0, -1);
                     for (int i = 0; i < result.Length; i++)
                     {
@@ -182,13 +181,11 @@ namespace CTP.Redis
             try
             {
                 var client = Connection.GetDatabase();
-
                 var result = client.SortedSetRangeByScore(key, autono, autono);
                 for (int i = 0; i < result.Length; i++)
                 {
                     Result.Add(System.Text.Encoding.UTF8.GetString(result[i]));
                 }
-
             }
             catch (Exception ex)
             {
@@ -209,14 +206,11 @@ namespace CTP.Redis
             try
             {
                 var client = Connection.GetDatabase();
-                client.Execute
                 var result = client.HashGetAll(key);
                 for (int i = 0; i < result.Length; i++)
                 {
                     Result.Add(System.Text.Encoding.UTF8.GetString(result[i].Name));
-
                 }
-
             }
             catch (Exception ex)
             {

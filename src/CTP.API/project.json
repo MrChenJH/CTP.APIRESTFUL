@@ -1,4 +1,4 @@
-﻿{
+{
   "dependencies": {
     "Microsoft.NETCore.App": {
       "version": "1.0.0",
@@ -17,6 +17,7 @@
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
     "CTP.Redis": "1.0.0-*",
     "Swashbuckle.AspNetCore.SwaggerGen": "1.0.0",
+    "NLog.Extensions.Logging": "1.0.0-rtm-alpha5",
     "Swashbuckle.AspNetCore.SwaggerUI": "1.0.0"
   },
 
@@ -51,7 +52,8 @@
       "Views",
       "Areas/**/Views",
       "appsettings.json",
-      "web.config"
+      "web.config",
+      "nlog.config"
     ]
   },
 

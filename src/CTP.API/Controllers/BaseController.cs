@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CTP.Redis;
+using NLog;
 
 namespace CTP.API.Controllers
 {
@@ -11,7 +12,11 @@ namespace CTP.API.Controllers
     public class BaseController : Controller
     {
 
-
+        /// <summary>
+        /// 日记
+        /// </summary>
+        protected static Logger Logger = LogManager.GetCurrentClassLogger();
+       
         /// <summary>
         /// Grid
         /// </summary>
