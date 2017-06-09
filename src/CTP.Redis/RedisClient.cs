@@ -12,7 +12,7 @@ namespace CTP.Redis
 {
     public class RedisClient
     {
- 
+
 
         public RedisClient()
         {
@@ -75,14 +75,14 @@ namespace CTP.Redis
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public void GetZsetMultiByValue(string key, string keyvalue, int start, int end)
+        public void GetZsetMultiByValue(string key, string keyvalue, int start, int end = 1000000)
         {
             var list = new List<string>();
             try
             {
-
                 var client = Connection.GetDatabase();
-                var result = client.SortedSetScan(key, string.Format("{0}{1}{2}", "*", keyvalue, "*"), start - end, 0, start);
+
+                var result = client.SortedSetScan(key, string.Format("{0}{1}{2}", "*", keyvalue, "*"), end - start, 0, start);
                 var reg = new Regex("^\\d+$");
                 for (int i = 0; i < result.Count(); i++)
                 {
@@ -232,6 +232,30 @@ namespace CTP.Redis
             Count = Result.Count;
         }
 
+        /// <summary>
+        /// 通过分数删除
+        /// </summary>
+        public void ZsetDelBySocre(string key, long score)
+        {
+            try
+            {
+                var client = Connection.GetDatabase();
+                var result = client.SortedSetRangeByScore(key, score, score);
+                if (result.Length == 1)
+                {
+                    client.SortedSetRemove(key, result[0]);
+                }
+            }
+            catch (Exception ex)
+            {
+                Message = ex.Message;
+                Code = ErrorCode.ReadRedisErrorCode;
+                Sucess = false;
+            }
+            Sucess = true;
+            Count = Result.Count;
+        }
+
         #endregion
 
         #region 新增
@@ -268,8 +292,8 @@ namespace CTP.Redis
 
             }
             catch (Exception ex)
-            {   
-            
+            {
+
                 Message = ex.Message;
                 Code = ErrorCode.ReadRedisErrorCode;
                 Sucess = false;

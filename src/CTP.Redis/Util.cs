@@ -89,10 +89,9 @@ namespace CTP.Redis
             var setting = new JsonSerializerSettings();
             setting.NullValueHandling = NullValueHandling.Ignore;
             setting.DefaultValueHandling = DefaultValueHandling.Ignore;
-         
             setting.DateFormatString = "yyyy-MM-dd HH:mm:ss";
             json = JsonConvert.SerializeObject(value, setting);
-            json = json.Replace(",", "*").Substring(1, json.Length);
+            json = json.Replace(",", "*").Substring(1, json.Length-1);
             return json.Substring(0, json.Length - 1);
         }
 
@@ -107,7 +106,40 @@ namespace CTP.Redis
             }
             return value.Replace("[\"{", "[{").Replace("}\"]", "}]").Replace("\\\"", "\"").Replace("\"Result\":\"{", "\"Result\":{").Replace("}\"}", "}}");
         }
+
         #endregion
+
+        #region  将 List<T> to  List<KeyValuePair<long, string>>
+
+        public static List<KeyValuePair<long, string>> ToListKeyValuePair<T>(this List<T> value) where T : class
+        {
+            var result = new List<KeyValuePair<long, string>>();
+            Type type = value.GetType();
+            var count = type.GetProperty("Count").GetValue(value, null).Convert(0);
+            for (int i = 0; i < count; i++)
+            {
+                var itemValue = type.GetProperty("Item").GetValue(value, new object[] { i });
+                int autoNo = itemValue.GetType().GetProperty("AutoNo").GetValue(itemValue, null).Convert(0);
+                result.Add(new KeyValuePair<long, string>(autoNo, itemValue.ToJson()));
+            }
+            return result;
+        }
+
+        public static List<KeyValuePair<long, string>> ToListKeyValuePair(this object value)
+        {
+            var result = new List<KeyValuePair<long, string>>();
+            Type type = value.GetType();
+            var count = type.GetProperty("Count").GetValue(value, null).Convert(0);
+            for (int i = 0; i < count; i++)
+            {
+                var itemValue = type.GetProperty("Item").GetValue(value, new object[] { i });
+                int autoNo = itemValue.GetType().GetProperty("AutoNo").GetValue(itemValue, null).Convert(0);
+                result.Add(new KeyValuePair<long, string>(autoNo, itemValue.ToJson()));
+            }
+            return result;
+        }
+        #endregion
+
     }
 
     /// <summary>

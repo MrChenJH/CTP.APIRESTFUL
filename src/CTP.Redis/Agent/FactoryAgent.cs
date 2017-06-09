@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 using CTP.Redis.Const;
-using CTP.Redis.Response;
 using Microsoft.Extensions.Logging;
 using NLog;
 
@@ -62,7 +61,7 @@ namespace CTP.Redis.Agent
         /// <summary>
         /// 后台返回参数
         /// </summary>
-        public Result Result { get; set; }
+        public ReturnData Result { get; set; }
 
         /// <summary>
         /// 调用后台工厂
@@ -78,16 +77,16 @@ namespace CTP.Redis.Agent
                 params_type[0] = Request.GetType();
                 Object[] params_obj = new Object[1];
                 params_obj[0] = Request;
-                Result = (Result)type.GetMethod(Method, params_type).Invoke(instance, params_obj);
+                Result = (ReturnData)type.GetMethod(Method, params_type).Invoke(instance, params_obj);
             }
             catch (Exception ex)
             {
                 Logger.Info("Agent" + ex.Message);
-                Result = new Result()
+                Result = new ErrorData()
                 {
                     sucess = false,
                     code = ErrorCode.NotExistKeyErrorCode,
-                    msg = ex.Message
+                    Occurrencetime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
                 };
             }
         }

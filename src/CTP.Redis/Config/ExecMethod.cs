@@ -24,9 +24,9 @@ namespace CTP.Redis.Const
         PageQuery,
 
         /// <summary>
-        /// 新增
+        /// 新增或修改
         /// </summary>
-        Add,
+        AddOrUpdate,
 
         /// <summary>
         /// 删除

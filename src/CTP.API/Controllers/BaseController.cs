@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CTP.Redis;
 using NLog;
+using CTP.Redis.Config;
 
 namespace CTP.API.Controllers
 {
@@ -87,10 +88,15 @@ namespace CTP.API.Controllers
             {
                 return _fun();
             }
+            catch (ProcessException ex)
+            {
+                Logger.Error(ex);
+                return ex.Message;
+            }
             catch (Exception ex)
             {
                 Logger.Error(ex);
-                return new RSingle<string> { code = ErrorCode.IllegalValueErrorCode, sucess = false }.ToJson();
+                return new ErrorData { code = ErrorCode.IllegalValueErrorCode, sucess = false }.ToJson();
             }
         }
     }

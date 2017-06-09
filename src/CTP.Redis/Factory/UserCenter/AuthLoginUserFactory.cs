@@ -1,14 +1,13 @@
-﻿using System;
+﻿using CTP.Redis.Request;
+using CTP.Redis.Request.UserCenter;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using CTP.Redis.Request.UserCenter;
-using CTP.Redis.Request;
-
 namespace CTP.Redis.Factory.UserCenter
 {
-    public class RegisterUserFactory : UserCenterBase, IFactory
+    public class AuthLoginUserFactory : UserCenterBase, IFactory
     {
         public ReturnData PageQuery(object request)
         {
@@ -44,6 +43,5 @@ namespace CTP.Redis.Factory.UserCenter
                 };
             }
         }
-
     }
 }

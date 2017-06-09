@@ -49,5 +49,26 @@
             网站所有信息
             </summary>
         </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.RegisterUserQuery(CTP.Redis.Request.RequesList{CTP.Redis.Request.UserCenter.RegisterUser})">
+            <summary>
+            获取注册用户信息
+            </summary>
+            <param name="registerUser">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.RegisterUserAddOrUpdate(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.UserCenter.RegisterUser}})">
+            <summary>
+            新增和修改用户注册信息
+            </summary>
+            <param name="registerUser">用户注册提交值</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.RegisterUserDelete(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.UserCenter.RegisterUser}})">
+            <summary>
+            注册用户删除
+            </summary>
+            <param name="registerUser">注册用户参数</param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

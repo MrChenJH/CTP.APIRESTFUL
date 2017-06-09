@@ -14,15 +14,19 @@ namespace CTP.Redis
         /// </summary>
         public bool sucess { get; set; }
 
+    }
+
+    public class ErrorData: ReturnData
+    {
         /// <summary>
         /// 错误编码
         /// </summary>
         public string code { get; set; }
 
         /// <summary>
-        /// 异常信息
+        /// 错误发生时间
         /// </summary>
-        public string Message { get; set; }
+        public string Occurrencetime { get; set; }
 
     }
 

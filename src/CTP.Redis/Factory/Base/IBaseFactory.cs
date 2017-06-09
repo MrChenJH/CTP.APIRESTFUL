@@ -1,4 +1,4 @@
-﻿using CTP.Redis.Response;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,34 +13,22 @@ namespace CTP.Redis.Factory
         /// </summary>
         /// <param name="request">参数</param>
         /// <returns></returns>
-        Result Specialquery(Object request);
+        ReturnData Specialquery(Object request);
 
         /// <summary>
         /// 查询
         /// </summary>
         /// <param name="request">参数</param>
         /// <returns></returns>
-        Result Query(Object request);
+        ReturnData Query(Object request);
 
         /// <summary>
         ///  翻页查询
         /// </summary>
         /// <param name="request">参数</param>
         /// <returns></returns>
-        Result PageQuery(Object request);
+        ReturnData PageQuery(Object request);
 
-        /// <summary>
-        /// 添加
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        Result Add(Object request);
-
-        /// <summary>
-        /// 删除
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        Result Delete(Object request);
+       
     }
 }

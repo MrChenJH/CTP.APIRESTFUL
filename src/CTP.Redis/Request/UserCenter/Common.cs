@@ -12,7 +12,18 @@ namespace CTP.Redis.Request.UserCenter
     {
 
         public int AutoNo { get; set; }
+
+        /// <summary>
+        /// 创建日期
+        /// </summary>
+        [DefaultValue("")]
         public string CreateTime { get; set; }
+
+
+        /// <summary>
+        /// 维护时间
+        /// </summary>
+        [DefaultValue("")]
         public string Inputtime { get; set; }
 
         [JsonIgnore]
