@@ -16,9 +16,13 @@ namespace CTP.Redis.Factory.UserCenter
             string key = string.Empty;
             Type t = this.GetType();
             switch (t.Name)
-            {
+            {    
+                ///
                 case "RegisterUserFactory":
                     key = "registerUser";
+                    break;
+                case "AuthLoginUserFactory":
+                    key = "authLoginUser";
                     break;
                 default:
                     break;

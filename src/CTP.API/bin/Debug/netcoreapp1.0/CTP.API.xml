@@ -51,23 +51,149 @@
         </member>
         <member name="M:CTP.API.Controllers.UserCenterController.RegisterUserQuery(CTP.Redis.Request.RequesList{CTP.Redis.Request.UserCenter.RegisterUser})">
             <summary>
-            获取注册用户信息
+            查询 获取注册用户信息
             </summary>
             <param name="registerUser">参数</param>
             <returns></returns>
         </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.AuthLoginUserQuery(CTP.Redis.Request.RequesList{CTP.Redis.Request.UserCenter.AuthLoginUser})">
+            <summary>
+            查询 授权登录用户
+            </summary>
+            <param name="authLoginUser">授权登录用户</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.AppAccInterfaceQuery(CTP.Redis.Request.RequesList{CTP.Redis.Request.UserCenter.AppAccInterface})">
+            <summary>
+            查询 应用授权接口
+            </summary>
+            <param name="appAccInterface">应用授权接口</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.UserExtinfoQuery(CTP.Redis.Request.RequesList{CTP.Redis.Request.UserCenter.UserExtInfo})">
+            <summary>
+            查询 用户扩展信息
+            </summary>
+            <param name="userExtInfo">用户扩展信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.UOperLogQuery(CTP.Redis.Request.RequesList{CTP.Redis.Request.UserCenter.UOperLog})">
+            <summary>
+            查询 操作日志
+            </summary>
+            <param name="uOperLog">操作日志</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.UserConfigQuery(CTP.Redis.Request.RequesList{CTP.Redis.Request.UserCenter.UserConfig})">
+            <summary>
+            查询 用户配置
+            </summary>
+            <param name="userConfig">用户配置</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.UserInterfaceQuery(CTP.Redis.Request.RequesList{CTP.Redis.Request.UserCenter.UserInterface})">
+            <summary>
+            查询 用户接口
+            </summary>
+            <param name="userInterfac">用户接口</param>
+            <returns></returns>
+        </member>
         <member name="M:CTP.API.Controllers.UserCenterController.RegisterUserAddOrUpdate(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.UserCenter.RegisterUser}})">
             <summary>
-            新增和修改用户注册信息
+            新增和修改 授权登录用户信息
             </summary>
-            <param name="registerUser">用户注册提交值</param>
+            <param name="registerUser">授权登录用户</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.AuthLoginUserUserAddOrUpdate(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.UserCenter.AuthLoginUser}})">
+            <summary>
+            新增和修改 授权登录用户
+            </summary>
+            <param name="registerUser">授权登录用户</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.AppAccInterfaceAddOrUpdate(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.UserCenter.AppAccInterface}})">
+            <summary>
+            新增和修改 应用授权接口
+            </summary>
+            <param name="appAccInterface">应用授权接口</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.UserExtinfoAddOrUpdate(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.UserCenter.UserExtInfo}})">
+            <summary>
+            新增和修改 用户扩展信息
+            </summary>
+            <param name="userExtinfo"> 用户扩展信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.UserConfigQueryAddOrUpdate(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.UserCenter.UserConfig}})">
+            <summary>
+            新增和修改 用户配置
+            </summary>
+            <param name="userConfig"> 用户配置</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.UOperLogAddOrUpdate(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.UserCenter.UserConfig}})">
+            <summary>
+            新增和修改 操作日志
+            </summary>
+            <param name="uOperLog"> 操作日志</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.UserInterfaceAddOrUpdate(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.UserCenter.UserInterface}})">
+            <summary>
+            新增和修改 用户接口
+            </summary>
+            <param name="userInterface"> 用户接口</param>
             <returns></returns>
         </member>
         <member name="M:CTP.API.Controllers.UserCenterController.RegisterUserDelete(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.UserCenter.RegisterUser}})">
             <summary>
-            注册用户删除
+            注册用户 删除
             </summary>
-            <param name="registerUser">注册用户参数</param>
+            <param name="registerUser">注册用户 参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.AuthLoginUserUserDelete(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.UserCenter.AuthLoginUser}})">
+            <summary>
+            授权登录用户 删除
+            </summary>
+            <param name="authLoginrUser">授权登录用户 参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.AppAccInterfaceDelete(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.UserCenter.AppAccInterface}})">
+            <summary>
+            应用授权接口 删除
+            </summary>
+            <param name="appAccInterface">应用授权接口</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.UserExtinfoDelete(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.UserCenter.UserExtInfo}})">
+            <summary>
+            用户扩展信息 删除
+            </summary>
+            <param name="userExtInfo">用户扩展信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.UserConfigDelete(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.UserCenter.UserConfig}})">
+            <summary>
+             用户配置 删除
+            </summary>
+            <param name="userConfig">用户配置</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.UOperLogDelete(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.UserCenter.UOperLog}})">
+            <summary>
+             操作日记 删除
+            </summary>
+            <param name="uOperLog">操作日记</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.UserInterfaceDelete(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.UserCenter.UserInterface}})">
+            <summary>
+             用户接口 删除
+            </summary>
+            <param name="userInterface">用户接口</param>
             <returns></returns>
         </member>
     </members>

@@ -6,29 +6,28 @@ using System.Threading.Tasks;
 namespace CTP.Redis.Request.UserCenter
 {
     /// <summary>
-    ///授权登录用户
+    /// 用户扩展信息
     /// </summary>
-    public class AuthLoginUser : Common
+    public class UserExtInfo : Common
     {
-        /// <summary>
-        /// open_id
-        /// </summary>
-        public string OpenId { get; set; }
-
         /// <summary>
         /// 注册编号
         /// </summary>
         public string UserId { get; set; }
 
         /// <summary>
-        /// 授权描述
+        /// 所需部门
         /// </summary>
-        public string UserNode { get; set; }
+        public string UserDept { get; set; }
 
         /// <summary>
-        /// 用户来源
+        /// 身份类型
         /// </summary>
-        public string UserSource { get; set; }
+        public string CardType { get; set; }
 
+        /// <summary>
+        /// 身份类型
+        /// </summary>
+        public string CardNo { get; set; }
     }
 }

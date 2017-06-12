@@ -5,30 +5,30 @@ using System.Threading.Tasks;
 
 namespace CTP.Redis.Request.UserCenter
 {
+
     /// <summary>
-    ///授权登录用户
+    /// 用户配置
     /// </summary>
-    public class AuthLoginUser : Common
+    public class UserConfig
     {
         /// <summary>
-        /// open_id
+        /// 自增ID
         /// </summary>
-        public string OpenId { get; set; }
+        public int AutoNo { get; set; }
 
         /// <summary>
-        /// 注册编号
+        /// 配置主键
         /// </summary>
-        public string UserId { get; set; }
+        public string ConfigKey { get; set; }
 
         /// <summary>
-        /// 授权描述
+        /// 配置值
         /// </summary>
-        public string UserNode { get; set; }
+        public string ConfigValue { get; set; }
 
         /// <summary>
-        /// 用户来源
+        /// 配置标识
         /// </summary>
-        public string UserSource { get; set; }
-
+        public string ConfigSign { get; set; }
     }
 }
