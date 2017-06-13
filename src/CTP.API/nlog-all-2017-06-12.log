@@ -496,3 +496,349 @@
 2017-06-12 10:19:49.4944|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5H74VFRMSI" sent FIN with status "0". 
 2017-06-12 10:19:49.4944|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5H74VFRMSG" stopped. 
 2017-06-12 10:19:49.4944|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5H74VFRMSI" stopped. 
+2017-06-12 18:04:14.5373|Microsoft.AspNetCore.Hosting.Internal.WebHost|DEBUG|Hosting starting 
+2017-06-12 18:04:14.7435|Microsoft.AspNetCore.Hosting.Internal.WebHost|DEBUG|Hosting started 
+2017-06-12 18:04:14.8614|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1Q7" started. 
+2017-06-12 18:04:14.8614|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1Q6" started. 
+2017-06-12 18:04:15.0006|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/   
+2017-06-12 18:04:15.0006|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 DEBUG http://localhost:38570/  0 
+2017-06-12 18:04:15.0987|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 114.5976ms 200  
+2017-06-12 18:04:15.1877|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1Q6" completed keep alive response. 
+2017-06-12 18:04:15.6373|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:15.7264|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|Sending file. Request path: '/index.html'. Physical path: 'N/A' 
+2017-06-12 18:04:15.8025|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/css/reset.css   
+2017-06-12 18:04:15.8025|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1Q9" started. 
+2017-06-12 18:04:15.8145|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1QA" started. 
+2017-06-12 18:04:15.8025|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1Q8" started. 
+2017-06-12 18:04:15.8415|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/css/typography.css   
+2017-06-12 18:04:15.8415|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:15.8415|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:15.8415|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1QB" started. 
+2017-06-12 18:04:15.8145|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/css/screen.css   
+2017-06-12 18:04:15.8415|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /css/typography.css was not modified 
+2017-06-12 18:04:15.8415|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /css/reset.css was not modified 
+2017-06-12 18:04:15.8605|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:15.8955|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /css/screen.css was not modified 
+2017-06-12 18:04:15.8955|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /css/reset.css 
+2017-06-12 18:04:15.8955|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /css/typography.css 
+2017-06-12 18:04:15.9005|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /css/screen.css 
+2017-06-12 18:04:16.1383|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 295.4345ms 304 text/css 
+2017-06-12 18:04:16.1383|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 1177.3073ms 200 text/html 
+2017-06-12 18:04:16.1533|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1QA" completed keep alive response. 
+2017-06-12 18:04:16.1383|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 343.4656ms 304 text/css 
+2017-06-12 18:04:16.1533|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/jquery-1.8.0.min.js   
+2017-06-12 18:04:16.1533|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 345.8251ms 304 text/css 
+2017-06-12 18:04:16.1704|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1Q7" completed keep alive response. 
+2017-06-12 18:04:16.1704|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/jquery.slideto.min.js   
+2017-06-12 18:04:16.1849|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1Q9" completed keep alive response. 
+2017-06-12 18:04:16.2029|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:16.2029|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/handlebars-4.0.5.js   
+2017-06-12 18:04:16.1704|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1Q6" completed keep alive response. 
+2017-06-12 18:04:16.2029|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/jquery.ba-bbq.min.js   
+2017-06-12 18:04:16.2029|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:16.2169|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:16.2169|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/handlebars-4.0.5.js was not modified 
+2017-06-12 18:04:16.2029|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/jquery.slideto.min.js was not modified 
+2017-06-12 18:04:16.2169|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/handlebars-4.0.5.js 
+2017-06-12 18:04:16.2169|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:16.2309|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/jquery.ba-bbq.min.js was not modified 
+2017-06-12 18:04:16.2169|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/jquery-1.8.0.min.js was not modified 
+2017-06-12 18:04:16.2309|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/jquery.ba-bbq.min.js 
+2017-06-12 18:04:16.2309|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/jquery-1.8.0.min.js 
+2017-06-12 18:04:16.2309|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 28.2285ms 304 application/javascript 
+2017-06-12 18:04:16.2169|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/jquery.slideto.min.js 
+2017-06-12 18:04:16.2309|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 30.636ms 304 application/javascript 
+2017-06-12 18:04:16.2820|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 106.6748ms 304 application/javascript 
+2017-06-12 18:04:16.2654|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 101.9896ms 304 application/javascript 
+2017-06-12 18:04:16.2654|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1Q9" completed keep alive response. 
+2017-06-12 18:04:16.2970|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1Q7" completed keep alive response. 
+2017-06-12 18:04:16.2970|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/object-assign-pollyfill.js   
+2017-06-12 18:04:16.2970|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1Q8" completed keep alive response. 
+2017-06-12 18:04:16.2970|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/lodash.min.js   
+2017-06-12 18:04:16.3110|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/jquery.wiggle.min.js   
+2017-06-12 18:04:16.2820|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1Q6" completed keep alive response. 
+2017-06-12 18:04:16.3110|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:16.3110|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/backbone-min.js   
+2017-06-12 18:04:16.3110|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:16.3110|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:16.3110|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/lodash.min.js was not modified 
+2017-06-12 18:04:16.3260|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/object-assign-pollyfill.js was not modified 
+2017-06-12 18:04:16.3260|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/lodash.min.js 
+2017-06-12 18:04:16.3390|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/object-assign-pollyfill.js 
+2017-06-12 18:04:16.3390|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 49.3368ms 304 application/javascript 
+2017-06-12 18:04:16.3260|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:16.3260|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/jquery.wiggle.min.js was not modified 
+2017-06-12 18:04:16.3725|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/backbone-min.js was not modified 
+2017-06-12 18:04:16.3725|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/jquery.wiggle.min.js 
+2017-06-12 18:04:16.3725|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1Q9" completed keep alive response. 
+2017-06-12 18:04:16.3871|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/highlight.9.1.0.pack_extended.js   
+2017-06-12 18:04:16.3725|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/backbone-min.js 
+2017-06-12 18:04:16.4101|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 97.9795ms 304 application/javascript 
+2017-06-12 18:04:16.4101|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:16.4181|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1QA" completed keep alive response. 
+2017-06-12 18:04:16.4181|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/highlight.9.1.0.pack_extended.js was not modified 
+2017-06-12 18:04:16.4181|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/swagger-ui.min.js   
+2017-06-12 18:04:16.3390|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 48.9042ms 304 application/javascript 
+2017-06-12 18:04:16.4341|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/highlight.9.1.0.pack_extended.js 
+2017-06-12 18:04:16.4651|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1QB" completed keep alive response. 
+2017-06-12 18:04:16.4902|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/marked.js   
+2017-06-12 18:04:16.4651|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:16.5032|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /swagger-ui.min.js was not modified 
+2017-06-12 18:04:16.4902|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 106.3365ms 304 application/javascript 
+2017-06-12 18:04:16.4341|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 107.0116ms 304 application/javascript 
+2017-06-12 18:04:16.5032|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:16.5332|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/marked.js was not modified 
+2017-06-12 18:04:16.5332|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /swagger-ui.min.js 
+2017-06-12 18:04:16.5192|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1Q9" completed keep alive response. 
+2017-06-12 18:04:16.5332|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/swagger-oauth.js   
+2017-06-12 18:04:16.5632|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 138.6329ms 304 application/javascript 
+2017-06-12 18:04:16.5632|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/marked.js 
+2017-06-12 18:04:16.6012|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:16.6107|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/swagger-oauth.js was not modified 
+2017-06-12 18:04:16.5632|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1Q7" completed keep alive response. 
+2017-06-12 18:04:16.6107|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1Q6" completed keep alive response. 
+2017-06-12 18:04:16.6353|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/highlight.9.1.0.pack.js   
+2017-06-12 18:04:16.6353|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/swagger-oauth.js 
+2017-06-12 18:04:16.6353|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/jsoneditor.min.js   
+2017-06-12 18:04:16.6107|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 116.0615ms 304 application/javascript 
+2017-06-12 18:04:16.7149|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 175.2241ms 304 application/javascript 
+2017-06-12 18:04:16.6929|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:16.7149|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/highlight.9.1.0.pack.js was not modified 
+2017-06-12 18:04:16.7529|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:16.7529|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/jsoneditor.min.js was not modified 
+2017-06-12 18:04:16.7149|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1QB" completed keep alive response. 
+2017-06-12 18:04:16.7824|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/highlight.9.1.0.pack.js 
+2017-06-12 18:04:16.7634|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1Q9" completed keep alive response. 
+2017-06-12 18:04:16.8074|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/jsoneditor.min.js 
+2017-06-12 18:04:16.8074|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 176.2646ms 304 application/javascript 
+2017-06-12 18:04:16.8074|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 170.9324ms 304 application/javascript 
+2017-06-12 18:04:16.8074|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1Q8" completed keep alive response. 
+2017-06-12 18:04:16.8245|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1QA" completed keep alive response. 
+2017-06-12 18:04:17.1476|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/images/logo_small.png   
+2017-06-12 18:04:17.1556|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:17.1556|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /images/logo_small.png was not modified 
+2017-06-12 18:04:17.1556|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /images/logo_small.png 
+2017-06-12 18:04:17.1677|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 19.9111ms 304 image/png 
+2017-06-12 18:04:17.1677|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1Q7" completed keep alive response. 
+2017-06-12 18:04:17.2467|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/css/print.css   
+2017-06-12 18:04:17.2808|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:17.2808|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /css/print.css was not modified 
+2017-06-12 18:04:17.3028|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /css/print.css 
+2017-06-12 18:04:17.3028|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/v1/swagger.json   
+2017-06-12 18:04:17.3148|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 68.0031ms 304 text/css 
+2017-06-12 18:04:17.3148|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1Q6" completed keep alive response. 
+2017-06-12 18:04:17.3308|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:17.3763|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/images/favicon-16x16.png   
+2017-06-12 18:04:17.3763|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:17.3853|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /images/favicon-16x16.png was not modified 
+2017-06-12 18:04:17.3853|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /images/favicon-16x16.png 
+2017-06-12 18:04:17.3853|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 20.2426ms 304 image/png 
+2017-06-12 18:04:17.4018|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1Q9" completed keep alive response. 
+2017-06-12 18:04:17.8651|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 562.1273ms 200 application/json 
+2017-06-12 18:04:17.8701|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1QB" completed keep alive response. 
+2017-06-12 18:04:39.8600|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/images/throbber.gif   
+2017-06-12 18:04:39.8600|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:39.8715|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /images/throbber.gif was not modified 
+2017-06-12 18:04:39.8715|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /images/throbber.gif 
+2017-06-12 18:04:39.8715|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 17.0305ms 304 image/gif 
+2017-06-12 18:04:39.8715|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1Q8" completed keep alive response. 
+2017-06-12 18:04:39.9096|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/images/favicon-16x16.png   
+2017-06-12 18:04:39.9096|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:04:39.9096|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /images/favicon-16x16.png was not modified 
+2017-06-12 18:04:39.9196|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /images/favicon-16x16.png 
+2017-06-12 18:04:39.9196|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 13.453ms 304 image/png 
+2017-06-12 18:04:39.9196|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1QA" completed keep alive response. 
+2017-06-12 18:05:07.4316|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/images/favicon-16x16.png   
+2017-06-12 18:05:07.4686|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:05:07.4877|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /images/favicon-16x16.png was not modified 
+2017-06-12 18:05:07.5172|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /images/favicon-16x16.png 
+2017-06-12 18:05:07.5382|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 106.5155ms 304 image/png 
+2017-06-12 18:05:07.5532|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HF9GQC1Q7" completed keep alive response. 
+2017-06-12 18:06:10.6806|Microsoft.AspNetCore.Hosting.Internal.WebHost|DEBUG|Hosting starting 
+2017-06-12 18:06:10.8348|Microsoft.AspNetCore.Hosting.Internal.WebHost|DEBUG|Hosting started 
+2017-06-12 18:06:10.9555|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KO" started. 
+2017-06-12 18:06:10.9555|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KN" started. 
+2017-06-12 18:06:11.1496|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/   
+2017-06-12 18:06:11.1496|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 DEBUG http://localhost:38570/  0 
+2017-06-12 18:06:11.2772|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 161.0306ms 200  
+2017-06-12 18:06:11.3463|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KN" completed keep alive response. 
+2017-06-12 18:06:11.6521|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:11.7047|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|Sending file. Request path: '/index.html'. Physical path: 'N/A' 
+2017-06-12 18:06:11.7537|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KP" started. 
+2017-06-12 18:06:11.7537|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KQ" started. 
+2017-06-12 18:06:11.7537|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KR" started. 
+2017-06-12 18:06:11.7537|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/css/reset.css   
+2017-06-12 18:06:11.7607|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KS" started. 
+2017-06-12 18:06:11.7537|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/css/screen.css   
+2017-06-12 18:06:11.7607|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:11.7607|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:11.7607|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/jquery-1.8.0.min.js   
+2017-06-12 18:06:11.7607|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /css/screen.css was not modified 
+2017-06-12 18:06:11.7607|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /css/reset.css was not modified 
+2017-06-12 18:06:11.7767|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:11.7767|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /css/screen.css 
+2017-06-12 18:06:11.7767|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/jquery-1.8.0.min.js was not modified 
+2017-06-12 18:06:11.7767|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/jquery-1.8.0.min.js 
+2017-06-12 18:06:11.7767|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /css/reset.css 
+2017-06-12 18:06:11.9947|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 236.5083ms 304 text/css 
+2017-06-12 18:06:11.9947|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 889.4804ms 200 text/html 
+2017-06-12 18:06:11.9947|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KN" completed keep alive response. 
+2017-06-12 18:06:11.9947|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 237.1454ms 304 text/css 
+2017-06-12 18:06:11.9947|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/jquery.wiggle.min.js   
+2017-06-12 18:06:11.9947|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KO" completed keep alive response. 
+2017-06-12 18:06:12.0127|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/css/typography.css   
+2017-06-12 18:06:11.9947|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 229.4575ms 304 application/javascript 
+2017-06-12 18:06:12.0127|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KP" completed keep alive response. 
+2017-06-12 18:06:12.0337|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/jquery.ba-bbq.min.js   
+2017-06-12 18:06:12.0337|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:12.0636|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /css/typography.css was not modified 
+2017-06-12 18:06:12.0127|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:12.0636|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/jquery.wiggle.min.js was not modified 
+2017-06-12 18:06:12.0636|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:12.0636|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/jquery.ba-bbq.min.js was not modified 
+2017-06-12 18:06:12.0636|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /css/typography.css 
+2017-06-12 18:06:12.0636|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/jquery.wiggle.min.js 
+2017-06-12 18:06:12.0546|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KQ" completed keep alive response. 
+2017-06-12 18:06:12.0736|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 73.1372ms 304 application/javascript 
+2017-06-12 18:06:12.0736|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 63.7353ms 304 text/css 
+2017-06-12 18:06:12.0736|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KN" completed keep alive response. 
+2017-06-12 18:06:12.0886|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/lodash.min.js   
+2017-06-12 18:06:12.0736|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/jquery.ba-bbq.min.js 
+2017-06-12 18:06:12.0886|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:12.0886|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/lodash.min.js was not modified 
+2017-06-12 18:06:12.0886|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 63.6957ms 304 application/javascript 
+2017-06-12 18:06:12.0736|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/handlebars-4.0.5.js   
+2017-06-12 18:06:12.0886|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KP" completed keep alive response. 
+2017-06-12 18:06:12.1086|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/object-assign-pollyfill.js   
+2017-06-12 18:06:12.1086|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:12.0886|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KO" completed keep alive response. 
+2017-06-12 18:06:12.1086|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/backbone-min.js   
+2017-06-12 18:06:12.0886|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/lodash.min.js 
+2017-06-12 18:06:12.1086|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/handlebars-4.0.5.js was not modified 
+2017-06-12 18:06:12.1086|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:12.1086|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:12.1086|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 28.5885ms 304 application/javascript 
+2017-06-12 18:06:12.1237|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/backbone-min.js was not modified 
+2017-06-12 18:06:12.1237|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/handlebars-4.0.5.js 
+2017-06-12 18:06:12.1237|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KN" completed keep alive response. 
+2017-06-12 18:06:12.1524|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 71.3376ms 304 application/javascript 
+2017-06-12 18:06:12.1524|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/swagger-ui.min.js   
+2017-06-12 18:06:12.1237|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/object-assign-pollyfill.js was not modified 
+2017-06-12 18:06:12.1499|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/backbone-min.js 
+2017-06-12 18:06:12.1524|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KQ" completed keep alive response. 
+2017-06-12 18:06:12.1679|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/highlight.9.1.0.pack_extended.js   
+2017-06-12 18:06:12.1524|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:12.1679|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /swagger-ui.min.js was not modified 
+2017-06-12 18:06:12.1679|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 53.9866ms 304 application/javascript 
+2017-06-12 18:06:12.1524|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/object-assign-pollyfill.js 
+2017-06-12 18:06:12.1679|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /swagger-ui.min.js 
+2017-06-12 18:06:12.1679|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KO" completed keep alive response. 
+2017-06-12 18:06:12.1819|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 32.1603ms 304 application/javascript 
+2017-06-12 18:06:12.1679|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:12.1819|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/highlight.9.1.0.pack_extended.js was not modified 
+2017-06-12 18:06:12.1819|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 72.3967ms 304 application/javascript 
+2017-06-12 18:06:12.1819|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KN" completed keep alive response. 
+2017-06-12 18:06:12.2019|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/marked.js   
+2017-06-12 18:06:12.2019|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KR" completed keep alive response. 
+2017-06-12 18:06:12.1819|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/jsoneditor.min.js   
+2017-06-12 18:06:12.2019|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/swagger-oauth.js   
+2017-06-12 18:06:12.1819|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/highlight.9.1.0.pack_extended.js 
+2017-06-12 18:06:12.2149|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:12.2149|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:12.2149|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/swagger-oauth.js was not modified 
+2017-06-12 18:06:12.2149|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 57.3737ms 304 application/javascript 
+2017-06-12 18:06:12.2019|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:12.2289|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/marked.js was not modified 
+2017-06-12 18:06:12.2289|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/swagger-oauth.js 
+2017-06-12 18:06:12.2289|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KQ" completed keep alive response. 
+2017-06-12 18:06:12.2149|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/jsoneditor.min.js was not modified 
+2017-06-12 18:06:12.2289|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 30.0859ms 304 application/javascript 
+2017-06-12 18:06:12.2444|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/jsoneditor.min.js 
+2017-06-12 18:06:12.2444|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KR" completed keep alive response. 
+2017-06-12 18:06:12.2289|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/marked.js 
+2017-06-12 18:06:12.2444|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 65.2376ms 304 application/javascript 
+2017-06-12 18:06:12.2289|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/jquery.slideto.min.js   
+2017-06-12 18:06:12.2444|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 55.4962ms 304 application/javascript 
+2017-06-12 18:06:12.2444|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/lib/highlight.9.1.0.pack.js   
+2017-06-12 18:06:12.2800|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KN" completed keep alive response. 
+2017-06-12 18:06:12.2800|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KO" completed keep alive response. 
+2017-06-12 18:06:12.2980|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:12.2980|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/highlight.9.1.0.pack.js was not modified 
+2017-06-12 18:06:12.2800|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:12.2980|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/highlight.9.1.0.pack.js 
+2017-06-12 18:06:12.2980|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /lib/jquery.slideto.min.js was not modified 
+2017-06-12 18:06:12.3080|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 53.2362ms 304 application/javascript 
+2017-06-12 18:06:12.3080|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /lib/jquery.slideto.min.js 
+2017-06-12 18:06:12.3080|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KP" completed keep alive response. 
+2017-06-12 18:06:12.3080|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 76.344ms 304 application/javascript 
+2017-06-12 18:06:12.3080|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KS" completed keep alive response. 
+2017-06-12 18:06:12.3385|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/images/logo_small.png   
+2017-06-12 18:06:12.3385|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:12.3385|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /images/logo_small.png was not modified 
+2017-06-12 18:06:12.3385|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /images/logo_small.png 
+2017-06-12 18:06:12.3385|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 10.5126ms 304 image/png 
+2017-06-12 18:06:12.3547|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KQ" completed keep alive response. 
+2017-06-12 18:06:12.3547|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/css/print.css   
+2017-06-12 18:06:12.3547|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:12.3547|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /css/print.css was not modified 
+2017-06-12 18:06:12.3547|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /css/print.css 
+2017-06-12 18:06:12.3707|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 12.1214ms 304 text/css 
+2017-06-12 18:06:12.3707|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KR" completed keep alive response. 
+2017-06-12 18:06:12.5223|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/v1/swagger.json   
+2017-06-12 18:06:12.5223|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:12.5408|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/images/favicon-16x16.png   
+2017-06-12 18:06:12.5443|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:12.5443|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /images/favicon-16x16.png was not modified 
+2017-06-12 18:06:12.5443|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /images/favicon-16x16.png 
+2017-06-12 18:06:12.5443|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 13.6256ms 304 image/png 
+2017-06-12 18:06:12.5604|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KN" completed keep alive response. 
+2017-06-12 18:06:12.9147|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 392.2147ms 200 application/json 
+2017-06-12 18:06:12.9197|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KO" completed keep alive response. 
+2017-06-12 18:06:25.8352|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/images/throbber.gif   
+2017-06-12 18:06:25.8382|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:25.8382|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /images/throbber.gif was not modified 
+2017-06-12 18:06:25.8382|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /images/throbber.gif 
+2017-06-12 18:06:25.8382|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 12.3426ms 304 image/gif 
+2017-06-12 18:06:25.8382|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KP" completed keep alive response. 
+2017-06-12 18:06:25.8903|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/images/favicon-16x16.png   
+2017-06-12 18:06:25.8903|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:25.8903|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /images/favicon-16x16.png was not modified 
+2017-06-12 18:06:25.8903|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /images/favicon-16x16.png 
+2017-06-12 18:06:25.9043|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 14.0909ms 304 image/png 
+2017-06-12 18:06:25.9043|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KS" completed keep alive response. 
+2017-06-12 18:06:26.9900|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:38570/swagger/images/favicon-16x16.png   
+2017-06-12 18:06:26.9980|Microsoft.AspNetCore.Builder.RouterMiddleware|DEBUG|Request did not match any routes. 
+2017-06-12 18:06:26.9980|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|The file /images/favicon-16x16.png was not modified 
+2017-06-12 18:06:26.9980|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|DEBUG|Handled. Status code: 304 File: /images/favicon-16x16.png 
+2017-06-12 18:06:27.0110|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 20.3339ms 304 image/png 
+2017-06-12 18:06:27.0110|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KQ" completed keep alive response. 
+2017-06-12 18:08:00.9317|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KN" received FIN. 
+2017-06-12 18:08:00.9357|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KS" received FIN. 
+2017-06-12 18:08:00.9357|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KQ" received FIN. 
+2017-06-12 18:08:00.9317|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KR" received FIN. 
+2017-06-12 18:08:00.9557|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KO" received FIN. 
+2017-06-12 18:08:00.9657|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KP" received FIN. 
+2017-06-12 18:08:00.9657|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KS" disconnecting. 
+2017-06-12 18:08:00.9657|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KR" disconnecting. 
+2017-06-12 18:08:00.9657|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KP" disconnecting. 
+2017-06-12 18:08:00.9657|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KN" disconnecting. 
+2017-06-12 18:08:00.9657|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KQ" disconnecting. 
+2017-06-12 18:08:00.9657|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KR" sending FIN. 
+2017-06-12 18:08:00.9657|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KS" sending FIN. 
+2017-06-12 18:08:00.9657|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KO" disconnecting. 
+2017-06-12 18:08:00.9657|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KP" sending FIN. 
+2017-06-12 18:08:00.9657|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KO" sending FIN. 
+2017-06-12 18:08:00.9657|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KN" sending FIN. 
+2017-06-12 18:08:00.9657|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KQ" sending FIN. 
+2017-06-12 18:08:00.9797|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KQ" sent FIN with status "0". 
+2017-06-12 18:08:00.9797|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KO" sent FIN with status "0". 
+2017-06-12 18:08:00.9797|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KO" stopped. 
+2017-06-12 18:08:00.9797|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KP" sent FIN with status "0". 
+2017-06-12 18:08:00.9797|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KQ" stopped. 
+2017-06-12 18:08:00.9797|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KP" stopped. 
+2017-06-12 18:08:01.0157|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KN" sent FIN with status "0". 
+2017-06-12 18:08:01.0157|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KR" sent FIN with status "0". 
+2017-06-12 18:08:01.0157|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KR" stopped. 
+2017-06-12 18:08:01.0157|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KN" stopped. 
+2017-06-12 18:08:01.0157|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KS" sent FIN with status "0". 
+2017-06-12 18:08:01.0157|Microsoft.AspNetCore.Server.Kestrel|DEBUG|Connection id "0HL5HFAJDH3KS" stopped. 
