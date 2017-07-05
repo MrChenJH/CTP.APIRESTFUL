@@ -55,6 +55,7 @@ namespace CTP.API.Controllers
         /// <param name="_func"></param>
         public string ListInvork<T>(Func<RList<T>> _func) where T : class
         {
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
             return ExceptionHook(() =>
             {
                 return _func().ToJson().RedisDataToJson();
@@ -69,6 +70,7 @@ namespace CTP.API.Controllers
         /// <param name="_func"></param>
         public string SingleInvork<T>(Func<RSingle<T>> _func) where T : class
         {
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
             return ExceptionHook(() =>
             {
                 return _func().ToJson().RedisDataToJson();

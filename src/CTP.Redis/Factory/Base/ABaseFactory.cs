@@ -61,7 +61,7 @@ namespace CTP.Redis
             var items = GetAddOrUpdateOrDeleteValue(request);
             foreach (var v in items)
             {
-                Client.ZsetDelBySocre(GetKey(), v.Key);
+                Client.ZsetDelBySocre(GetKey(), v.Key.ToString());
                 if (!Client.Sucess)
                 {
                     break;

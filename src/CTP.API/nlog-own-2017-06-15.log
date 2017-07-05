@@ -1,0 +1,24 @@
+2017-06-15 09:42:00.8597|BaseController|ERROR|  CTP.Redis.Config.ProcessException: {"code":"001","Occurrencetime":"2017-06-15 09:42:00","sucess":false}
+   at CTP.API.Controllers.UserCenterController.<>c__DisplayClass7_0.<RegisterUserAddOrUpdate>b__0() in F:\NetCore\CTP.API\src\CTP.API\Controllers\UserCenterController.cs:line 156
+   at CTP.API.Controllers.BaseController.<>c__DisplayClass1_0`1.<TextInvork>b__0() in F:\NetCore\CTP.API\src\CTP.API\Controllers\BaseController.cs:line 31
+   at CTP.API.Controllers.BaseController.ExceptionHook(Func`1 _fun) in F:\NetCore\CTP.API\src\CTP.API\Controllers\BaseController.cs:line 89 {"code":"001","Occurrencetime":"2017-06-15 09:42:00","sucess":false}
+2017-06-15 09:51:05.7125|BaseController|ERROR|  System.NullReferenceException: Object reference not set to an instance of an object.
+   at CTP.Redis.Agent.FactoryAgent..ctor(RequsetBase request, String method) in F:\NetCore\CTP.API\src\CTP.Redis\Agent\FactoryAgent.cs:line 33
+   at CTP.API.Controllers.UserCenterController.<>c__DisplayClass0_0.<RegisterUserQuery>b__0() in F:\NetCore\CTP.API\src\CTP.API\Controllers\UserCenterController.cs:line 32
+   at CTP.API.Controllers.BaseController.<>c__DisplayClass3_0`1.<ListInvork>b__0() in F:\NetCore\CTP.API\src\CTP.API\Controllers\BaseController.cs:line 60
+   at CTP.API.Controllers.BaseController.ExceptionHook(Func`1 _fun) in F:\NetCore\CTP.API\src\CTP.API\Controllers\BaseController.cs:line 89 Object reference not set to an instance of an object.
+2017-06-15 09:51:29.2622|BaseController|ERROR|  System.NullReferenceException: Object reference not set to an instance of an object.
+   at CTP.Redis.Agent.FactoryAgent..ctor(RequsetBase request, String method) in F:\NetCore\CTP.API\src\CTP.Redis\Agent\FactoryAgent.cs:line 33
+   at CTP.API.Controllers.UserCenterController.<>c__DisplayClass0_0.<RegisterUserQuery>b__0() in F:\NetCore\CTP.API\src\CTP.API\Controllers\UserCenterController.cs:line 32
+   at CTP.API.Controllers.BaseController.<>c__DisplayClass3_0`1.<ListInvork>b__0() in F:\NetCore\CTP.API\src\CTP.API\Controllers\BaseController.cs:line 60
+   at CTP.API.Controllers.BaseController.ExceptionHook(Func`1 _fun) in F:\NetCore\CTP.API\src\CTP.API\Controllers\BaseController.cs:line 89 Object reference not set to an instance of an object.
+2017-06-15 09:51:44.2756|BaseController|ERROR|  System.NullReferenceException: Object reference not set to an instance of an object.
+   at CTP.Redis.Agent.FactoryAgent..ctor(RequsetBase request, String method) in F:\NetCore\CTP.API\src\CTP.Redis\Agent\FactoryAgent.cs:line 33
+   at CTP.API.Controllers.UserCenterController.<>c__DisplayClass0_0.<RegisterUserQuery>b__0() in F:\NetCore\CTP.API\src\CTP.API\Controllers\UserCenterController.cs:line 32
+   at CTP.API.Controllers.BaseController.<>c__DisplayClass3_0`1.<ListInvork>b__0() in F:\NetCore\CTP.API\src\CTP.API\Controllers\BaseController.cs:line 60
+   at CTP.API.Controllers.BaseController.ExceptionHook(Func`1 _fun) in F:\NetCore\CTP.API\src\CTP.API\Controllers\BaseController.cs:line 89 Object reference not set to an instance of an object.
+2017-06-15 09:52:21.5574|BaseController|ERROR|  System.NullReferenceException: Object reference not set to an instance of an object.
+   at CTP.Redis.Agent.FactoryAgent..ctor(RequsetBase request, String method) in F:\NetCore\CTP.API\src\CTP.Redis\Agent\FactoryAgent.cs:line 33
+   at CTP.API.Controllers.UserCenterController.<>c__DisplayClass0_0.<RegisterUserQuery>b__0() in F:\NetCore\CTP.API\src\CTP.API\Controllers\UserCenterController.cs:line 32
+   at CTP.API.Controllers.BaseController.<>c__DisplayClass3_0`1.<ListInvork>b__0() in F:\NetCore\CTP.API\src\CTP.API\Controllers\BaseController.cs:line 60
+   at CTP.API.Controllers.BaseController.ExceptionHook(Func`1 _fun) in F:\NetCore\CTP.API\src\CTP.API\Controllers\BaseController.cs:line 89 Object reference not set to an instance of an object.

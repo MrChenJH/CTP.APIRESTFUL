@@ -28,7 +28,7 @@ namespace CTP.Redis
 
         public List<string> Result { get; set; }
 
-        public int Count { get; set; }
+        public long Count { get; set; }
 
         /// <summary>
         /// 日记
@@ -82,14 +82,31 @@ namespace CTP.Redis
             {
                 var client = Connection.GetDatabase();
 
-                var result = client.SortedSetScan(key, string.Format("{0}{1}{2}", "*", keyvalue, "*"), end - start, 0, start);
-                var reg = new Regex("^\\d+$");
-                for (int i = 0; i < result.Count(); i++)
+                if (!string.IsNullOrWhiteSpace(keyvalue))
                 {
-                    var v = result.ToList()[i].Element;
-                    if (!reg.Match(v).Success)
+                    var result = client.SortedSetScan(key, string.Format("{0}{1}{2}", "*", keyvalue, "*"), end - start, 0, start);
+                    var reg = new Regex("^\\d+$");
+                    for (int i = 0; i < result.Count(); i++)
                     {
-                        list.Add(v);
+                        var v = result.ToList()[i].Element;
+                        if (!reg.Match(v).Success)
+                        {
+                            list.Add(v);
+                        }
+                    }
+                  
+                }
+                else
+                {
+                    var result = client.SortedSetRangeByRank(key, 0, -1);
+                    var reg = new Regex("^\\d+$");
+                    for (int i = 0; i < result.Length; i++)
+                    {
+                        var v = result[i];
+                        if (!reg.Match(v).Success)
+                        {
+                            list.Add(v);
+                        }
                     }
                 }
 
@@ -111,6 +128,44 @@ namespace CTP.Redis
                 Result = list.Skip(start).Take(end - start).ToList();
             }
         }
+
+        /// <summary>
+        /// 获取 ZSet 里的Value 值
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public void GetZsetMultiByPage(string key, int start, int end = 1000000)
+        {
+            var list = new List<string>();
+            try
+            {
+                var client = Connection.GetDatabase();
+                var result = client.SortedSetRangeByScore(key, end - start, end);
+                var reg = new Regex("^\\d+$");
+                for (int i = 0; i < result.Count(); i++)
+                {
+                    var v = result[i];
+                    if (!reg.Match(v).Success)
+                    {
+                        list.Add(v);
+                    }
+                }
+                Count = client.SortedSetLength(key);
+                Result = list;
+
+            }
+            catch (Exception ex)
+            {
+                Message = ex.Message;
+                Code = ErrorCode.ReadRedisErrorCode;
+                Sucess = false;
+            }
+
+            Sucess = true;
+
+
+        }
+
 
         /// <summary>
         /// 根据key 获取所有值
@@ -235,15 +290,15 @@ namespace CTP.Redis
         /// <summary>
         /// 通过分数删除
         /// </summary>
-        public void ZsetDelBySocre(string key, long score)
+        public void ZsetDelBySocre(string key, string keyvalue)
         {
             try
             {
                 var client = Connection.GetDatabase();
-                var result = client.SortedSetRangeByScore(key, score, score);
-                if (result.Length == 1)
+                var result = client.SortedSetScan(key, string.Format("{0}{1}{2}", "*", keyvalue, "*"), 100000, 0, 0);
+                foreach (var v in result)
                 {
-                    client.SortedSetRemove(key, result[0]);
+                    client.SortedSetRemove(key, v.Element);
                 }
             }
             catch (Exception ex)

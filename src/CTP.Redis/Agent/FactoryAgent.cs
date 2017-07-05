@@ -86,7 +86,7 @@ namespace CTP.Redis.Agent
                 {
                     sucess = false,
                     code = ErrorCode.NotExistKeyErrorCode,
-                    Occurrencetime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+           
                 };
             }
         }

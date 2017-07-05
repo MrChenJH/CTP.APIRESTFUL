@@ -17,6 +17,7 @@ namespace CTP.API
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
+                //.UseUrls(new string[] { "http://localhost:38570", "http://192.168.10.24:38570" })
                 .Build();
 
             host.Run();

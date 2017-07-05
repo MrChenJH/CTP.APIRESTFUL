@@ -8,13 +8,18 @@ using System.Threading.Tasks;
 namespace CTP.Redis.Request
 {
     public class RequesList<T> : RequsetBase
-        where T : class
+        where T : class, new()
     {
+        public RequesList()
+        {
+            Model = new T();
+        }
+        
         /// <summary>
         ///对应Model
         /// </summary>
         public T Model { get; set; }
 
-   
+
     }
 }

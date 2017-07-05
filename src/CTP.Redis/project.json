@@ -2,7 +2,7 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "NETStandard.Library": "1.6.0",
+    "NETStandard.Library": "1.6.1",
     "Newtonsoft.Json": "10.0.2",
     "StackExchange.Redis": "1.2.3",
     "System.Runtime.Serialization.Json": "4.0.1",

@@ -125,9 +125,12 @@ F:\NetCore\CTP.API\src\CTP.Redis\Agent\FactoryAgent.cs
 F:\NetCore\CTP.API\src\CTP.Redis\Config\ErrorCode.cs
 F:\NetCore\CTP.API\src\CTP.Redis\Config\ExecMethod.cs
 F:\NetCore\CTP.API\src\CTP.Redis\Config\ProcessException.cs
+F:\NetCore\CTP.API\src\CTP.Redis\Factory\AreaBase\SiteNodeBase.cs
 F:\NetCore\CTP.API\src\CTP.Redis\Factory\AreaBase\UserCenterBase.cs
 F:\NetCore\CTP.API\src\CTP.Redis\Factory\Base\ABaseFactory.cs
 F:\NetCore\CTP.API\src\CTP.Redis\Factory\Base\IBaseFactory.cs
+F:\NetCore\CTP.API\src\CTP.Redis\Factory\SiteNode\ManuscriptFactory.cs
+F:\NetCore\CTP.API\src\CTP.Redis\Factory\SiteNode\SiteNodeFactory.cs
 F:\NetCore\CTP.API\src\CTP.Redis\Factory\UserCenter\AppAccInterfaceFactory.cs
 F:\NetCore\CTP.API\src\CTP.Redis\Factory\UserCenter\AuthLoginUserFactory.cs
 F:\NetCore\CTP.API\src\CTP.Redis\Factory\UserCenter\LoginLogFactory.cs
@@ -142,6 +145,9 @@ F:\NetCore\CTP.API\src\CTP.Redis\Reponse\ReturnData.cs
 F:\NetCore\CTP.API\src\CTP.Redis\Request\RequesList.cs
 F:\NetCore\CTP.API\src\CTP.Redis\Request\RequestPage.cs
 F:\NetCore\CTP.API\src\CTP.Redis\Request\RequsetBase.cs
+F:\NetCore\CTP.API\src\CTP.Redis\Request\SiteNode\Manuscript.cs
+F:\NetCore\CTP.API\src\CTP.Redis\Request\SiteNode\SiteNodeModel.cs
+F:\NetCore\CTP.API\src\CTP.Redis\Request\SiteNode\SiteNodeCommon\SiteNodeCommon.cs
 F:\NetCore\CTP.API\src\CTP.Redis\Request\UserCenter\AppAccInterface.cs
 F:\NetCore\CTP.API\src\CTP.Redis\Request\UserCenter\AuthLoginUser.cs
 F:\NetCore\CTP.API\src\CTP.Redis\Request\UserCenter\LoginLog.cs
@@ -151,4 +157,4 @@ F:\NetCore\CTP.API\src\CTP.Redis\Request\UserCenter\UOperLog.cs
 F:\NetCore\CTP.API\src\CTP.Redis\Request\UserCenter\UserConfig.cs
 F:\NetCore\CTP.API\src\CTP.Redis\Request\UserCenter\UserExtInfo.cs
 F:\NetCore\CTP.API\src\CTP.Redis\Request\UserCenter\UserInterface.cs
-F:\NetCore\CTP.API\src\CTP.Redis\Request\UserCenter\Common\Common.cs
+F:\NetCore\CTP.API\src\CTP.Redis\Request\UserCenter\UserCenterCommon\UserCenterCommon.cs

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Emit;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -140,6 +141,93 @@ namespace CTP.Redis
         }
         #endregion
 
+        public static void Get() {
+            //动态创建的类类型
+            Type classType = DynamicCreateType().AsType();
+            //调用有参数的构造函数
+            Type[] ciParamsTypes = new Type[] { typeof(string) };
+            object[] ciParamsValues = new object[] { "Hello World" };
+            ConstructorInfo ci = classType.GetConstructor(ciParamsTypes);
+            object Vector = ci.Invoke(ciParamsValues);
+            //调用方法
+            object[] methedParams = new object[] { };
+          
+       
+        }
+
+     public static TypeInfo DynamicCreateType()
+
+        {
+
+            //动态创建程序集
+
+            AssemblyName DemoName = new AssemblyName("DynamicAssembly");
+
+            AssemblyBuilder dynamicAssembly = AssemblyBuilder.DefineDynamicAssembly(DemoName, AssemblyBuilderAccess.RunAndCollect);
+
+            //动态创建模块
+
+            ModuleBuilder mb = dynamicAssembly.DefineDynamicModule(DemoName.Name);
+
+            //动态创建类MyClass
+
+            TypeBuilder tb = mb.DefineType("MyClass", TypeAttributes.Public);
+
+            //动态创建字段
+
+            FieldBuilder fb = tb.DefineField("myField", typeof(System.String), FieldAttributes.Public);
+
+            //动态创建构造函数
+
+            Type[] clorType = new Type[] { typeof(System.String) };
+
+            ConstructorBuilder cb1 = tb.DefineConstructor(MethodAttributes.Public, CallingConventions.Standard, clorType);
+
+            //生成指令
+
+            ILGenerator ilg = cb1.GetILGenerator();//生成 Microsoft 中间语言 (MSIL) 指令
+
+            ilg.Emit(OpCodes.Ldarg_0);
+
+            ilg.Emit(OpCodes.Call, typeof(object).GetConstructor(Type.EmptyTypes));
+
+            ilg.Emit(OpCodes.Ldarg_0);
+
+            ilg.Emit(OpCodes.Ldarg_1);
+
+            ilg.Emit(OpCodes.Stfld, fb);
+
+            ilg.Emit(OpCodes.Ret);
+
+            //动态创建属性
+    
+               PropertyBuilder pb = tb.DefineProperty("MyProperty", PropertyAttributes.HasDefault, typeof(string), null);
+
+            //动态创建方法
+
+            MethodAttributes getSetAttr = MethodAttributes.Public | MethodAttributes.SpecialName;
+
+            MethodBuilder myMethod = tb.DefineMethod("get_Field", getSetAttr, typeof(string), Type.EmptyTypes);
+
+            //生成指令
+
+            ILGenerator numberGetIL = myMethod.GetILGenerator();
+
+            numberGetIL.Emit(OpCodes.Ldarg_0);
+
+            numberGetIL.Emit(OpCodes.Ldfld, fb);
+
+            numberGetIL.Emit(OpCodes.Ret);
+
+            //使用动态类创建类型
+
+            TypeInfo classType = tb.CreateTypeInfo();
+
+          
+
+            return classType;
+
+        }
     }
 
     /// <summary>

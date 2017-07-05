@@ -13,21 +13,21 @@ namespace CTP.Redis.Factory
         /// </summary>
         /// <param name="request">参数</param>
         /// <returns></returns>
-        ReturnData Specialquery(Object request);
+        ReturnData Specialquery(object request);
 
         /// <summary>
         /// 查询
         /// </summary>
         /// <param name="request">参数</param>
         /// <returns></returns>
-        ReturnData Query(Object request);
+        ReturnData Query(object request);
 
         /// <summary>
         ///  翻页查询
         /// </summary>
         /// <param name="request">参数</param>
         /// <returns></returns>
-        ReturnData PageQuery(Object request);
+        ReturnData PageQuery(object request);
 
        
     }

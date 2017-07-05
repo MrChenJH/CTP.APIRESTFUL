@@ -1,0 +1,10 @@
+2017-07-04 16:25:35.5998|BaseController|ERROR|  System.NullReferenceException: Object reference not set to an instance of an object.
+   at CTP.Redis.Agent.FactoryAgent..ctor(RequsetBase request, String method) in F:\NetCore\CTP.API\src\CTP.Redis\Agent\FactoryAgent.cs:line 25
+   at CTP.API.Controllers.SiteNodeController.<>c__DisplayClass0_0.<AddSiteNode>b__0() in F:\NetCore\CTP.API\src\CTP.API\Controllers\SiteNodeController.cs:line 31
+   at CTP.API.Controllers.BaseController.<>c__DisplayClass1_0`1.<TextInvork>b__0() in F:\NetCore\CTP.API\src\CTP.API\Controllers\BaseController.cs:line 31
+   at CTP.API.Controllers.BaseController.ExceptionHook(Func`1 _fun) in F:\NetCore\CTP.API\src\CTP.API\Controllers\BaseController.cs:line 91 Object reference not set to an instance of an object.
+2017-07-04 16:32:55.9694|FactoryAgent|INFO|  AgentException has been thrown by the target of an invocation. 
+2017-07-04 16:32:56.0025|BaseController|ERROR|  CTP.Redis.Config.ProcessException: {"code":"003","Occurrencetime":null,"sucess":false}
+   at CTP.API.Controllers.SiteNodeController.<>c__DisplayClass0_0.<AddSiteNode>b__0() in F:\NetCore\CTP.API\src\CTP.API\Controllers\SiteNodeController.cs:line 37
+   at CTP.API.Controllers.BaseController.<>c__DisplayClass1_0`1.<TextInvork>b__0() in F:\NetCore\CTP.API\src\CTP.API\Controllers\BaseController.cs:line 31
+   at CTP.API.Controllers.BaseController.ExceptionHook(Func`1 _fun) in F:\NetCore\CTP.API\src\CTP.API\Controllers\BaseController.cs:line 91 {"code":"003","Occurrencetime":null,"sucess":false}

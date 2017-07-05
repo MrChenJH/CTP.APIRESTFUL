@@ -4,6 +4,18 @@
         <name>CTP.API</name>
     </assembly>
     <members>
+        <member name="F:CTP.API.Controllers.BaseController.Logger">
+            <summary>
+            日记
+            </summary>
+        </member>
+        <member name="M:CTP.API.Controllers.BaseController.TextInvork``1(System.Func{CTP.Redis.ReturnData})">
+            <summary>
+            Text
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="_func"></param>
+        </member>
         <member name="M:CTP.API.Controllers.BaseController.GridInvork``1(System.Func{CTP.Redis.RPage{``0}})">
             <summary>
             Grid
@@ -25,12 +37,6 @@
              <typeparam name="T"></typeparam>
              <param name="_func"></param>
         </member>
-        <member name="M:CTP.API.Controllers.BaseController.DataToJson(System.String)">
-            <summary>
-            数据处理
-            </summary>
-            <param name="jsonData"></param>
-        </member>
         <member name="M:CTP.API.Controllers.BaseController.ExceptionHook(System.Func{System.String})">
             <summary>
             错误钩子
@@ -38,11 +44,61 @@
             <param name="_fun"></param>
             <returns></returns>
         </member>
-        <member name="M:CTP.API.Controllers.HandlerController.GetNodes(CTP.Redis.RequsetBase)">
+        <member name="M:CTP.API.Controllers.SiteNodeController.AddSiteNode(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.SiteNode.SiteNodeModel}})">
             <summary>
-            获取所有栏目信息
+            对象增加
             </summary>
-            <param name="requestParam">参数对象</param>
+            <param name="sitenodeModel">站点栏目</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.SiteNodeController.AddManuscript(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.SiteNode.Manuscript}})">
+            <summary>
+            新增稿件
+            </summary>
+            <param name="manuscript">稿件信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.SiteNodeController.SiteNodeQuery(System.Int32)">
+            <summary>
+            检索
+            </summary>
+            <param name="nodeId">栏目编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.SiteNodeController.ManuscriptQuery(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            检索
+            </summary>
+            <param name="nodeId">栏目编号</param>
+            <param name="pageSize">页数</param> 
+            <param name="pageIndex">页索引</param>
+            <returns></returns>
+        </member>
+        <member name="T:CTP.API.Controllers.UserCenterController">
+            <summary>
+            用户中心
+            </summary>
+        </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.RegisterUserQuery(System.String)">
+            <summary>
+            获取注册用户信息
+            </summary>
+            <param name="userId">用户名</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.RegisterUserAdd(System.String,System.String)">
+            <summary>
+            新增和修改 授权登录用户信息
+            </summary>
+            <param name="userId">用户名</param> 
+            <param name="pwd">密码</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.UserCenterController.RegisterUserDelete(System.String)">
+            <summary>
+            注册用户 删除
+            </summary>
+            <param name="userId">用户名</param>
             <returns></returns>
         </member>
     </members>

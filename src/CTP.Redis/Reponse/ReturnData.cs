@@ -45,7 +45,7 @@ namespace CTP.Redis
         /// <summary>
         /// 总条数
         /// </summary>
-        public int total { get; set; }
+        public long total { get; set; }
 
         public List<T> data { get; set; }
     }
