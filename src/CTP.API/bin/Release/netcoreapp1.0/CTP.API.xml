@@ -44,6 +44,30 @@
             <param name="_fun"></param>
             <returns></returns>
         </member>
+        <member name="M:CTP.API.Controllers.SiteNodeController.SiteNodeQuery(System.Int32)">
+            <summary>
+            栏目
+            </summary>
+            <param name="nodeId">栏目编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.SiteNodeController.ManuscriptQuery(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            稿件列表
+            </summary>
+            <param name="nodeId">栏目编号</param>
+            <param name="pageSize">页数</param> 
+            <param name="pageIndex">页索引</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.SiteNodeController.ManuscriptDetailQuery(System.Int32,System.Int32)">
+            <summary>
+            稿件详情
+            </summary>
+            <param name="nodeId">栏目编号</param>
+            <param name="idleaf">页数</param> 
+            <returns></returns>
+        </member>
         <member name="M:CTP.API.Controllers.SiteNodeController.AddSiteNode(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.SiteNode.SiteNodeModel}})">
             <summary>
             对象增加
@@ -56,22 +80,6 @@
             新增稿件
             </summary>
             <param name="manuscript">稿件信息</param>
-            <returns></returns>
-        </member>
-        <member name="M:CTP.API.Controllers.SiteNodeController.SiteNodeQuery(System.Int32)">
-            <summary>
-            检索
-            </summary>
-            <param name="nodeId">栏目编号</param>
-            <returns></returns>
-        </member>
-        <member name="M:CTP.API.Controllers.SiteNodeController.ManuscriptQuery(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            检索
-            </summary>
-            <param name="nodeId">栏目编号</param>
-            <param name="pageSize">页数</param> 
-            <param name="pageIndex">页索引</param>
             <returns></returns>
         </member>
         <member name="T:CTP.API.Controllers.UserCenterController">

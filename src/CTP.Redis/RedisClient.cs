@@ -84,7 +84,8 @@ namespace CTP.Redis
 
                 if (!string.IsNullOrWhiteSpace(keyvalue))
                 {
-                    var result = client.SortedSetScan(key, string.Format("{0}{1}{2}", "*", keyvalue, "*"), end - start, 0, start);
+                    int pagesize = end - start;
+                    var result = client.SortedSetScan(key, string.Format("{0}{1}{2}", "*", keyvalue, "*"), pagesize, CommandFlags.None);
                     var reg = new Regex("^\\d+$");
                     for (int i = 0; i < result.Count(); i++)
                     {
@@ -94,7 +95,7 @@ namespace CTP.Redis
                             list.Add(v);
                         }
                     }
-                  
+
                 }
                 else
                 {
@@ -140,7 +141,7 @@ namespace CTP.Redis
             try
             {
                 var client = Connection.GetDatabase();
-                var result = client.SortedSetRangeByScore(key, end - start, end);
+                var result = client.SortedSetRangeByScore(key, start, end,Exclude.None, Order.Descending);
                 var reg = new Regex("^\\d+$");
                 for (int i = 0; i < result.Count(); i++)
                 {

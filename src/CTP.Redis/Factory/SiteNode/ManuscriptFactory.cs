@@ -37,14 +37,36 @@ namespace CTP.Redis.Factory.SiteNode
 
         public ReturnData Specialquery(object request)
         {
-            throw new NotImplementedException();
+            RequestPage<Manuscript> rp = (RequestPage<Manuscript>)request;
+            var vs = rp.KeyValue.Split(',');
+            string conditon = String.Format("\"{0}\":\"{1}\"", "IDLeaf", vs[1]);
+            Client.GetZsetMultiByValue(GetKey() + vs[0], conditon, rp.Start, rp.Stop);
+            if (Client.Sucess)
+            {
+
+                return new  RList<string>()
+                {
+                    sucess = true,
+          
+                    data = Client.Result
+                };
+            }
+            else
+            {
+                return new ErrorData()
+                {
+                    sucess = true,
+                    code = Client.Code,
+                    Occurrencetime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+                };
+            }
         }
 
         public ReturnData Query(object request)
         {
             RequestPage<Manuscript> rp = (RequestPage<Manuscript>)request;
-            string conditon = String.Format("\"{0}\" :\"{1}\"", "nodeId", rp.Model.AutoNo);
-            Client.GetZsetMultiByPage(GetKey() + rp.KeyValue, rp.Start, rp.Stop);
+            string conditon = String.Format("\"{0}\":\"{1}\"", "nodeId", rp.Model.AutoNo);
+            Client.GetZsetMultiByPage(GetKey() + rp.KeyValue.Trim(), rp.Start, rp.Stop);
             if (Client.Sucess)
             {
 

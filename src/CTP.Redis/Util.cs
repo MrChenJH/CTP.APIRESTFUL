@@ -105,7 +105,8 @@ namespace CTP.Redis
             {
                 return string.Empty;
             }
-            return value.Replace("[\"{", "[{").Replace("}\"]", "}]").Replace("\\\"", "\"").Replace("\"Result\":\"{", "\"Result\":{").Replace("}\"}", "}}");
+            string v= value.Replace("[\"{", "[{").Replace("}\"]", "}]").Replace("\\\"", "\"").Replace("\"Result\":\"{", "\"Result\":{").Replace("}\"}", "}}").Replace("}\"","}").Replace("\"{","{");
+            return v;
         }
 
         #endregion
