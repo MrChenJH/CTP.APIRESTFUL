@@ -10,7 +10,7 @@ namespace CTP.Redis.Request.SiteNode
 {
     public class SiteNodeCommon
     {
-        public int AutoNo { get; set; }
+        public long AutoNo { get; set; }
 
         [JsonIgnore]
         public string Factory
@@ -24,8 +24,14 @@ namespace CTP.Redis.Request.SiteNode
                     case "SiteNodeModel":
                         factory = typeof(SiteNodeFactory).FullName;
                         break;
+                    case "ScriptClickRate":
+                        factory = typeof(ScriptClickRateFactory).FullName;
+                        break;
                     case "Manuscript":
-                       factory = typeof(ManuscriptFactory).FullName;
+                        factory = typeof(ManuscriptFactory).FullName;
+                        break;
+                    case "RefScript":
+                          factory = typeof(RefScriptFactory).FullName;
                         break;
                     default:
                         break;

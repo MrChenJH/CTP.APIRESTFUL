@@ -32,7 +32,43 @@ namespace CTP.Redis.Factory.SiteNode
         }
         public ReturnData PageQuery(object request)
         {
-            throw new NotImplementedException();
+            RequestPage<Manuscript> rp = (RequestPage<Manuscript>)request;
+            var vs = rp.KeyValue.Split(',');
+            List<string> liststr = new List<string>();
+            if (!string.IsNullOrEmpty(rp.Model.content))
+            {
+                var list = rp.Model.content.Split(',');
+                foreach (var v in list)
+                {
+                    string conditon = String.Format("\"{0}\":\"{1}\"", "IDLeaf", v);
+                    Client.GetZsetMultiByValue(GetKey() + vs[0], conditon, rp.Start, rp.Stop);
+                    liststr.AddRange(Client.Result);
+                }
+
+            }
+            else
+            {
+                Client.Sucess = false;
+            }
+
+            if (liststr.Count()>0)
+            {
+
+                return new RList<string>()
+                {
+                    sucess = true,
+                    data = liststr
+                };
+            }
+            else
+            {
+                return new ErrorData()
+                {
+                    sucess = true,
+                    code = Client.Code,
+                    Occurrencetime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+                };
+            }
         }
 
         public ReturnData Specialquery(object request)
@@ -44,10 +80,10 @@ namespace CTP.Redis.Factory.SiteNode
             if (Client.Sucess)
             {
 
-                return new  RList<string>()
+                return new RList<string>()
                 {
                     sucess = true,
-          
+
                     data = Client.Result
                 };
             }
@@ -66,7 +102,14 @@ namespace CTP.Redis.Factory.SiteNode
         {
             RequestPage<Manuscript> rp = (RequestPage<Manuscript>)request;
             string conditon = String.Format("\"{0}\":\"{1}\"", "nodeId", rp.Model.AutoNo);
-            Client.GetZsetMultiByPage(GetKey() + rp.KeyValue.Trim(), rp.Start, rp.Stop);
+            if (!string.IsNullOrWhiteSpace(rp.Model.content))
+            {
+                Client.ZUNIONSTORE("Manuscript" + rp.KeyValue.Trim(), rp.Model.content.Split(',').Select(p => "Manuscript" + p).ToArray());
+            }
+            if (Client.Sucess)
+            {
+                Client.GetZsetMultiByPage(GetKey() + rp.KeyValue.Trim(), rp.Start, rp.Stop);
+            }
             if (Client.Sucess)
             {
 

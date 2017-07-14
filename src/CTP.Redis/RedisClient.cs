@@ -84,8 +84,8 @@ namespace CTP.Redis
 
                 if (!string.IsNullOrWhiteSpace(keyvalue))
                 {
-                    int pagesize = end - start;
-                    var result = client.SortedSetScan(key, string.Format("{0}{1}{2}", "*", keyvalue, "*"), pagesize, CommandFlags.None);
+
+                    var result = client.SortedSetScan(key, string.Format("{0}{1}{2}", "*", keyvalue, "*"), 1, 0, 0, CommandFlags.None);
                     var reg = new Regex("^\\d+$");
                     for (int i = 0; i < result.Count(); i++)
                     {
@@ -141,7 +141,7 @@ namespace CTP.Redis
             try
             {
                 var client = Connection.GetDatabase();
-                var result = client.SortedSetRangeByScore(key, start, end,Exclude.None, Order.Descending);
+                var result = client.SortedSetRangeByScore(key, 0, 100000000000000000, Exclude.None, Order.Descending, start, end - start);
                 var reg = new Regex("^\\d+$");
                 for (int i = 0; i < result.Count(); i++)
                 {
@@ -167,6 +167,32 @@ namespace CTP.Redis
 
         }
 
+
+        public void ZUNIONSTORE(string key, string[] keys)
+        {
+
+
+            try
+            {
+                var client = Connection.GetDatabase();
+
+                foreach (var p in keys)
+                {
+
+                    var result = client.SortedSetCombineAndStore(SetOperation.Union, key, key, p);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Message = ex.Message;
+                Code = ErrorCode.ReadRedisErrorCode;
+                Sucess = false;
+                return;
+            }
+
+            Sucess = true;
+        }
 
         /// <summary>
         /// 根据key 获取所有值
@@ -357,6 +383,43 @@ namespace CTP.Redis
             return Sucess;
         }
 
+
+        /// <summary>
+        /// 增量
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="values"></param>
+        /// <returns></returns>
+        public bool Zincrby(string key, string value)
+        {
+            Count = 0;
+            try
+            {
+                var client = Connection.GetDatabase();
+
+                var result = client.SortedSetIncrement(key, value, 1);
+
+                if (result > 0)
+                {
+                    Sucess = true;
+                }
+                else
+                {
+                    Message = "没有对Member";
+                    Code = ErrorCode.NotExistKeyErrorCode;
+                    Sucess = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Message = ex.Message;
+                Code = ErrorCode.ReadRedisErrorCode;
+                Sucess = false;
+            }
+            return Sucess;
+        }
+
         #endregion
 
         #region 链接
@@ -366,7 +429,7 @@ namespace CTP.Redis
         /// </summary>
         private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
         {
-            return ConnectionMultiplexer.Connect("192.168.1.141,abortConnect=false");
+            return ConnectionMultiplexer.Connect(Profile.redisIp+",abortConnect=false");
         });
 
         /// <summary>

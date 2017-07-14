@@ -20,6 +20,12 @@ namespace CTP.Redis.Factory.AreaBase
                 case "ManuscriptFactory":
                     key = "Manuscript";
                     break;
+                case "ScriptClickRateFactory":
+                    key = "ScriptClickRate";
+                    break;
+                case "RefScriptFactory":
+                    key = "RefScript";
+                    break;
                 default:
                     break;
             }

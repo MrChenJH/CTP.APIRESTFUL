@@ -1,18 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DECB8D5A-2DA1-4B3B-8325-477FFD50F61F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ACBFDBB9-AB47-46FE-B6F3-515605256157}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CTP.API", "src\CTP.API\CTP.API.xproj", "{8C87B151-6F6A-4817-8016-F5A5A0B9452C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CTP.API", "src\CTP.API\CTP.API.csproj", "{8C87B151-6F6A-4817-8016-F5A5A0B9452C}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CTP.Redis", "src\CTP.Redis\CTP.Redis.xproj", "{E109BB5F-B84A-4FAA-82F8-8A5DF58A4B02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CTP.Redis", "src\CTP.Redis\CTP.Redis.csproj", "{E109BB5F-B84A-4FAA-82F8-8A5DF58A4B02}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

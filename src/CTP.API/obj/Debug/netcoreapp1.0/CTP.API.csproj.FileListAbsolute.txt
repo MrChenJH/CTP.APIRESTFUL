@@ -1,0 +1,14 @@
+F:\NetCore\CTP.API\src\CTP.API\bin\Debug\netcoreapp1.0\CTP.API.deps.json
+F:\NetCore\CTP.API\src\CTP.API\bin\Debug\netcoreapp1.0\CTP.API.runtimeconfig.json
+F:\NetCore\CTP.API\src\CTP.API\bin\Debug\netcoreapp1.0\CTP.API.runtimeconfig.dev.json
+F:\NetCore\CTP.API\src\CTP.API\bin\Debug\netcoreapp1.0\CTP.API.dll
+F:\NetCore\CTP.API\src\CTP.API\bin\Debug\netcoreapp1.0\CTP.API.pdb
+F:\NetCore\CTP.API\src\CTP.API\bin\Debug\netcoreapp1.0\CTP.API.xml
+F:\NetCore\CTP.API\src\CTP.API\bin\Debug\netcoreapp1.0\CTP.Redis.dll
+F:\NetCore\CTP.API\src\CTP.API\bin\Debug\netcoreapp1.0\CTP.Redis.pdb
+F:\NetCore\CTP.API\src\CTP.API\obj\Debug\netcoreapp1.0\CTP.API.csprojResolveAssemblyReference.cache
+F:\NetCore\CTP.API\src\CTP.API\obj\Debug\netcoreapp1.0\CTP.API.AssemblyInfo.cs
+F:\NetCore\CTP.API\src\CTP.API\obj\Debug\netcoreapp1.0\CTP.API.dll
+F:\NetCore\CTP.API\src\CTP.API\obj\Debug\netcoreapp1.0\CTP.API.xml
+F:\NetCore\CTP.API\src\CTP.API\obj\Debug\netcoreapp1.0\CTP.API.pdb
+F:\NetCore\CTP.API\src\CTP.API\bin\Debug\netcoreapp1.0\profile.json
