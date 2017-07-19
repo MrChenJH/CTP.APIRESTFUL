@@ -5,11 +5,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace CTP.Redis.Factory.SiteNode
 {
     public class ManuscriptFactory : SiteNodeBase, IFactory
     {
+        /// <summary>
+        /// 获取 新增修改删除参数
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        protected override List<KeyValuePair<long, string>> GetAddOrUpdateOrDeleteValue(object request)
+        {
+            Type t = request.GetType();
+            var model = t.GetProperty("Model").GetValue(request, null);
+            return model.ToListKeyValuePairScript();
+        }
 
         public override ReturnData AddOrUpdate(object request)
         {
@@ -51,7 +63,7 @@ namespace CTP.Redis.Factory.SiteNode
                 Client.Sucess = false;
             }
 
-            if (liststr.Count()>0)
+            if (liststr.Count() > 0)
             {
 
                 return new RList<string>()
@@ -70,7 +82,6 @@ namespace CTP.Redis.Factory.SiteNode
                 };
             }
         }
-
         public ReturnData Specialquery(object request)
         {
             RequestPage<Manuscript> rp = (RequestPage<Manuscript>)request;
@@ -97,7 +108,6 @@ namespace CTP.Redis.Factory.SiteNode
                 };
             }
         }
-
         public ReturnData Query(object request)
         {
             RequestPage<Manuscript> rp = (RequestPage<Manuscript>)request;

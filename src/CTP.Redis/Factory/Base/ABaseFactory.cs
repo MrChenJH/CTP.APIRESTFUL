@@ -12,22 +12,26 @@ namespace CTP.Redis
     {
         #region 属性
 
+        public ABaseFactory()
+        {
+            Logger = LogManager.GetCurrentClassLogger();
+            Client = RedisClient.GetInstance();
+        }
+
         /// <summary>
         /// 错误信息
         /// </summary>
-        public string Message = string.Empty;
+        public string Message { get; set; }
 
         /// <summary>
         /// 日记
         /// </summary>
-        protected Logger Logger = LogManager.GetCurrentClassLogger();
+        protected Logger Logger { get; set; }
 
         /// <summary>
         /// Redis 连接客户端
         /// </summary>
-        public RedisClient Client = new RedisClient();
-
-
+        public RedisClient Client { get; set; }
 
         #endregion
 
@@ -58,14 +62,18 @@ namespace CTP.Redis
         /// <returns></returns>
         public virtual ReturnData Delete(object request)
         {
-            var items = GetAddOrUpdateOrDeleteValue(request);
-            foreach (var v in items)
+            Type t = request.GetType();
+            var model = t.GetProperty("Model").GetValue(request, null);
+            var key = t.GetProperty("isSec").GetValue(request, null);
+            if (key.Convert(0) == 88888888)
             {
-                Client.ZsetDelBySocre(GetKey(), v.Key.ToString());
-                if (!Client.Sucess)
-                {
-                    break;
-                }
+                long n = long.Parse(model.GetType().GetProperty("AutoNo").GetValue(model, null).Convert("0"));
+                Client.ClearZSet(GetKey() + n);
+            }
+            else
+            {
+                var item = GetAddOrUpdateOrDeleteValue(request);
+                Client.RemoveZsetValues(GetKey() + key, item);
             }
             if (Client.Sucess)
             {

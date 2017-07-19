@@ -6,17 +6,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-
+using Microsoft.Extensions.Configuration;
 
 namespace CTP.Redis
 {
     public class RedisClient
     {
 
+        /// <summary>
+        /// 创建实例
+        /// </summary>
+        /// <returns></returns>
+        public static RedisClient GetInstance()
+        {
+            // 如果类的实例不存在则创建，否则直接返回
+            if (rClient == null)
+            {
+                rClient = new RedisClient();
+            }
+            return rClient;
+        }
 
-        public RedisClient()
+        /// <summary>
+        /// 客户端
+        /// </summary>
+        private static RedisClient rClient;
+
+
+        /// <summary>
+        /// Redis客户端
+        /// </summary>
+        private RedisClient()
         {
             Result = new List<string>();
+            client = Connection.GetDatabase();
             Sucess = true;
         }
 
@@ -29,6 +52,8 @@ namespace CTP.Redis
         public List<string> Result { get; set; }
 
         public long Count { get; set; }
+
+        private IDatabase client { get; set; }
 
         /// <summary>
         /// 日记
@@ -46,7 +71,7 @@ namespace CTP.Redis
             Count = 0;
             try
             {
-                var client = Connection.GetDatabase();
+          
                 var result = client.KeyExists(key);
 
                 if (result)
@@ -70,6 +95,30 @@ namespace CTP.Redis
             return Sucess;
         }
 
+
+        /// <summary>
+        /// 清除Zset
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public bool ClearZSet(string key)
+        {
+            Count = 0;
+            try
+            {
+     
+                var result = client.SortedSetRemoveRangeByRank(key, 0, -1);
+                Sucess = true;
+            }
+            catch (Exception ex)
+            {
+                Message = ex.Message;
+                Code = ErrorCode.ReadRedisErrorCode;
+                Sucess = false;
+            }
+            return Sucess;
+        }
+
         /// <summary>
         /// 获取 ZSet 里的Value 值
         /// </summary>
@@ -80,7 +129,7 @@ namespace CTP.Redis
             var list = new List<string>();
             try
             {
-                var client = Connection.GetDatabase();
+       
 
                 if (!string.IsNullOrWhiteSpace(keyvalue))
                 {
@@ -140,7 +189,7 @@ namespace CTP.Redis
             var list = new List<string>();
             try
             {
-                var client = Connection.GetDatabase();
+        
                 var result = client.SortedSetRangeByScore(key, 0, 100000000000000000, Exclude.None, Order.Descending, start, end - start);
                 var reg = new Regex("^\\d+$");
                 for (int i = 0; i < result.Count(); i++)
@@ -174,7 +223,7 @@ namespace CTP.Redis
 
             try
             {
-                var client = Connection.GetDatabase();
+
 
                 foreach (var p in keys)
                 {
@@ -203,7 +252,7 @@ namespace CTP.Redis
             var list = new List<string>();
             try
             {
-                var client = Connection.GetDatabase();
+
                 var result = client.SortedSetRangeByRank(key, 0, -1);
                 for (int i = 0; i < result.Count(); i++)
                 {
@@ -230,13 +279,16 @@ namespace CTP.Redis
         {
             try
             {
-                var client = Connection.GetDatabase();
+ 
 
                 if (fileds.Count > 0)
                 {
                     foreach (var t in fileds)
                     {
+
+
                         var result = client.SortedSetRangeByScore(key, t, t);
+
                         for (int i = 0; i < result.Length; i++)
                         {
                             Result.Add(System.Text.Encoding.UTF8.GetString(result[i]));
@@ -272,7 +324,7 @@ namespace CTP.Redis
         {
             try
             {
-                var client = Connection.GetDatabase();
+
                 var result = client.SortedSetRangeByScore(key, autono, autono);
                 for (int i = 0; i < result.Length; i++)
                 {
@@ -297,7 +349,7 @@ namespace CTP.Redis
         {
             try
             {
-                var client = Connection.GetDatabase();
+
                 var result = client.HashGetAll(key);
                 for (int i = 0; i < result.Length; i++)
                 {
@@ -321,7 +373,7 @@ namespace CTP.Redis
         {
             try
             {
-                var client = Connection.GetDatabase();
+    
                 var result = client.SortedSetScan(key, string.Format("{0}{1}{2}", "*", keyvalue, "*"), 100000, 0, 0);
                 foreach (var v in result)
                 {
@@ -352,7 +404,7 @@ namespace CTP.Redis
             Count = 0;
             try
             {
-                var client = Connection.GetDatabase();
+
                 SortedSetEntry[] entryArray = new SortedSetEntry[values.Count];
                 for (int i = 0; i < values.Count; i++)
                 {
@@ -395,7 +447,7 @@ namespace CTP.Redis
             Count = 0;
             try
             {
-                var client = Connection.GetDatabase();
+
 
                 var result = client.SortedSetIncrement(key, value, 1);
 
@@ -420,6 +472,44 @@ namespace CTP.Redis
             return Sucess;
         }
 
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="key">关键字</param>
+        /// <returns></returns>
+        public bool RemoveZsetValues(string key, List<KeyValuePair<long, string>> values)
+        {
+            Count = 0;
+            try
+            {
+
+
+                foreach (var p in values)
+                {
+                    var result = client.SortedSetRangeByScore(key, p.Key, p.Key);
+                    foreach (var v1 in result)
+                    {
+                        string val = v1;
+                        var entity = val.ToEntity<Request.SiteNode.Resourceobj>();
+                        if (entity.IDLeaf.Equals(p.Value))
+                        {
+                            client.SortedSetRemove(key, v1);
+                        }
+                    }
+                }
+                Sucess = true; ;
+            }
+            catch (Exception ex)
+            {
+                Message = ex.Message;
+                Code = ErrorCode.ReadRedisErrorCode;
+                Sucess = false;
+            }
+            return Sucess;
+
+        }
+
         #endregion
 
         #region 链接
@@ -429,7 +519,7 @@ namespace CTP.Redis
         /// </summary>
         private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
         {
-            return ConnectionMultiplexer.Connect(Profile.redisIp+",abortConnect=false");
+            return ConnectionMultiplexer.Connect(Profile.redisIp + ",abortConnect=false");
         });
 
         /// <summary>

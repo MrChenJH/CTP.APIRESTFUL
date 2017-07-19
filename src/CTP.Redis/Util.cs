@@ -92,7 +92,7 @@ namespace CTP.Redis
             setting.DefaultValueHandling = DefaultValueHandling.Ignore;
             setting.DateFormatString = "yyyy-MM-dd HH:mm:ss";
             json = JsonConvert.SerializeObject(value, setting);
-            json = json.Replace(",", "*").Substring(1, json.Length-1);
+            json = json.Replace(",", "*").Substring(1, json.Length - 1);
             return json.Substring(0, json.Length - 1);
         }
 
@@ -105,7 +105,7 @@ namespace CTP.Redis
             {
                 return string.Empty;
             }
-            string v= value.Replace("[\"{", "[{").Replace("}\"]", "}]").Replace("\\\"", "\"").Replace("\"Result\":\"{", "\"Result\":{").Replace("}\"}", "}}").Replace("}\"","}").Replace("\"{","{");
+            string v = value.Replace("[\"{", "[{").Replace("}\"]", "}]").Replace("\\\"", "\"").Replace("\"Result\":\"{", "\"Result\":{").Replace("}\"}", "}}").Replace("}\"", "}").Replace("\"{", "{");
             return v;
         }
 
@@ -121,7 +121,7 @@ namespace CTP.Redis
             for (int i = 0; i < count; i++)
             {
                 var itemValue = type.GetProperty("Item").GetValue(value, new object[] { i });
-                int autoNo = itemValue.GetType().GetProperty("AutoNo").GetValue(itemValue, null).Convert(0);
+                long autoNo = long.Parse(itemValue.GetType().GetProperty("AutoNo").GetValue(itemValue, null).Convert("0"));
                 result.Add(new KeyValuePair<long, string>(autoNo, itemValue.ToJson()));
             }
             return result;
@@ -135,14 +135,30 @@ namespace CTP.Redis
             for (int i = 0; i < count; i++)
             {
                 var itemValue = type.GetProperty("Item").GetValue(value, new object[] { i });
-                int autoNo = itemValue.GetType().GetProperty("AutoNo").GetValue(itemValue, null).Convert(0);
+                long autoNo = long.Parse(itemValue.GetType().GetProperty("AutoNo").GetValue(itemValue, null).Convert("0"));
                 result.Add(new KeyValuePair<long, string>(autoNo, itemValue.ToJson()));
+            }
+            return result;
+        }
+
+        public static List<KeyValuePair<long, string>> ToListKeyValuePairScript(this object value)
+        {
+            var result = new List<KeyValuePair<long, string>>();
+            Type type = value.GetType();
+            var count = type.GetProperty("Count").GetValue(value, null).Convert(0);
+            for (int i = 0; i < count; i++)
+            {
+                var itemValue = type.GetProperty("Item").GetValue(value, new object[] { i });
+                long autoNo = long.Parse(itemValue.GetType().GetProperty("AutoNo").GetValue(itemValue, null).Convert("0"));
+                ;
+            result.Add(new KeyValuePair<long, string>(autoNo, itemValue.GetType().GetProperty("content").GetValue(itemValue, null).Convert("")));
             }
             return result;
         }
         #endregion
 
-        public static void Get() {
+        public static void Get()
+        {
             //动态创建的类类型
             Type classType = DynamicCreateType().AsType();
             //调用有参数的构造函数
@@ -152,11 +168,11 @@ namespace CTP.Redis
             object Vector = ci.Invoke(ciParamsValues);
             //调用方法
             object[] methedParams = new object[] { };
-          
-       
+
+
         }
 
-     public static TypeInfo DynamicCreateType()
+        public static TypeInfo DynamicCreateType()
 
         {
 
@@ -201,8 +217,8 @@ namespace CTP.Redis
             ilg.Emit(OpCodes.Ret);
 
             //动态创建属性
-    
-               PropertyBuilder pb = tb.DefineProperty("MyProperty", PropertyAttributes.HasDefault, typeof(string), null);
+
+            PropertyBuilder pb = tb.DefineProperty("MyProperty", PropertyAttributes.HasDefault, typeof(string), null);
 
             //动态创建方法
 
@@ -224,7 +240,7 @@ namespace CTP.Redis
 
             TypeInfo classType = tb.CreateTypeInfo();
 
-          
+
 
             return classType;
 

@@ -4,4 +4,3 @@ F:\NetCore\CTP.API\src\CTP.Redis\bin\Debug\netstandard1.6\CTP.Redis.pdb
 F:\NetCore\CTP.API\src\CTP.Redis\obj\Debug\netstandard1.6\CTP.Redis.AssemblyInfo.cs
 F:\NetCore\CTP.API\src\CTP.Redis\obj\Debug\netstandard1.6\CTP.Redis.dll
 F:\NetCore\CTP.API\src\CTP.Redis\obj\Debug\netstandard1.6\CTP.Redis.pdb
-F:\NetCore\CTP.API\src\CTP.Redis\obj\Debug\netstandard1.6\CTP.Redis.csprojResolveAssemblyReference.cache

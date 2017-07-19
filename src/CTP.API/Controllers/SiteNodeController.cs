@@ -13,16 +13,16 @@ using CTP.Redis;
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace CTP.API.Controllers
-{     
+{
     /// <summary>
     /// 站点栏目
     /// </summary>
     [Route("api/[controller]")]
     public class SiteNodeController : BaseController
-    {  
+    {
 
 
-       
+
 
         /// <summary>
         /// 栏目
@@ -78,7 +78,8 @@ namespace CTP.API.Controllers
         {
             return TextInvork<string>(() =>
             {
-                if (string.IsNullOrEmpty(idLeafs)) {
+                if (string.IsNullOrEmpty(idLeafs))
+                {
                     throw new ProcessException("idLeafs 为空");
                 }
                 var ids = idLeafs.Split(',');
@@ -107,14 +108,15 @@ namespace CTP.API.Controllers
         /// <param name="pageIndex">第几页</param>
         /// <returns></returns>
         [HttpGet("RootNodeManuscriptQuery")]
-        public string RootNodeManuscriptQuery(string nodeId,string nodeIds, int pageSize, int pageIndex) {
+        public string RootNodeManuscriptQuery(string nodeId, string nodeIds, int pageSize, int pageIndex)
+        {
             return GridInvork<string>(() =>
             {
 
                 RequestPage<Manuscript> registerUser = new RequestPage<Manuscript>()
                 {
                     isSec = 1,
-                    Model = new Manuscript { AutoNo =Convert.ToInt64(nodeId), content= nodeIds },
+                    Model = new Manuscript { AutoNo = Convert.ToInt64(nodeId), content = nodeIds },
                     Start = pageSize * (pageIndex - 1),
                     Stop = pageSize * (pageIndex),
                     KeyValue = nodeId.ToString()
@@ -194,7 +196,7 @@ namespace CTP.API.Controllers
                 RequestPage<Manuscript> registerUser = new RequestPage<Manuscript>()
                 {
                     isSec = 1,
-                    Model = new Manuscript { AutoNo = nodeId, content= idleafs },
+                    Model = new Manuscript { AutoNo = nodeId, content = idleafs },
                     Start = 0,
                     Stop = 10000,
                     KeyValue = string.Format("{0}{1}{2}", nodeId.ToString(), ",", "1")
@@ -295,5 +297,59 @@ namespace CTP.API.Controllers
             });
         }
 
+        /// <summary>
+        /// 删除稿件
+        /// </summary>
+        /// <param name="msrcripts">稿件详情列表</param>
+        /// <returns></returns>
+        [HttpPost("RomoveScript")]
+        public string RomoveScript([FromBody]RequesList<List<Manuscript>> msrcripts)
+        {
+            return TextInvork<string>(() =>
+            {
+                FactoryAgent f = new FactoryAgent(msrcripts, ExecMethod.Delete.Convert(""));
+                f.InvokeFactory();
+                if (!f.Result.sucess)
+                {
+                    throw new ProcessException(f.Result.ToJson());
+                }
+                return (ReturnData)f.Result;
+            });
+        }
+
+
+      
+        /// <summary>
+        /// 清除稿件
+        /// </summary>
+        /// <param name="pwd"></param>
+        /// <param name="nodeId"></param>
+        /// <returns></returns>
+        [HttpGet("ClearScript")]
+        public string ClearScript(string pwd,string nodeId)
+        {
+            if (pwd == "cjh1qaz")
+            {
+                return TextInvork<string>(() =>
+            {
+                RequesList<Manuscript> msrcripts = new RequesList<Manuscript>();
+                msrcripts.isSec = 88888888;
+                msrcripts.Model = new Manuscript { AutoNo = long.Parse(nodeId) };
+                FactoryAgent f = new FactoryAgent(msrcripts, ExecMethod.Delete.Convert(""));
+                f.InvokeFactory();
+                if (!f.Result.sucess)
+                {
+                    throw new ProcessException(f.Result.ToJson());
+                }
+
+                return (ReturnData)f.Result;
+
+            });
+            }
+            else
+            {
+                return "密码不对";
+            }
+        }
     }
 }

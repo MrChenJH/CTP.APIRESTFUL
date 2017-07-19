@@ -135,6 +135,21 @@
             <param name="refscripts">关连稿件</param>
             <returns></returns>
         </member>
+        <member name="M:CTP.API.Controllers.SiteNodeController.RomoveScript(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.SiteNode.Manuscript}})">
+            <summary>
+            删除稿件
+            </summary>
+            <param name="msrcripts">稿件详情列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.SiteNodeController.ClearScript(System.String,System.String)">
+            <summary>
+            清除稿件
+            </summary>
+            <param name="pwd"></param>
+            <param name="nodeId"></param>
+            <returns></returns>
+        </member>
         <member name="T:CTP.API.Controllers.UserCenterController">
             <summary>
             用户中心
