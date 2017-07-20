@@ -23,7 +23,7 @@ namespace CTP.Redis.Factory.UserCenter
         {
             RequesList<RegisterApp> rp = (RequesList<RegisterApp>)request;
             string conditon = rp.Model.ToQueryCondition();
-            Client.GetZsetMultiByValue(GetKey(), conditon, 0);
+            Client.GetZsetMultiByValue(GetKey(), conditon);
             if (Client.Sucess)
             {
                 return new RList<string>()

@@ -21,12 +21,10 @@ namespace CTP.Redis.Factory.SiteNode
             foreach (var v in rp.Model)
             {
                 string conditon = v.ToQueryCondition();
-                Client.GetZsetMultiByValue(GetKey(), conditon, 0);
+                Client.GetZsetMultiByValue(GetKey(), conditon);
                 if (Client.Sucess)
                 {
-                    
                     strs.Add(String.Format("{0}\"{1}\":\"{2}\"{3}", "{", v.IDLeaf, Convert.ToString(Client.Result.Count), "}"));
-                
                 }
             }
             if (Client.Sucess)
@@ -52,7 +50,7 @@ namespace CTP.Redis.Factory.SiteNode
         {
             RequesList<RefScript> rp = (RequesList<RefScript>)request;
             string conditon = rp.Model.ToQueryCondition();
-            Client.GetZsetMultiByValue(GetKey(), conditon, 0);
+            Client.GetZsetMultiByValue(GetKey(), conditon);
             if (Client.Sucess)
             {
                 return new RList<string>()

@@ -10,6 +10,7 @@ namespace CTP.Redis.Request.SiteNode
 {
     public class SiteNodeCommon
     {
+        [DefaultValue(0)]
         public long AutoNo { get; set; }
 
         [JsonIgnore]
@@ -31,7 +32,7 @@ namespace CTP.Redis.Request.SiteNode
                         factory = typeof(ManuscriptFactory).FullName;
                         break;
                     case "RefScript":
-                          factory = typeof(RefScriptFactory).FullName;
+                        factory = typeof(RefScriptFactory).FullName;
                         break;
                     default:
                         break;

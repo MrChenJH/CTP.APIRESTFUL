@@ -24,7 +24,7 @@ namespace CTP.Redis.Factory.SiteNode
         {
             RequesList<SiteNodeModel> rp = (RequesList<SiteNodeModel>)request;
             string conditon = rp.Model.ToQueryCondition();
-            Client.GetZsetMultiByValue(GetKey(), conditon, 0);
+            Client.GetZsetMultiByValue(GetKey(), conditon);
             if (Client.Sucess)
             {
                 return new RList<string>()

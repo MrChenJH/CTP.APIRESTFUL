@@ -53,7 +53,7 @@ namespace CTP.Redis.Factory.SiteNode
                 foreach (var v in list)
                 {
                     string conditon = String.Format("\"{0}\":\"{1}\"", "IDLeaf", v);
-                    Client.GetZsetMultiByValue(GetKey() + vs[0], conditon, rp.Start, rp.Stop);
+                    Client.GetZsetMultiByValue(GetKey() + vs[0], conditon);
                     liststr.AddRange(Client.Result);
                 }
 
@@ -65,7 +65,6 @@ namespace CTP.Redis.Factory.SiteNode
 
             if (liststr.Count() > 0)
             {
-
                 return new RList<string>()
                 {
                     sucess = true,
@@ -87,7 +86,7 @@ namespace CTP.Redis.Factory.SiteNode
             RequestPage<Manuscript> rp = (RequestPage<Manuscript>)request;
             var vs = rp.KeyValue.Split(',');
             string conditon = String.Format("\"{0}\":\"{1}\"", "IDLeaf", vs[1]);
-            Client.GetZsetMultiByValue(GetKey() + vs[0], conditon, rp.Start, rp.Stop);
+            Client.GetZsetMultiByValue(GetKey() + vs[0], conditon);
             if (Client.Sucess)
             {
 

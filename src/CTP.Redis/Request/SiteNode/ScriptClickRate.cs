@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,6 +21,8 @@ namespace CTP.Redis.Request.SiteNode
                 return DateTime.Now.ToString("yyyyMM");
             }
         }
+
+        [DefaultValue(0)]
         public int ClickRate { get; set; }
     }
 }

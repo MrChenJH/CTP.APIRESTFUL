@@ -12,8 +12,31 @@ namespace CTP.Redis.Factory.SiteNode
     {
         public override ReturnData AddOrUpdate(object request)
         {
-            RequesList<List<ScriptClickRate>> list = (RequesList<List<ScriptClickRate>>)request;
-            Client.Zincrby(GetKey(), list.Model.ToJson());
+            var key = GetKey();
+            RequesList<ScriptClickRate> scr = (RequesList<ScriptClickRate>)request;
+            var value = scr.Model.ToJson();
+            Client.GetZsetMultiByValue(key, scr.Model.ToQueryCondition());
+            if (Client.Count > 0)
+            {
+                var cr = Client.Result[0].ToEntity<ScriptClickRate>();
+                var klist = new List<KeyValuePair<long, string>>();
+                klist.Add(new KeyValuePair<long, string>(cr.AutoNo, cr.IDLeaf));
+                Client.RemoveZsetValues<ScriptClickRate>(key, klist, "IDLeaf");
+                klist.Clear();
+                cr.ClickRate = cr.ClickRate + 1;
+                klist.Add(new KeyValuePair<long, string>(cr.AutoNo, cr.ToJson()));
+                Client.AddZset(key, klist);
+            }
+            else
+            {
+                Client.GetZsetMultiByValue(key, string.Empty);
+                var cr = value.ToEntity<ScriptClickRate>();
+                cr.AutoNo = Client.Count + 1;
+                var klist = new List<KeyValuePair<long, string>>();
+                cr.ClickRate = cr.ClickRate + 1;
+                klist.Add(new KeyValuePair<long, string>(cr.AutoNo, cr.ToJson()));
+                Client.AddZset(key, klist);
+            }
             if (Client.Sucess)
             {
                 return new ReturnData { sucess = Client.Sucess };
@@ -30,17 +53,13 @@ namespace CTP.Redis.Factory.SiteNode
 
         public ReturnData Specialquery(object request)
         {
-            RequestPage<Manuscript> rp = (RequestPage<Manuscript>)request;
-            var vs = rp.KeyValue.Split(',');
-            string conditon = String.Format("\"{0}\":\"{1}\"", "IDLeaf", vs[1]);
-            Client.GetZsetMultiByValue(GetKey() + vs[0], conditon, rp.Start, rp.Stop);
+            RequestPage<ScriptClickRate> rp = (RequestPage<ScriptClickRate>)request;
+            Client.GetZsetMultiByPage(GetKey(), rp.Start, rp.Stop);
             if (Client.Sucess)
             {
-
                 return new RList<string>()
                 {
                     sucess = true,
-
                     data = Client.Result
                 };
             }

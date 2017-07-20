@@ -5,6 +5,7 @@ using System.Text;
 
 using NLog;
 using System.Reflection;
+using CTP.Redis.Request.SiteNode;
 
 namespace CTP.Redis
 {
@@ -67,13 +68,17 @@ namespace CTP.Redis
             var key = t.GetProperty("isSec").GetValue(request, null);
             if (key.Convert(0) == 88888888)
             {
-                long n = long.Parse(model.GetType().GetProperty("AutoNo").GetValue(model, null).Convert("0"));
-                Client.ClearZSet(GetKey() + n);
+                Client.GetZsetByKey("SiteNode");
+                foreach (string str in Client.Result)
+                {
+                    var site = str.ToEntity<SiteNodeModel>();
+                    Client.ClearZSet(GetKey() + site.NodeId);
+                }
             }
             else
             {
                 var item = GetAddOrUpdateOrDeleteValue(request);
-                Client.RemoveZsetValues(GetKey() + key, item);
+                Client.RemoveZsetValues<Resourceobj>(GetKey() + key, item, "IDLeaf");
             }
             if (Client.Sucess)
             {

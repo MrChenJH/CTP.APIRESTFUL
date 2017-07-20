@@ -22,8 +22,6 @@ namespace CTP.API.Controllers
     {
 
 
-
-
         /// <summary>
         /// 栏目
         /// </summary>
@@ -45,19 +43,19 @@ namespace CTP.API.Controllers
             });
         }
 
+
         /// <summary>
-        /// 关联稿件信息
+        /// 栏目新增
         /// </summary>
-        /// <param name="idLeaf">编号</param>
-        /// <returns></returns> 
-        [HttpGet("RefscriptQuery")]
-        public string RefscriptQuery(string idLeaf)
+        /// <param name="sitenodeModel">站点栏目</param>
+        /// <returns></returns>
+        [HttpPost("AddSiteNode")]
+        public string AddSiteNode([FromBody]RequesList<List<SiteNodeModel>> sitenodeModel)
         {
             return TextInvork<string>(() =>
             {
-                RequesList<RefScript> reqRefScript = new RequesList<RefScript>();
-                reqRefScript.Model = new RefScript { IDLeaf = idLeaf };
-                FactoryAgent f = new FactoryAgent(reqRefScript, ExecMethod.Query.Convert(""));
+                int b = Math.Abs(Guid.NewGuid().GetHashCode());
+                FactoryAgent f = new FactoryAgent(sitenodeModel, ExecMethod.AddOrUpdate.Convert(""));
                 f.InvokeFactory();
                 if (!f.Result.sucess)
                 {
@@ -65,45 +63,13 @@ namespace CTP.API.Controllers
                 }
                 return (ReturnData)f.Result;
             });
-
-        }
-
-        /// <summary>
-        /// 关联稿件信息数量
-        /// </summary>
-        /// <param name="idLeafs">编号</param>
-        /// <returns></returns> 
-        [HttpGet("RefscriptNumQuery")]
-        public string RefscriptNumQuery(string idLeafs)
-        {
-            return TextInvork<string>(() =>
-            {
-                if (string.IsNullOrEmpty(idLeafs))
-                {
-                    throw new ProcessException("idLeafs 为空");
-                }
-                var ids = idLeafs.Split(',');
-                RequesList<List<RefScript>> reqRefScript = new RequesList<List<RefScript>>();
-                foreach (var v in ids)
-                {
-                    reqRefScript.Model.Add(new RefScript { IDLeaf = v });
-                }
-                FactoryAgent f = new FactoryAgent(reqRefScript, ExecMethod.Specialquery.Convert(""));
-                f.InvokeFactory();
-                if (!f.Result.sucess)
-                {
-                    throw new ProcessException(f.Result.ToJson());
-                }
-                return (ReturnData)f.Result;
-            });
-
         }
 
         /// <summary>
         /// 根节点栏目查询
         /// </summary>
         /// <param name="nodeId">栏目编号</param>
-        /// <param name="nodeIds">子栏目</param>
+        /// <param name="nodeIds">子栏目编号数组</param>
         /// <param name="pageSize">页数</param>
         /// <param name="pageIndex">第几页</param>
         /// <returns></returns>
@@ -129,8 +95,10 @@ namespace CTP.API.Controllers
 
         }
 
+
+
         /// <summary>
-        /// 稿件列表
+        /// 稿件列表查询
         /// </summary>
         /// <param name="nodeId">栏目编号</param>
         /// <param name="pageSize">页数</param> 
@@ -158,10 +126,10 @@ namespace CTP.API.Controllers
 
 
         /// <summary>
-        /// 稿件详情
+        /// 稿件详情查询
         /// </summary>
         /// <param name="nodeId">栏目编号</param>
-        /// <param name="idleaf">页数</param> 
+        /// <param name="idleaf">稿件编号</param> 
         /// <returns></returns>
         [HttpGet("ManuscriptDetailQuery")]
         public string ManuscriptDetailQuery(int nodeId, int idleaf)
@@ -186,7 +154,7 @@ namespace CTP.API.Controllers
         /// 稿件详情列表信息
         /// </summary>
         /// <param name="nodeId">栏目编号</param>
-        /// <param name="idleafs">编号</param> 
+        /// <param name="idleafs">稿件编号数组</param> 
         /// <returns></returns>
         [HttpGet("ManuscriptListDetailQuery")]
         public string ManuscriptListDetailQuery(int nodeId, string idleafs)
@@ -208,29 +176,7 @@ namespace CTP.API.Controllers
         }
 
         /// <summary>
-        /// 对象增加
-        /// </summary>
-        /// <param name="sitenodeModel">站点栏目</param>
-        /// <returns></returns>
-        [HttpPost("AddSiteNode")]
-        public string AddSiteNode([FromBody]RequesList<List<SiteNodeModel>> sitenodeModel)
-        {
-            return TextInvork<string>(() =>
-            {
-                int b = Math.Abs(Guid.NewGuid().GetHashCode());
-                FactoryAgent f = new FactoryAgent(sitenodeModel, ExecMethod.AddOrUpdate.Convert(""));
-                f.InvokeFactory();
-                if (!f.Result.sucess)
-                {
-                    throw new ProcessException(f.Result.ToJson());
-                }
-                return (ReturnData)f.Result;
-            });
-        }
-
-
-        /// <summary>
-        /// 新增稿件
+        /// 稿件新增
         /// </summary>
         /// <param name="manuscript">稿件信息</param>
         /// <returns></returns>
@@ -250,8 +196,6 @@ namespace CTP.API.Controllers
             });
         }
 
-
-
         /// <summary>
         /// 稿件点击率
         /// </summary>
@@ -264,9 +208,8 @@ namespace CTP.API.Controllers
         {
             return TextInvork<string>(() =>
             {
-                RequesList<List<ScriptClickRate>> manuscript = new RequesList<List<ScriptClickRate>>();
-
-                manuscript.Model.Add(new ScriptClickRate { AutoNo = 0, NodeId = Convert.ToString(nodeId), IDLeaf = idLeaf, ObjName = objName });
+                RequesList<ScriptClickRate> manuscript = new RequesList<ScriptClickRate>();
+                manuscript.Model = new ScriptClickRate { AutoNo = 0, NodeId = Convert.ToString(nodeId), IDLeaf = idLeaf, ObjName = objName };
                 FactoryAgent f = new FactoryAgent(manuscript, ExecMethod.AddOrUpdate.Convert(""));
                 f.InvokeFactory();
                 if (!f.Result.sucess)
@@ -277,25 +220,32 @@ namespace CTP.API.Controllers
             });
         }
 
+
         /// <summary>
-        /// 新增关联稿件
+        /// 点击率查询
         /// </summary>
-        /// <param name="refscripts">关连稿件</param>
+        /// <param name="pageSize">页数</param>
+        /// <param name="pageIndex">第几页</param>
         /// <returns></returns>
-        [HttpPost("AddRefScript")]
-        public string AddRefScript([FromBody]RequesList<List<RefScript>> refscripts)
+        [HttpGet("ScriptRateQuery")]
+        public string ScriptRateQuery(int pageSize, int pageIndex)
         {
-            return TextInvork<string>(() =>
+            return GridInvork<string>(() =>
             {
-                FactoryAgent f = new FactoryAgent(refscripts, ExecMethod.AddOrUpdate.Convert(""));
-                f.InvokeFactory();
-                if (!f.Result.sucess)
+                RequestPage<ScriptClickRate> registerUser = new RequestPage<ScriptClickRate>()
                 {
-                    throw new ProcessException(f.Result.ToJson());
-                }
-                return (ReturnData)f.Result;
+                    isSec = 1,
+                    Model = new ScriptClickRate { AutoNo = 0 },
+                    Start = pageSize * (pageIndex - 1),
+                    Stop = pageSize * (pageIndex),
+                    KeyValue = ""
+                };
+                FactoryAgent f = new FactoryAgent(registerUser, ExecMethod.PageQuery.Convert(""));
+                f.InvokeFactory();
+                return (RPage<string>)f.Result;
             });
         }
+
 
         /// <summary>
         /// 删除稿件
@@ -317,16 +267,13 @@ namespace CTP.API.Controllers
             });
         }
 
-
-      
         /// <summary>
         /// 清除稿件
         /// </summary>
-        /// <param name="pwd"></param>
-        /// <param name="nodeId"></param>
+        /// <param name="pwd">权限密码</param>
         /// <returns></returns>
         [HttpGet("ClearScript")]
-        public string ClearScript(string pwd,string nodeId)
+        public string ClearScript(string pwd)
         {
             if (pwd == "cjh1qaz")
             {
@@ -334,7 +281,7 @@ namespace CTP.API.Controllers
             {
                 RequesList<Manuscript> msrcripts = new RequesList<Manuscript>();
                 msrcripts.isSec = 88888888;
-                msrcripts.Model = new Manuscript { AutoNo = long.Parse(nodeId) };
+
                 FactoryAgent f = new FactoryAgent(msrcripts, ExecMethod.Delete.Convert(""));
                 f.InvokeFactory();
                 if (!f.Result.sucess)
@@ -350,6 +297,83 @@ namespace CTP.API.Controllers
             {
                 return "密码不对";
             }
+        }
+
+
+        /// <summary>
+        /// 关联稿件信息
+        /// </summary>
+        /// <param name="idLeaf">稿件编号</param>
+        /// <returns></returns> 
+        [HttpGet("RefscriptQuery")]
+        public string RefscriptQuery(string idLeaf)
+        {
+            return TextInvork<string>(() =>
+            {
+                RequesList<RefScript> reqRefScript = new RequesList<RefScript>();
+                reqRefScript.Model = new RefScript { IDLeaf = idLeaf };
+                FactoryAgent f = new FactoryAgent(reqRefScript, ExecMethod.Query.Convert(""));
+                f.InvokeFactory();
+                if (!f.Result.sucess)
+                {
+                    throw new ProcessException(f.Result.ToJson());
+                }
+                return (ReturnData)f.Result;
+            });
+
+        }
+
+        /// <summary>
+        /// 关联稿件信息数量
+        /// </summary>
+        /// <param name="idLeafs">稿件编号数组</param>
+        /// <returns></returns> 
+        [HttpGet("RefscriptNumQuery")]
+        public string RefscriptNumQuery(string idLeafs)
+        {
+            return TextInvork<string>(() =>
+            {
+                if (string.IsNullOrEmpty(idLeafs))
+                {
+                    throw new ProcessException("idLeafs 为空");
+                }
+                var ids = idLeafs.Split(',');
+                RequesList<List<RefScript>> reqRefScript = new RequesList<List<RefScript>>();
+                foreach (var v in ids)
+                {
+                    reqRefScript.Model.Add(new RefScript { IDLeaf = v });
+                }
+                FactoryAgent f = new FactoryAgent(reqRefScript, ExecMethod.Specialquery.Convert(""));
+                f.InvokeFactory();
+                if (!f.Result.sucess)
+                {
+                    throw new ProcessException(f.Result.ToJson());
+                }
+                return (ReturnData)f.Result;
+            });
+
+        }
+
+
+
+        /// <summary>
+        /// 新增关联稿件
+        /// </summary>
+        /// <param name="refscripts">关连稿件编号数组</param>
+        /// <returns></returns>
+        [HttpPost("AddRefScript")]
+        public string AddRefScript([FromBody]RequesList<List<RefScript>> refscripts)
+        {
+            return TextInvork<string>(() =>
+            {
+                FactoryAgent f = new FactoryAgent(refscripts, ExecMethod.AddOrUpdate.Convert(""));
+                f.InvokeFactory();
+                if (!f.Result.sucess)
+                {
+                    throw new ProcessException(f.Result.ToJson());
+                }
+                return (ReturnData)f.Result;
+            });
         }
     }
 }
