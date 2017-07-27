@@ -44,6 +44,38 @@
             <param name="_fun"></param>
             <returns></returns>
         </member>
+        <member name="T:CTP.API.Controllers.ExaminationController">
+            <summary>
+            菜单
+            </summary>
+        </member>
+        <member name="M:CTP.API.Controllers.ExaminationController.AddMenu(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.Examination.Emenu}})">
+            <summary>
+            新增菜单
+            </summary>
+            <param name="Emenus">菜单列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.ExaminationController.AddTab(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.Examination.Etab}})">
+            <summary>
+            新增选项卡
+            </summary>
+            <param name="Tabs">选项卡</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.ExaminationController.GetMenuList(System.Int32)">
+            <summary>
+            获取菜单列表
+            </summary>
+            <param name="tabId">选项卡编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.ExaminationController.GetTab">
+            <summary>
+            获取所有选项卡
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:CTP.API.Controllers.SiteNodeController">
             <summary>
             站点栏目

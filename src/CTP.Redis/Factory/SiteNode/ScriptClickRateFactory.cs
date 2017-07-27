@@ -48,19 +48,15 @@ namespace CTP.Redis.Factory.SiteNode
         }
         public ReturnData PageQuery(object request)
         {
-            throw new NotImplementedException();
-        }
-
-        public ReturnData Specialquery(object request)
-        {
             RequestPage<ScriptClickRate> rp = (RequestPage<ScriptClickRate>)request;
             Client.GetZsetMultiByPage(GetKey(), rp.Start, rp.Stop);
             if (Client.Sucess)
             {
-                return new RList<string>()
+                return new RPage<string>()
                 {
                     sucess = true,
-                    data = Client.Result
+                    data = Client.Result,
+                     total=Client.Count
                 };
             }
             else
@@ -72,6 +68,11 @@ namespace CTP.Redis.Factory.SiteNode
                     Occurrencetime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
                 };
             }
+        }
+
+        public ReturnData Specialquery(object request)
+        {
+            throw new NotImplementedException();
         }
 
         public ReturnData Query(object request)

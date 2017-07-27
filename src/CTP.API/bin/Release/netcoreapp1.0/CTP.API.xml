@@ -56,19 +56,12 @@
             <param name="nodeId">栏目编号</param>
             <returns></returns>
         </member>
-        <member name="M:CTP.API.Controllers.SiteNodeController.RefscriptQuery(System.String)">
+        <member name="M:CTP.API.Controllers.SiteNodeController.AddSiteNode(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.SiteNode.SiteNodeModel}})">
             <summary>
-            关联稿件信息
+            栏目新增
             </summary>
-            <param name="idLeaf">稿件编号</param>
-            <returns></returns> 
-        </member>
-        <member name="M:CTP.API.Controllers.SiteNodeController.RefscriptNumQuery(System.String)">
-            <summary>
-            关联稿件信息数量
-            </summary>
-            <param name="idLeafs">稿件编号数组</param>
-            <returns></returns> 
+            <param name="sitenodeModel">站点栏目</param>
+            <returns></returns>
         </member>
         <member name="M:CTP.API.Controllers.SiteNodeController.RootNodeManuscriptQuery(System.String,System.String,System.Int32,System.Int32)">
             <summary>
@@ -105,13 +98,6 @@
             <param name="idleafs">稿件编号数组</param> 
             <returns></returns>
         </member>
-        <member name="M:CTP.API.Controllers.SiteNodeController.AddSiteNode(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.SiteNode.SiteNodeModel}})">
-            <summary>
-            栏目新增
-            </summary>
-            <param name="sitenodeModel">站点栏目</param>
-            <returns></returns>
-        </member>
         <member name="M:CTP.API.Controllers.SiteNodeController.AddManuscript(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.SiteNode.Manuscript}})">
             <summary>
             稿件新增
@@ -128,11 +114,12 @@
             <param name="idLeaf">稿件编号</param>
             <returns></returns>
         </member>
-        <member name="M:CTP.API.Controllers.SiteNodeController.AddRefScript(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.SiteNode.RefScript}})">
+        <member name="M:CTP.API.Controllers.SiteNodeController.ScriptRateQuery(System.Int32,System.Int32)">
             <summary>
-            新增关联稿件
+            点击率查询
             </summary>
-            <param name="refscripts">关连稿件编号数组</param>
+            <param name="pageSize">页数</param>
+            <param name="pageIndex">第几页</param>
             <returns></returns>
         </member>
         <member name="M:CTP.API.Controllers.SiteNodeController.RomoveScript(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.SiteNode.Manuscript}})">
@@ -147,6 +134,27 @@
             清除稿件
             </summary>
             <param name="pwd">权限密码</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.SiteNodeController.RefscriptQuery(System.String)">
+            <summary>
+            关联稿件信息
+            </summary>
+            <param name="idLeaf">稿件编号</param>
+            <returns></returns> 
+        </member>
+        <member name="M:CTP.API.Controllers.SiteNodeController.RefscriptNumQuery(System.String)">
+            <summary>
+            关联稿件信息数量
+            </summary>
+            <param name="idLeafs">稿件编号数组</param>
+            <returns></returns> 
+        </member>
+        <member name="M:CTP.API.Controllers.SiteNodeController.AddRefScript(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.SiteNode.RefScript}})">
+            <summary>
+            新增关联稿件
+            </summary>
+            <param name="refscripts">关连稿件编号数组</param>
             <returns></returns>
         </member>
         <member name="T:CTP.API.Controllers.UserCenterController">
