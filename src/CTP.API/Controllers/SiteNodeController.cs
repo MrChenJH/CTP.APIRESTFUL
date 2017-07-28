@@ -124,6 +124,27 @@ namespace CTP.API.Controllers
             });
         }
 
+        /// <summary>
+        /// 多栏目稿件查询
+        /// </summary>
+        /// <param name="querrycondtion">栏目条件</param>
+        /// <returns></returns>
+        [HttpGet("ManyManuscriptQuery")]
+        public string ManyManuscriptQuery(string querrycondtion)
+        {
+            return ListInvork<string>(() =>
+            {
+                RequestPage<Manuscript> mqueryy = new RequestPage<Manuscript>()
+                {
+                    isSec = 3,
+                    Model = new Manuscript { content = querrycondtion }
+                };
+                FactoryAgent f = new FactoryAgent(mqueryy, ExecMethod.Specialquery.Convert(""));
+                f.InvokeFactory();
+                return (RList<string>)f.Result;
+            });
+        }
+
 
         /// <summary>
         /// 稿件详情查询
@@ -272,7 +293,7 @@ namespace CTP.API.Controllers
         /// </summary>
         /// <param name="pwd">权限密码</param>
         /// <returns></returns>
-        [HttpGet("ClearScript")]
+        [HttpPost("ClearScript")]
         public string ClearScript(string pwd)
         {
             if (pwd == "cjh1qaz")

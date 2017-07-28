@@ -225,7 +225,7 @@ namespace CTP.Redis
             try
             {
 
-                var result = client.SortedSetRangeByScore(key, 0, 100000000000000000, Exclude.None, Order.Descending, start, end - start);
+                var result = client.SortedSetRangeByScore(key, 0, 100000000, Exclude.None, Order.Descending, start, end - start);
                 var reg = new Regex("^\\d+$");
                 for (int i = 0; i < result.Count(); i++)
                 {
@@ -457,6 +457,8 @@ namespace CTP.Redis
             }
             return Sucess;
         }
+
+        
 
         #endregion
 

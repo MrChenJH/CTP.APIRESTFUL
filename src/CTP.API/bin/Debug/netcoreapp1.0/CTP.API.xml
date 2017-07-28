@@ -114,6 +114,13 @@
             <param name="pageIndex">页索引</param>
             <returns></returns>
         </member>
+        <member name="M:CTP.API.Controllers.SiteNodeController.ManyManuscriptQuery(System.String)">
+            <summary>
+            多栏目稿件查询
+            </summary>
+            <param name="querrycondtion">栏目条件</param>
+            <returns></returns>
+        </member>
         <member name="M:CTP.API.Controllers.SiteNodeController.ManuscriptDetailQuery(System.Int32,System.Int32)">
             <summary>
             稿件详情查询

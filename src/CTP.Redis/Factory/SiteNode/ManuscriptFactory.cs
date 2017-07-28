@@ -83,10 +83,48 @@ namespace CTP.Redis.Factory.SiteNode
         }
         public ReturnData Specialquery(object request)
         {
+            var listStr = new List<string>();
             RequestPage<Manuscript> rp = (RequestPage<Manuscript>)request;
-            var vs = rp.KeyValue.Split(',');
-            string conditon = String.Format("\"{0}\":\"{1}\"", "IDLeaf", vs[1]);
-            Client.GetZsetMultiByValue(GetKey() + vs[0], conditon);
+            if (rp.isSec == 3)
+            {
+                var querryConditon = rp.Model.content.Split(',');
+
+                foreach (var v in querryConditon)
+                {
+                    var args = v.Split('|');
+                    int size = Convert.ToInt32(args[1]);
+                    int index = Convert.ToInt32(args[2]);
+                    Client.GetZsetMultiByPage(GetKey() + args[0], size * (index - 1), size * index);
+                    if (Client.Sucess)
+                    {
+                        listStr.AddRange(Client.Result);
+                    }
+                }
+                if (listStr.Count > 0)
+                {
+                    return new RList<string>()
+                    {
+                        sucess = true,
+
+                        data = listStr
+                    };
+                }
+                else
+                {
+                    return new ErrorData()
+                    {
+                        sucess = true,
+                        code = Client.Code,
+                        Occurrencetime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+                    };
+                }
+            }
+            else
+            {
+                var vs = rp.KeyValue.Split(',');
+                string conditon = String.Format("\"{0}\":\"{1}\"", "IDLeaf", vs[1]);
+                Client.GetZsetMultiByValue(GetKey() + vs[0], conditon);
+            }
             if (Client.Sucess)
             {
 
