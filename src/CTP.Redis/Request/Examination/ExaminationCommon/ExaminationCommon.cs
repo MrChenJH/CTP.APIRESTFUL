@@ -24,6 +24,9 @@ namespace CTP.Redis.Request.Menu
                     case "Emenu":
                         factory = typeof(MenuFactory).FullName;
                         break;
+                    case "Etab":
+                        factory = typeof(TabFactory).FullName;
+                        break;
                     default:
                         break;
                 }

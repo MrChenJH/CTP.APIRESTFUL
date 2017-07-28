@@ -76,6 +76,20 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:CTP.API.Controllers.ExaminationController.DeleteMenu(System.Int32)">
+            <summary>
+            删除菜单
+            </summary>
+            <param name="menuId">菜单</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.ExaminationController.DeleteTab(System.Int32)">
+            <summary>
+            删除选项卡
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
         <member name="T:CTP.API.Controllers.SiteNodeController">
             <summary>
             站点栏目

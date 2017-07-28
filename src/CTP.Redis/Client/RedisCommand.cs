@@ -6,5 +6,8 @@ namespace CTP.Redis.Client
 {
     public enum RedisCommand
     {
+        lpush,
+        brpop,
+        blpop
     }
 }

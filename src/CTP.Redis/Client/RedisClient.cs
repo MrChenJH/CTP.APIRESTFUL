@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
+using CTP.Redis.Client;
 
 namespace CTP.Redis
 {
@@ -200,7 +201,7 @@ namespace CTP.Redis
                         }
                     }
                 }
-        
+
                 Sucess = true;
             }
             catch (Exception ex)
@@ -212,7 +213,7 @@ namespace CTP.Redis
             }
             Count = list.Count();
             Result = list;
-       }
+        }
 
         /// <summary>
         /// 获取 ZSet 里的Value 值
@@ -225,7 +226,7 @@ namespace CTP.Redis
             try
             {
 
-                var result = client.SortedSetRangeByScore(key, 0, 100000000, Exclude.None, Order.Descending, start, end - start);
+                var result = client.SortedSetRangeByScore(key, 0,9000000000000000000, Exclude.None, Order.Descending, start, end - start);
                 var reg = new Regex("^\\d+$");
                 for (int i = 0; i < result.Count(); i++)
                 {
@@ -458,7 +459,42 @@ namespace CTP.Redis
             return Sucess;
         }
 
-        
+        /// <summary>
+        /// 执行命令
+        /// </summary>
+        /// <param name="cmd"></param>
+        /// <param name="values"></param>
+        /// <returns></returns>
+        public bool Command(RedisCommand cmd, List<string> values)
+        {
+            Count = 0;
+            try
+            {
+
+                var result = client.Execute(cmd.ToString(), values.ToArray());
+
+                //result
+                //if (result > 0)
+                //{
+                //    Sucess = true;
+                //}
+                //else
+                //{
+                //    Message = "没有添加任何值";
+                //    Code = ErrorCode.NotExistKeyErrorCode;
+                //    Sucess = false;
+                //}
+
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                Message = ex.Message;
+                Code = ErrorCode.ReadRedisErrorCode;
+                Sucess = false;
+            }
+            return Sucess;
+        }
 
         #endregion
 

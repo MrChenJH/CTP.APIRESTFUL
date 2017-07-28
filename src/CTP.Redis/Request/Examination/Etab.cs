@@ -9,11 +9,13 @@ namespace CTP.Redis.Request.Examination
     /// 教育考试院菜单
     /// </summary>
     public class Etab : ExaminationCommon
-    {
+    {   
+
+
         /// <summary>
         /// 菜单编号
         /// </summary>
-        public string Mid { get; set; }
+        public int Mid { get; set; }
 
         /// <summary>
         /// 图标

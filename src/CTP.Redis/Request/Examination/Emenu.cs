@@ -12,6 +12,12 @@ namespace CTP.Redis.Request.Examination
     {
 
         /// <summary>
+        /// 选项卡编号
+        /// </summary>
+        public int TabId { get; set; }
+
+
+        /// <summary>
         /// 父编号
         /// </summary>
         public string ParentId { get; set; }

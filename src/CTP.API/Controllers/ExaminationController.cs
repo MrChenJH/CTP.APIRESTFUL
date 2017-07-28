@@ -76,16 +76,16 @@ namespace CTP.API.Controllers
         [HttpGet("GetMenuList")]
         public string GetMenuList(int tabId)
         {
-            return GridInvork<string>(() =>
+            return ListInvork<string>(() =>
             {
                 RequesList<Emenu> tab = new RequesList<Emenu>()
                 {
                     isSec = 1,
-                    Model = new Emenu { AutoNo = tabId },
+                    Model = new Emenu { TabId = tabId },
                 };
                 FactoryAgent f = new FactoryAgent(tab, ExecMethod.Query.Convert(""));
                 f.InvokeFactory();
-                return (RPage<string>)f.Result;
+                return (RList<string>)f.Result;
             });
         }
 
@@ -98,17 +98,81 @@ namespace CTP.API.Controllers
         [HttpGet("GetTab")]
         public string GetTab()
         {
-            return GridInvork<string>(() =>
-                        {
-                            RequesList<Etab> tab = new RequesList<Etab>()
-                            {
-                                isSec = 1,
-                                Model = new Etab(),
-                            };
-                            FactoryAgent f = new FactoryAgent(tab, ExecMethod.Query.Convert(""));
-                            f.InvokeFactory();
-                            return (RPage<string>)f.Result;
-                        });
+            return ListInvork<string>(() =>
+             {
+                 RequesList<Etab> tab = new RequesList<Etab>()
+                 {
+                     isSec = 1,
+                     Model = new Etab(),
+                 };
+                 FactoryAgent f = new FactoryAgent(tab, ExecMethod.Query.Convert(""));
+                 f.InvokeFactory();
+                 return (RList<string>)f.Result;
+             });
         }
+
+
+        /// <summary>
+        /// 删除菜单
+        /// </summary>
+        /// <param name="menuId">菜单</param>
+        /// <returns></returns>
+        [HttpDelete("DeleteMenu")]
+        public string DeleteMenu(int menuId)
+        {
+            return TextInvork<string>(() =>
+            {
+                RequesList<List<Emenu>> menu = new RequesList<List<Emenu>>
+                {
+                    isSec = 0
+                };
+                menu.Model.Add( new Emenu
+                {
+
+                    AutoNo = menuId
+                });
+                FactoryAgent f = new FactoryAgent(menu, ExecMethod.Delete.Convert(""));
+                f.InvokeFactory();
+                if (!f.Result.sucess)
+                {
+                    throw new ProcessException(f.Result.ToJson());
+                }
+                return (ReturnData)f.Result;
+            });
+        }
+         
+
+
+        /// <summary>
+        /// 删除选项卡
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        [HttpDelete("DeleteTab")]
+        public string DeleteTab(int Id)        {
+            return TextInvork<string>(() =>
+            {
+                RequesList<List<Etab>> tab = new RequesList<List<Etab>>
+                {
+                    isSec = 0
+                  
+
+                };
+                tab.Model.Add(new Etab
+                {
+
+                    AutoNo = Id
+                });
+                FactoryAgent f = new FactoryAgent(tab, ExecMethod.Delete.Convert(""));
+                f.InvokeFactory();
+                if (!f.Result.sucess)
+                {
+                    throw new ProcessException(f.Result.ToJson());
+                }
+                return (ReturnData)f.Result;
+            });
+        }
+
+
     }
 }

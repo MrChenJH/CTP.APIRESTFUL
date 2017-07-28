@@ -13,8 +13,11 @@ namespace CTP.Redis.Factory.AreaBase
             switch (t.Name)
             {
 
-                case "EMenuFactory":
+                case "MenuFactory":
                     key = "Emenu";
+                    break;
+                case "TabFactory":
+                    key = "Tab";
                     break;
                 default:
                     break;

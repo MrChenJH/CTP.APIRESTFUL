@@ -6,6 +6,7 @@ using System.Text;
 using NLog;
 using System.Reflection;
 using CTP.Redis.Request.SiteNode;
+using CTP.Redis.Client;
 
 namespace CTP.Redis
 {
@@ -45,7 +46,19 @@ namespace CTP.Redis
         public virtual ReturnData AddOrUpdate(object request)
         {
             var item = GetAddOrUpdateOrDeleteValue(request);
+            Type t = request.GetType();
+            bool isneedSync = Convert.ToBoolean(t.GetProperty("isNeedSync").GetValue(request, null));
             Client.AddZset(GetKey(), item);
+            var list = new List<string>();
+            list.Add(GetKey());
+            if (isneedSync)
+            {
+                foreach (var v in item)
+                {
+                    list.Add(v.Value);
+                }
+                Client.Command(RedisCommand.lpush, list);
+            }
             if (Client.Sucess)
             {
                 return new ReturnData { sucess = Client.Sucess };
