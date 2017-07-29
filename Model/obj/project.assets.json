@@ -7037,15 +7037,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\13250\\.nuget\\packages\\": {}
+    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\NetCore\\CTP.API\\Model\\Model.csproj",
+      "projectUniqueName": "E:\\Git\\CTP.APIRESTFUL\\Model\\Model.csproj",
       "projectName": "Model",
-      "projectPath": "F:\\NetCore\\CTP.API\\Model\\Model.csproj",
-      "outputPath": "F:\\NetCore\\CTP.API\\Model\\obj\\",
+      "projectPath": "E:\\Git\\CTP.APIRESTFUL\\Model\\Model.csproj",
+      "outputPath": "E:\\Git\\CTP.APIRESTFUL\\Model\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"

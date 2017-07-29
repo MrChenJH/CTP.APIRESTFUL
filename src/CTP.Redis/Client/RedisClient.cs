@@ -226,7 +226,7 @@ namespace CTP.Redis
             try
             {
 
-                var result = client.SortedSetRangeByScore(key, 0,9000000000000000000, Exclude.None, Order.Descending, start, end - start);
+                var result = client.SortedSetRangeByScore(key, 0, 9000000000000000000, Exclude.None, Order.Descending, start, end - start);
                 var reg = new Regex("^\\d+$");
                 for (int i = 0; i < result.Count(); i++)
                 {
@@ -459,6 +459,33 @@ namespace CTP.Redis
             return Sucess;
         }
 
+        /// <summary>
+        /// 删除Zset值
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="values"></param>
+        /// <returns></returns>
+        public bool RemoveZsetByValues(string key, List<string> values)
+        {
+            Count = 0;
+            try
+            {
+                foreach (var p in values)
+                {
+                    client.SortedSetRemove(key, p);
+
+                }
+                Sucess = true; ;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                Message = ex.Message;
+                Code = ErrorCode.ReadRedisErrorCode;
+                Sucess = false;
+            }
+            return Sucess;
+        }
         /// <summary>
         /// 执行命令
         /// </summary>

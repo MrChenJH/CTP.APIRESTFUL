@@ -19,9 +19,21 @@ namespace CTP.Redis.Factory.Examination
         public override ReturnData Delete(object request)
         {
             RequesList<List<Etab>> menu = (RequesList<List<Etab>>)request;
+            var mode = menu.Model[0];
+            Emenu menu1 = new Emenu { TabId = Convert.ToInt32(mode.AutoNo) };
             var item = GetAddOrUpdateOrDeleteValue(request);
-            Client.RemoveZsetValues<Etab>(GetKey(), item, "AutoNo");
+            var items = new List<KeyValuePair<long, string>>();
+         
+            foreach (var v in item)
+            {
+                items.Add(new KeyValuePair<long, string>(v.Key, Convert.ToString(v.Key)));
+            }
+            var conditon = menu1.ToQueryCondition();
+            Client.GetZsetMultiByValue(GetKey(), conditon);
 
+            if (Client.Sucess) {
+            Client.RemoveZsetByValues("Emenu", Client.Result);
+            }
             if (Client.Sucess)
             {
                 return new ReturnData { sucess = Client.Sucess };

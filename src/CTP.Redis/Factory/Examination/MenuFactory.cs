@@ -29,6 +29,12 @@ namespace CTP.Redis.Factory.Examination
         {
             RequesList<List<Emenu>> menu = (RequesList<List<Emenu>>)request;
             var item = GetAddOrUpdateOrDeleteValue(request);
+            var items = new List<KeyValuePair<long, string>>();
+            foreach (var v in item)
+            {
+                items.Add(new KeyValuePair<long, string>(v.Key, Convert.ToString(v.Key)));
+            }
+
             Client.RemoveZsetValues<Emenu>(GetKey(), item, "AutoNo");
             if (Client.Sucess)
             {

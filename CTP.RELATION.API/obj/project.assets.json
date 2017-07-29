@@ -9658,15 +9658,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\13250\\.nuget\\packages\\": {}
+    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\NetCore\\CTP.API\\CTP.RELATION.API\\CTP.RELATION.API.csproj",
+      "projectUniqueName": "E:\\Git\\CTP.APIRESTFUL\\CTP.RELATION.API\\CTP.RELATION.API.csproj",
       "projectName": "CTP.RELATION.API",
-      "projectPath": "F:\\NetCore\\CTP.API\\CTP.RELATION.API\\CTP.RELATION.API.csproj",
-      "outputPath": "F:\\NetCore\\CTP.API\\CTP.RELATION.API\\obj\\",
+      "projectPath": "E:\\Git\\CTP.APIRESTFUL\\CTP.RELATION.API\\CTP.RELATION.API.csproj",
+      "outputPath": "E:\\Git\\CTP.APIRESTFUL\\CTP.RELATION.API\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"

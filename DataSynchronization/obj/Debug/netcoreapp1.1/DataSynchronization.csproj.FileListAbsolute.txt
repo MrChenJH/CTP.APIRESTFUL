@@ -1,0 +1,9 @@
+E:\Git\CTP.APIRESTFUL\DataSynchronization\bin\Debug\netcoreapp1.1\DataSynchronization.deps.json
+E:\Git\CTP.APIRESTFUL\DataSynchronization\bin\Debug\netcoreapp1.1\DataSynchronization.runtimeconfig.json
+E:\Git\CTP.APIRESTFUL\DataSynchronization\bin\Debug\netcoreapp1.1\DataSynchronization.runtimeconfig.dev.json
+E:\Git\CTP.APIRESTFUL\DataSynchronization\bin\Debug\netcoreapp1.1\DataSynchronization.dll
+E:\Git\CTP.APIRESTFUL\DataSynchronization\bin\Debug\netcoreapp1.1\DataSynchronization.pdb
+E:\Git\CTP.APIRESTFUL\DataSynchronization\obj\Debug\netcoreapp1.1\DataSynchronization.csprojResolveAssemblyReference.cache
+E:\Git\CTP.APIRESTFUL\DataSynchronization\obj\Debug\netcoreapp1.1\DataSynchronization.AssemblyInfo.cs
+E:\Git\CTP.APIRESTFUL\DataSynchronization\obj\Debug\netcoreapp1.1\DataSynchronization.dll
+E:\Git\CTP.APIRESTFUL\DataSynchronization\obj\Debug\netcoreapp1.1\DataSynchronization.pdb

@@ -1,0 +1,9 @@
+E:\Git\CTP.APIRESTFUL\CTP.RELATION.API\bin\Debug\netcoreapp1.1\CTP.RELATION.API.deps.json
+E:\Git\CTP.APIRESTFUL\CTP.RELATION.API\bin\Debug\netcoreapp1.1\CTP.RELATION.API.runtimeconfig.json
+E:\Git\CTP.APIRESTFUL\CTP.RELATION.API\bin\Debug\netcoreapp1.1\CTP.RELATION.API.runtimeconfig.dev.json
+E:\Git\CTP.APIRESTFUL\CTP.RELATION.API\bin\Debug\netcoreapp1.1\CTP.RELATION.API.dll
+E:\Git\CTP.APIRESTFUL\CTP.RELATION.API\bin\Debug\netcoreapp1.1\CTP.RELATION.API.pdb
+E:\Git\CTP.APIRESTFUL\CTP.RELATION.API\obj\Debug\netcoreapp1.1\CTP.RELATION.API.csprojResolveAssemblyReference.cache
+E:\Git\CTP.APIRESTFUL\CTP.RELATION.API\obj\Debug\netcoreapp1.1\CTP.RELATION.API.AssemblyInfo.cs
+E:\Git\CTP.APIRESTFUL\CTP.RELATION.API\obj\Debug\netcoreapp1.1\CTP.RELATION.API.dll
+E:\Git\CTP.APIRESTFUL\CTP.RELATION.API\obj\Debug\netcoreapp1.1\CTP.RELATION.API.pdb

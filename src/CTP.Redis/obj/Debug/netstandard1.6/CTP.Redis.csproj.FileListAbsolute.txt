@@ -5,3 +5,10 @@ F:\NetCore\CTP.API\src\CTP.Redis\obj\Debug\netstandard1.6\CTP.Redis.AssemblyInfo
 F:\NetCore\CTP.API\src\CTP.Redis\obj\Debug\netstandard1.6\CTP.Redis.dll
 F:\NetCore\CTP.API\src\CTP.Redis\obj\Debug\netstandard1.6\CTP.Redis.pdb
 F:\NetCore\CTP.API\src\CTP.Redis\obj\Debug\netstandard1.6\CTP.Redis.csprojResolveAssemblyReference.cache
+E:\Git\CTP.APIRESTFUL\src\CTP.Redis\bin\Debug\netstandard1.6\CTP.Redis.deps.json
+E:\Git\CTP.APIRESTFUL\src\CTP.Redis\bin\Debug\netstandard1.6\CTP.Redis.dll
+E:\Git\CTP.APIRESTFUL\src\CTP.Redis\bin\Debug\netstandard1.6\CTP.Redis.pdb
+E:\Git\CTP.APIRESTFUL\src\CTP.Redis\obj\Debug\netstandard1.6\CTP.Redis.AssemblyInfo.cs
+E:\Git\CTP.APIRESTFUL\src\CTP.Redis\obj\Debug\netstandard1.6\CTP.Redis.dll
+E:\Git\CTP.APIRESTFUL\src\CTP.Redis\obj\Debug\netstandard1.6\CTP.Redis.pdb
+E:\Git\CTP.APIRESTFUL\src\CTP.Redis\obj\Debug\netstandard1.6\CTP.Redis.csprojResolveAssemblyReference.cache

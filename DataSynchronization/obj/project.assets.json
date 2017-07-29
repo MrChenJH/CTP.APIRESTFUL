@@ -7037,15 +7037,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\13250\\.nuget\\packages\\": {}
+    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\NetCore\\CTP.API\\DataSynchronization\\DataSynchronization.csproj",
+      "projectUniqueName": "E:\\Git\\CTP.APIRESTFUL\\DataSynchronization\\DataSynchronization.csproj",
       "projectName": "DataSynchronization",
-      "projectPath": "F:\\NetCore\\CTP.API\\DataSynchronization\\DataSynchronization.csproj",
-      "outputPath": "F:\\NetCore\\CTP.API\\DataSynchronization\\obj\\",
+      "projectPath": "E:\\Git\\CTP.APIRESTFUL\\DataSynchronization\\DataSynchronization.csproj",
+      "outputPath": "E:\\Git\\CTP.APIRESTFUL\\DataSynchronization\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"

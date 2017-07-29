@@ -1,0 +1,7 @@
+E:\Git\CTP.APIRESTFUL\Model\bin\Debug\netcoreapp1.1\Model.deps.json
+E:\Git\CTP.APIRESTFUL\Model\bin\Debug\netcoreapp1.1\Model.dll
+E:\Git\CTP.APIRESTFUL\Model\bin\Debug\netcoreapp1.1\Model.pdb
+E:\Git\CTP.APIRESTFUL\Model\obj\Debug\netcoreapp1.1\Model.csprojResolveAssemblyReference.cache
+E:\Git\CTP.APIRESTFUL\Model\obj\Debug\netcoreapp1.1\Model.AssemblyInfo.cs
+E:\Git\CTP.APIRESTFUL\Model\obj\Debug\netcoreapp1.1\Model.dll
+E:\Git\CTP.APIRESTFUL\Model\obj\Debug\netcoreapp1.1\Model.pdb

@@ -7356,15 +7356,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\13250\\.nuget\\packages\\": {}
+    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\NetCore\\CTP.API\\src\\CTP.Redis\\CTP.Redis.csproj",
+      "projectUniqueName": "E:\\Git\\CTP.APIRESTFUL\\src\\CTP.Redis\\CTP.Redis.csproj",
       "projectName": "CTP.Redis",
-      "projectPath": "F:\\NetCore\\CTP.API\\src\\CTP.Redis\\CTP.Redis.csproj",
-      "outputPath": "F:\\NetCore\\CTP.API\\src\\CTP.Redis\\obj\\",
+      "projectPath": "E:\\Git\\CTP.APIRESTFUL\\src\\CTP.Redis\\CTP.Redis.csproj",
+      "outputPath": "E:\\Git\\CTP.APIRESTFUL\\src\\CTP.Redis\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netstandard1.6"
