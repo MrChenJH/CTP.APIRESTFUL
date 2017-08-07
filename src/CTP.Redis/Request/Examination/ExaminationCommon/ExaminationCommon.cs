@@ -9,8 +9,12 @@ namespace CTP.Redis.Request.Menu
 {
     public class ExaminationCommon
     {
-        [DefaultValue(0)]
-        public long AutoNo { get; set; }
+        public ExaminationCommon()
+        {
+            Id = 100000000;
+        }
+        [DefaultValue(100000000)]
+        public long Id { get; set; }
 
         [JsonIgnore]
         public string Factory
@@ -34,15 +38,6 @@ namespace CTP.Redis.Request.Menu
             }
         }
 
-        /// <summary>
-        /// 创建人
-        /// </summary>
-        public string Creator { get; set; }
-
-        /// <summary>
-        /// 创建时间
-        /// </summary>
-        public string CreateTime { get; set; }
 
     }
 }

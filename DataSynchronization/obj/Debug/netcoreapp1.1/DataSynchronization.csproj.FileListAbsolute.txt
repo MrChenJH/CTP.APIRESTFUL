@@ -3,7 +3,11 @@ F:\NetCore\CTP.API\DataSynchronization\bin\Debug\netcoreapp1.1\DataSynchronizati
 F:\NetCore\CTP.API\DataSynchronization\bin\Debug\netcoreapp1.1\DataSynchronization.runtimeconfig.dev.json
 F:\NetCore\CTP.API\DataSynchronization\bin\Debug\netcoreapp1.1\DataSynchronization.dll
 F:\NetCore\CTP.API\DataSynchronization\bin\Debug\netcoreapp1.1\DataSynchronization.pdb
-F:\NetCore\CTP.API\DataSynchronization\obj\Debug\netcoreapp1.1\DataSynchronization.csprojResolveAssemblyReference.cache
 F:\NetCore\CTP.API\DataSynchronization\obj\Debug\netcoreapp1.1\DataSynchronization.AssemblyInfo.cs
 F:\NetCore\CTP.API\DataSynchronization\obj\Debug\netcoreapp1.1\DataSynchronization.dll
 F:\NetCore\CTP.API\DataSynchronization\obj\Debug\netcoreapp1.1\DataSynchronization.pdb
+F:\NetCore\CTP.API\DataSynchronization\bin\Debug\netcoreapp1.1\profile.json
+F:\NetCore\CTP.API\DataSynchronization\bin\Debug\netcoreapp1.1\CTP.Redis.dll
+F:\NetCore\CTP.API\DataSynchronization\bin\Debug\netcoreapp1.1\CTP.Redis.pdb
+F:\NetCore\CTP.API\DataSynchronization\obj\Debug\netcoreapp1.1\DataSynchronization.csprojResolveAssemblyReference.cache
+F:\NetCore\CTP.API\DataSynchronization\bin\Debug\netcoreapp1.1\DelEmenu.xml

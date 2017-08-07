@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MySql.Data.MySqlClient;
 
 namespace CTP.RELATION.API.Controllers
 {
@@ -11,34 +13,30 @@ namespace CTP.RELATION.API.Controllers
     {
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public string GetDataBbySql(string sql)
         {
-            return new string[] { "value1", "value2" };
+            using (MySqlConnection connection = new MySqlConnection(constr))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = "select * from sys_menu_top";
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandTimeout = 6000;
+                var r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    for (int i = 0; i < r.FieldCount; i++)
+                    {
+                        string a = r.GetName(i).Trim();
+
+                    }
+
+                }
+
+
+                return string.Empty;
+            }
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

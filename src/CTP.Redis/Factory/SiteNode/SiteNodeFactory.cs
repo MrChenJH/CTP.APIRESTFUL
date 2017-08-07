@@ -43,5 +43,10 @@ namespace CTP.Redis.Factory.SiteNode
                 };
             }
         }
+
+        public ReturnData Update(object request)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

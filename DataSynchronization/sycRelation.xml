@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<relation key="LinkDelEmenu" table=""  relationXml="DelEmenu.xml"/>
+	<relation key="LinkDelTab" table="" relationXml="DelTab.xml"/>
+	<relation key="LinkInsertOrUpdateEmenu" table="" relationXml="UpdateEmenu.xml"/>
+	<relation key="LinkInsertOrUpdateTab" table=""  relationXml="UpdateTab.xml"/>
+</root>

@@ -49,18 +49,37 @@
             菜单
             </summary>
         </member>
-        <member name="M:CTP.API.Controllers.ExaminationController.AddMenu(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.Examination.Emenu}})">
+        <member name="M:CTP.API.Controllers.ExaminationController.UpdateMenu(System.Int64,System.String,System.String,System.String)">
+            <summary>
+            更新菜单
+            </summary>
+            <param name="id">菜单编号</param>
+            <param name="name">菜单名称</param>
+            <param name="icon">菜单图标</param>
+            <param name="url">菜单地址</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.ExaminationController.AddMenu(System.Collections.Generic.List{CTP.Redis.Request.Examination.Emenu})">
             <summary>
             新增菜单
             </summary>
             <param name="Emenus">菜单列表</param>
             <returns></returns>
         </member>
-        <member name="M:CTP.API.Controllers.ExaminationController.AddTab(CTP.Redis.Request.RequesList{System.Collections.Generic.List{CTP.Redis.Request.Examination.Etab}})">
+        <member name="M:CTP.API.Controllers.ExaminationController.UpdateTab(System.Int64,System.String,System.String)">
+            <summary>
+            更新选项卡
+            </summary>
+            <param name="id">选项卡编号</param>
+            <param name="tabName">选项名字</param>
+            <param name="icon">选项卡图标</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.ExaminationController.AddTab(System.Collections.Generic.List{CTP.Redis.Request.Examination.Etab})">
             <summary>
             新增选项卡
             </summary>
-            <param name="Tabs">选项卡</param>
+            <param name="Tabs">选项卡列表</param>
             <returns></returns>
         </member>
         <member name="M:CTP.API.Controllers.ExaminationController.GetMenuList(System.Int32)">
@@ -68,6 +87,13 @@
             获取菜单列表
             </summary>
             <param name="tabId">选项卡编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:CTP.API.Controllers.ExaminationController.GetChartData(System.String)">
+            <summary>
+            获取图表
+            </summary>
+            <param name="cmdText">图标逻辑参数</param>
             <returns></returns>
         </member>
         <member name="M:CTP.API.Controllers.ExaminationController.GetTab">

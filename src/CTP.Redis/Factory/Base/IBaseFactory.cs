@@ -29,6 +29,11 @@ namespace CTP.Redis.Factory
         /// <returns></returns>
         ReturnData PageQuery(object request);
 
-       
+        /// <summary>
+        ///  翻页查询
+        /// </summary>
+        /// <param name="request">参数</param>
+        /// <returns></returns>
+        ReturnData Update(object request);
     }
 }

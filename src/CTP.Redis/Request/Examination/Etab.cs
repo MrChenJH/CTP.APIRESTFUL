@@ -15,7 +15,7 @@ namespace CTP.Redis.Request.Examination
         /// <summary>
         /// 菜单编号
         /// </summary>
-        public int Mid { get; set; }
+        public long  Mid { get; set; }
 
         /// <summary>
         /// 图标

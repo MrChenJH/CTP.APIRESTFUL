@@ -11,6 +11,8 @@ namespace CTP.Redis.Request.Examination
     public class Emenu : ExaminationCommon
     {
 
+       
+
         /// <summary>
         /// 选项卡编号
         /// </summary>
@@ -51,5 +53,7 @@ namespace CTP.Redis.Request.Examination
         /// 图标
         /// </summary>
         public string Micon { get; set; }
+
+
     }
 }

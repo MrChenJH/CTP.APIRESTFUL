@@ -28,6 +28,12 @@ namespace CTP.Redis.Const
         /// </summary>
         AddOrUpdate,
 
+
+        /// <summary>
+        /// 更新
+        /// </summary>
+        Update,
+
         /// <summary>
         /// 删除
         /// </summary>

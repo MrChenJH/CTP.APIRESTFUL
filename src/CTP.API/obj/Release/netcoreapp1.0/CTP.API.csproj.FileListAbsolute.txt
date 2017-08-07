@@ -12,3 +12,5 @@ F:\NetCore\CTP.API\src\CTP.API\obj\Release\netcoreapp1.0\CTP.API.dll
 F:\NetCore\CTP.API\src\CTP.API\obj\Release\netcoreapp1.0\CTP.API.xml
 F:\NetCore\CTP.API\src\CTP.API\obj\Release\netcoreapp1.0\CTP.API.pdb
 F:\NetCore\CTP.API\src\CTP.API\bin\Release\netcoreapp1.0\profile.json
+F:\NetCore\CTP.API\src\CTP.API\bin\Release\netcoreapp1.0\Util.dll
+F:\NetCore\CTP.API\src\CTP.API\bin\Release\netcoreapp1.0\Util.pdb

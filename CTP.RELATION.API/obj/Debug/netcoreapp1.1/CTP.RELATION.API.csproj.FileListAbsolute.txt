@@ -3,7 +3,7 @@ F:\NetCore\CTP.API\CTP.RELATION.API\bin\Debug\netcoreapp1.1\CTP.RELATION.API.run
 F:\NetCore\CTP.API\CTP.RELATION.API\bin\Debug\netcoreapp1.1\CTP.RELATION.API.runtimeconfig.dev.json
 F:\NetCore\CTP.API\CTP.RELATION.API\bin\Debug\netcoreapp1.1\CTP.RELATION.API.dll
 F:\NetCore\CTP.API\CTP.RELATION.API\bin\Debug\netcoreapp1.1\CTP.RELATION.API.pdb
-F:\NetCore\CTP.API\CTP.RELATION.API\obj\Debug\netcoreapp1.1\CTP.RELATION.API.csprojResolveAssemblyReference.cache
 F:\NetCore\CTP.API\CTP.RELATION.API\obj\Debug\netcoreapp1.1\CTP.RELATION.API.AssemblyInfo.cs
 F:\NetCore\CTP.API\CTP.RELATION.API\obj\Debug\netcoreapp1.1\CTP.RELATION.API.dll
 F:\NetCore\CTP.API\CTP.RELATION.API\obj\Debug\netcoreapp1.1\CTP.RELATION.API.pdb
+F:\NetCore\CTP.API\CTP.RELATION.API\obj\Debug\netcoreapp1.1\CTP.RELATION.API.csprojResolveAssemblyReference.cache

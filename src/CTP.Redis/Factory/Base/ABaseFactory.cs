@@ -50,7 +50,7 @@ namespace CTP.Redis
             bool isneedSync = Convert.ToBoolean(t.GetProperty("isNeedSync").GetValue(request, null));
             Client.AddZset(GetKey(), item);
             var list = new List<string>();
-            list.Add(GetKey());
+            list.Add(Profile.typeLink+ GetKey());
             if (isneedSync)
             {
                 foreach (var v in item)
@@ -113,6 +113,18 @@ namespace CTP.Redis
             Type t = request.GetType();
             var model = t.GetProperty("Model").GetValue(request, null);
             return model.ToListKeyValuePair();
+        }
+
+        /// <summary>
+        /// 获取 新增修改删除参数
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        protected virtual List<KeyValuePair<long, string>> GetAddOrUpdateOrDeleteValuebyId(object request)
+        {
+            Type t = request.GetType();
+            var model = t.GetProperty("Model").GetValue(request, null);
+            return model.ToListKeyValuePairId();
         }
 
         #endregion

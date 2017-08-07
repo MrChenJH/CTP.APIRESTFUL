@@ -1,0 +1,6 @@
+﻿{
+    "profile": {
+        "con": "server=192.168.1.182;database=kk2006;uid=sa1;pwd=sasa;charset='gbk';SslMode=None",
+        "ip": "192.168.1.141"
+    }
+}

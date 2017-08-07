@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Util\Util.csproj" />
     <ProjectReference Include="..\CTP.Redis\CTP.Redis.csproj" />
   </ItemGroup>
 

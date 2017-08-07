@@ -1,0 +1,6 @@
+F:\NetCore\CTP.API\Util\bin\Debug\netcoreapp1.0\Util.deps.json
+F:\NetCore\CTP.API\Util\bin\Debug\netcoreapp1.0\Util.dll
+F:\NetCore\CTP.API\Util\bin\Debug\netcoreapp1.0\Util.pdb
+F:\NetCore\CTP.API\Util\obj\Debug\netcoreapp1.0\Util.AssemblyInfo.cs
+F:\NetCore\CTP.API\Util\obj\Debug\netcoreapp1.0\Util.dll
+F:\NetCore\CTP.API\Util\obj\Debug\netcoreapp1.0\Util.pdb

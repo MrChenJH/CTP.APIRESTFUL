@@ -140,7 +140,19 @@ namespace CTP.Redis
             }
             return result;
         }
-
+        public static List<KeyValuePair<long, string>> ToListKeyValuePairId(this object value)
+        {
+            var result = new List<KeyValuePair<long, string>>();
+            Type type = value.GetType();
+            var count = type.GetProperty("Count").GetValue(value, null).Convert(0);
+            for (int i = 0; i < count; i++)
+            {
+                var itemValue = type.GetProperty("Item").GetValue(value, new object[] { i });
+                long autoNo = long.Parse(itemValue.GetType().GetProperty("Id").GetValue(itemValue, null).Convert("0"));
+                result.Add(new KeyValuePair<long, string>(autoNo, itemValue.ToJson()));
+            }
+            return result;
+        }
         public static List<KeyValuePair<long, string>> ToListKeyValuePairScript(this object value)
         {
             var result = new List<KeyValuePair<long, string>>();
@@ -151,7 +163,7 @@ namespace CTP.Redis
                 var itemValue = type.GetProperty("Item").GetValue(value, new object[] { i });
                 long autoNo = long.Parse(itemValue.GetType().GetProperty("AutoNo").GetValue(itemValue, null).Convert("0"));
                 ;
-            result.Add(new KeyValuePair<long, string>(autoNo, itemValue.GetType().GetProperty("content").GetValue(itemValue, null).Convert("")));
+                result.Add(new KeyValuePair<long, string>(autoNo, itemValue.GetType().GetProperty("content").GetValue(itemValue, null).Convert("")));
             }
             return result;
         }
@@ -579,10 +591,42 @@ namespace CTP.Redis
             T t = o as T;
             return t;
         }
-        #endregion.
+
+        /// <summary>
+        /// 旧值合并新值
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="v"></param>
+        /// <param name="oldValue"></param>
+        /// <returns></returns>
+        public static T MergeOldEntity<T>(this T v, T oldValue) where T : class
+        {
+            var oldtype = oldValue.GetType();
+            var oldties = oldtype.GetProperties();
+            var newtype = v.GetType();
+            var newties = newtype.GetProperties();
+
+            foreach (var np in newties)
+            {
+                var npv = np.GetValue(v, null);
+                var typeee = np.GetType().Name;
+                if (np.PropertyType == typeof(int) || np.PropertyType == typeof(long))
+                {
+                    if (long.Parse(npv.ToString()) == 0)
+                    {
+                        continue;
+                    }
+                }
+                if (npv != null && np.Name != "Factory")
+                {
+                    oldtype.GetProperty(np.Name).SetValue(oldValue, npv);
+                }
+            }
+
+            return oldValue;
+
+        }
 
     }
-
-
-
+    #endregion
 }

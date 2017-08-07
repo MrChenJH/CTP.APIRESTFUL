@@ -6,7 +6,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="DelEmenu.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="DelEmenu.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="profile.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="1.50.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="1.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="1.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Xml" Version="1.1.2" />
+    <PackageReference Include="SapientGuardian.MySql.Data" Version="6.9.816" />
+    <PackageReference Include="System.Data.Common" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\CTP.Redis\CTP.Redis.csproj" />
   </ItemGroup>
 
 </Project>

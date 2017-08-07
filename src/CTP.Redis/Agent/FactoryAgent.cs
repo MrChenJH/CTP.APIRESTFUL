@@ -82,12 +82,7 @@ namespace CTP.Redis.Agent
             catch (Exception ex)
             {
                 Logger.Info("Agent" + ex.Message);
-                Result = new ErrorData()
-                {
-                    sucess = false,
-                    code = ErrorCode.NotExistKeyErrorCode,
-           
-                };
+              
             }
         }
     }
