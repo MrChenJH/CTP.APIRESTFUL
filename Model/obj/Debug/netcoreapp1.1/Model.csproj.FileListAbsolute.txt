@@ -1,0 +1,7 @@
+F:\NetCore\CTP.API\Model\bin\Debug\netcoreapp1.1\Model.deps.json
+F:\NetCore\CTP.API\Model\bin\Debug\netcoreapp1.1\Model.dll
+F:\NetCore\CTP.API\Model\bin\Debug\netcoreapp1.1\Model.pdb
+F:\NetCore\CTP.API\Model\obj\Debug\netcoreapp1.1\Model.csprojResolveAssemblyReference.cache
+F:\NetCore\CTP.API\Model\obj\Debug\netcoreapp1.1\Model.AssemblyInfo.cs
+F:\NetCore\CTP.API\Model\obj\Debug\netcoreapp1.1\Model.dll
+F:\NetCore\CTP.API\Model\obj\Debug\netcoreapp1.1\Model.pdb
