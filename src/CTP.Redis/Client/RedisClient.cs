@@ -36,14 +36,14 @@ namespace CTP.Redis
         /// 客户端
         /// </summary>
         private static RedisClient rClient;
-
+        private static Logger Logger = LogManager.GetCurrentClassLogger();
 
         /// <summary>
         ///构造函数
         /// </summary>
         private RedisClient()
         {
-            Logger = LogManager.GetCurrentClassLogger();
+    
             Result = new List<string>();
 
             Sucess = true;
@@ -62,10 +62,7 @@ namespace CTP.Redis
         public long Count { get; set; }
 
 
-        /// <summary>
-        /// 日记
-        /// </summary>
-        protected Logger Logger { get; set; }
+
 
         #endregion
 
@@ -259,6 +256,7 @@ namespace CTP.Redis
                     Result = list;
                     Sucess = true;
                 }
+          
             }
             catch (Exception ex)
             {

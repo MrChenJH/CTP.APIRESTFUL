@@ -70,10 +70,10 @@ namespace CTP.Redis.Factory.Examination
         public override ReturnData AddOrUpdate(object request)
         {
             RequesList<List<Etab>> tabs = (RequesList<List<Etab>>)request;
-            foreach (var tab in tabs.Model)
-            {
-                tab.Id = Math.Abs(Guid.NewGuid().GetHashCode());
-            }
+            //foreach (var tab in tabs.Model)
+            //{
+            //    tab.Id = Math.Abs(Guid.NewGuid().GetHashCode());
+            //}
 
             var item = GetAddOrUpdateOrDeleteValuebyId(tabs);
 

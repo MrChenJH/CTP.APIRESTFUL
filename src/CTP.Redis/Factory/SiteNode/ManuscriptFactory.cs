@@ -148,15 +148,9 @@ namespace CTP.Redis.Factory.SiteNode
         public ReturnData Query(object request)
         {
             RequestPage<Manuscript> rp = (RequestPage<Manuscript>)request;
-            string conditon = String.Format("\"{0}\":\"{1}\"", "nodeId", rp.Model.AutoNo);
-            if (!string.IsNullOrWhiteSpace(rp.Model.content))
-            {
-                Client.ZUNIONSTORE("Manuscript" + rp.KeyValue.Trim(), rp.Model.content.Split(',').Select(p => "Manuscript" + p).ToArray());
-            }
-            if (Client.Sucess)
-            {
-                Client.GetZsetMultiByPage(GetKey() + rp.KeyValue.Trim(), rp.Start, rp.Stop);
-            }
+      
+            Client.GetZsetMultiByPage(GetKey() + rp.KeyValue.Trim(), rp.Start, rp.Stop);
+
             if (Client.Sucess)
             {
 

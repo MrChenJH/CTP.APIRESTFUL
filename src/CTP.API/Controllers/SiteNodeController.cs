@@ -109,6 +109,33 @@ namespace CTP.API.Controllers
         {
             return GridInvork<string>(() =>
             {
+              RequestPage<Manuscript> registerUser = new RequestPage<Manuscript>()
+                {
+                    isSec = 1,
+                    Model = new Manuscript { AutoNo = nodeId },
+                    Start = pageSize * (pageIndex - 1),
+                    Stop = pageSize * (pageIndex),
+                    KeyValue = nodeId.ToString()
+
+                };
+                FactoryAgent f = new FactoryAgent(registerUser, ExecMethod.Query.Convert(""));
+                f.InvokeFactory();
+                return (RPage<string>)f.Result;
+            });
+        }
+
+        /// <summary>
+        /// 稿件列表查询
+        /// </summary>
+        /// <param name="nodeId">栏目编号</param>
+        /// <param name="pageSize">页数</param> 
+        /// <param name="pageIndex">页索引</param>
+        /// <returns></returns>
+        [HttpPost("ManuscriptQueryPost")]
+        public string ManuscriptQueryPost(int nodeId, int pageSize, int pageIndex)
+        {
+            return GridInvork<string>(() =>
+            {
                 RequestPage<Manuscript> registerUser = new RequestPage<Manuscript>()
                 {
                     isSec = 1,
@@ -178,7 +205,7 @@ namespace CTP.API.Controllers
         /// <param name="idleafs">稿件编号数组</param> 
         /// <returns></returns>
         [HttpGet("ManuscriptListDetailQuery")]
-        public string ManuscriptListDetailQuery(int nodeId, string idleafs)
+        public  string ManuscriptListDetailQuery(int nodeId, string idleafs)
         {
             return ListInvork<string>(() =>
             {

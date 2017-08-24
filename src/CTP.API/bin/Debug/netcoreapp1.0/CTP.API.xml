@@ -154,6 +154,15 @@
             <param name="pageIndex">页索引</param>
             <returns></returns>
         </member>
+        <member name="M:CTP.API.Controllers.SiteNodeController.ManuscriptQueryPost(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            稿件列表查询
+            </summary>
+            <param name="nodeId">栏目编号</param>
+            <param name="pageSize">页数</param> 
+            <param name="pageIndex">页索引</param>
+            <returns></returns>
+        </member>
         <member name="M:CTP.API.Controllers.SiteNodeController.ManyManuscriptQuery(System.String)">
             <summary>
             多栏目稿件查询

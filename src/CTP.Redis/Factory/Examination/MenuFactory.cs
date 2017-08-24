@@ -31,10 +31,10 @@ namespace CTP.Redis.Factory.Examination
         public override ReturnData AddOrUpdate(object request)
         {
             RequesList<List<Emenu>> menu = (RequesList<List<Emenu>>)request;
-            foreach (var v in menu.Model)
-            {
-                v.Id = Math.Abs(Guid.NewGuid().GetHashCode());
-            }
+            //foreach (var v in menu.Model)
+            //{
+            //    v.Id = Math.Abs(Guid.NewGuid().GetHashCode());
+            //}
 
             var item = GetAddOrUpdateOrDeleteValuebyId(menu);
             Type t = request.GetType();
