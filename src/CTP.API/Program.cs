@@ -31,7 +31,7 @@ namespace CTP.API
                            .UseContentRoot(Directory.GetCurrentDirectory())
                            .UseIISIntegration()
                            .UseStartup<Startup>()
-                           .UseUrls(new string[] { value1, value2 })
+                           //.UseUrls(new string[] { value1, value2 })
                            .Build();
 
             host.Run();

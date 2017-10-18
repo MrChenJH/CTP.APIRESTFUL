@@ -27,11 +27,15 @@ namespace CTP.Redis.Factory.SiteNode
         {
             RequesList<List<Manuscript>> list = (RequesList<List<Manuscript>>)request;
             var listkey = new List<KeyValuePair<long, string>>();
+
+            var item = new List<KeyValuePair<long, string>>();
             foreach (Manuscript m in list.Model)
             {
-
                 listkey.Add(new KeyValuePair<long, string>(m.AutoNo, m.content));
+                var v = m.content.ToEntity<Resourceobj>();
+                item.Add(new KeyValuePair<long, string>(m.AutoNo, v.IDLeaf));
             }
+            Client.RemoveZsetValues<Resourceobj>(GetKey() + list.isSec, item, "IDLeaf");
             Client.AddZset(GetKey() + list.isSec, listkey);
             if (Client.Sucess)
             {
@@ -148,7 +152,7 @@ namespace CTP.Redis.Factory.SiteNode
         public ReturnData Query(object request)
         {
             RequestPage<Manuscript> rp = (RequestPage<Manuscript>)request;
-      
+
             Client.GetZsetMultiByPage(GetKey() + rp.KeyValue.Trim(), rp.Start, rp.Stop);
 
             if (Client.Sucess)

@@ -459,6 +459,7 @@ namespace CTP.Redis
                         entryArray[i] = new SortedSetEntry(values[i].Value, values[i].Key);
                     }
 
+
                     var result = cv.SortedSetAdd(key, entryArray);
 
                     if (result > 0)

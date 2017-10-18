@@ -1,8 +1,8 @@
 ﻿{
     "profile": {
         "url1": "http://Localhost:3850/:",
-        "url2": "http://192.168.1.125:3850/",
-        "ip": "192.168.1.141",
+        "url2": "http://Localhost:3850/",
+        "ip": "127.0.0.1",
         "LinkKey": "Link",
         "con": "Data Source=192.168.1.237;Initial Catalog=kk2006;User Id=sa;Password=mantis"
     }

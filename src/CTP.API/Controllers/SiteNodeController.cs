@@ -305,7 +305,7 @@ namespace CTP.API.Controllers
         {
             return TextInvork<string>(() =>
             {
-                FactoryAgent f = new FactoryAgent(msrcripts, ExecMethod.Delete.Convert(""));
+                 FactoryAgent f = new FactoryAgent(msrcripts, ExecMethod.Delete.Convert(""));
                 f.InvokeFactory();
                 if (!f.Result.sucess)
                 {
