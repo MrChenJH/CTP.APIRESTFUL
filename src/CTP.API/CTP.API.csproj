@@ -12,6 +12,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Properties\PublishProfiles\a.pubxml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="wwwroot\**\*;Views;Areas\**\Views;nlog.config">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>

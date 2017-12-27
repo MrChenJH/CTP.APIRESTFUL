@@ -9,6 +9,10 @@ using CTP.Redis.Agent;
 using CTP.Redis.Const;
 using CTP.Redis.Config;
 using CTP.Redis;
+using StackExchange.Redis;
+using CTP.Util;
+using Util;
+using Helpers;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,7 +24,10 @@ namespace CTP.API.Controllers
     [Route("api/[controller]")]
     public class SiteNodeController : BaseController
     {
+        private string key1 = "hashscript";
+        private string pfix = "N_";
 
+        private string key2 = "ScriptClickRate";
 
         /// <summary>
         /// 栏目
@@ -42,7 +49,6 @@ namespace CTP.API.Controllers
                 return (RList<string>)f.Result;
             });
         }
-
 
         /// <summary>
         /// 栏目新增
@@ -66,90 +72,65 @@ namespace CTP.API.Controllers
         }
 
         /// <summary>
-        /// 根节点栏目查询
+        /// 
         /// </summary>
-        /// <param name="nodeId">栏目编号</param>
-        /// <param name="nodeIds">子栏目编号数组</param>
-        /// <param name="pageSize">页数</param>
-        /// <param name="pageIndex">第几页</param>
-        /// <returns></returns>
-        [HttpGet("RootNodeManuscriptQuery")]
-        public string RootNodeManuscriptQuery(string nodeId, string nodeIds, int pageSize, int pageIndex)
-        {
-            return GridInvork<string>(() =>
-            {
-
-                RequestPage<Manuscript> registerUser = new RequestPage<Manuscript>()
-                {
-                    isSec = 1,
-                    Model = new Manuscript { AutoNo = Convert.ToInt64(nodeId), content = nodeIds },
-                    Start = pageSize * (pageIndex - 1),
-                    Stop = pageSize * (pageIndex),
-                    KeyValue = nodeId.ToString()
-
-                };
-                FactoryAgent f = new FactoryAgent(registerUser, ExecMethod.Query.Convert(""));
-                f.InvokeFactory();
-                return (RPage<string>)f.Result;
-            });
-
-        }
-
-
-
-        /// <summary>
-        /// 稿件列表查询
-        /// </summary>
-        /// <param name="nodeId">栏目编号</param>
-        /// <param name="pageSize">页数</param> 
-        /// <param name="pageIndex">页索引</param>
+        /// <param name="nodeId"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
         /// <returns></returns>
         [HttpGet("ManuscriptQuery")]
         public string ManuscriptQuery(int nodeId, int pageSize, int pageIndex)
         {
-            return GridInvork<string>(() =>
-            {
-              RequestPage<Manuscript> registerUser = new RequestPage<Manuscript>()
-                {
-                    isSec = 1,
-                    Model = new Manuscript { AutoNo = nodeId },
-                    Start = pageSize * (pageIndex - 1),
-                    Stop = pageSize * (pageIndex),
-                    KeyValue = nodeId.ToString()
+            RPage<string> rpage = new RPage<string>();
 
-                };
-                FactoryAgent f = new FactoryAgent(registerUser, ExecMethod.Query.Convert(""));
-                f.InvokeFactory();
-                return (RPage<string>)f.Result;
-            });
+            try
+            {
+                RedisClient redisClient = RedisClient.GetInstance();
+                List<HashEntry> hashList = new List<HashEntry>();
+                redisClient.GetZsetMultiByPage(pfix + nodeId, pageSize * (pageIndex - 1), pageSize * (pageIndex));
+                rpage.data = redisClient.HashGetM(key1, redisClient.Result);
+                rpage.total = redisClient.Count;
+                rpage.sucess = true;
+
+            }
+            catch (Exception ex)
+            {
+                rpage.data = new List<string>() { ex.Message };
+                rpage.total = 0;
+                rpage.sucess = false;
+            }
+            return rpage.ToJson().RedisDataToJson();
         }
 
         /// <summary>
-        /// 稿件列表查询
+        /// 
         /// </summary>
-        /// <param name="nodeId">栏目编号</param>
-        /// <param name="pageSize">页数</param> 
-        /// <param name="pageIndex">页索引</param>
+        /// <param name="nodeId"></param>
+        /// <param name="idleaf"></param>
         /// <returns></returns>
-        [HttpPost("ManuscriptQueryPost")]
-        public string ManuscriptQueryPost(int nodeId, int pageSize, int pageIndex)
+        [HttpGet("ManuscriptDetailQuery")]
+        public string ManuscriptDetailQuery(int nodeId, int idleaf)
         {
-            return GridInvork<string>(() =>
+            RList<string> r = new RList<string>();
+            r.data = new List<string>();
+            try
             {
-                RequestPage<Manuscript> registerUser = new RequestPage<Manuscript>()
-                {
-                    isSec = 1,
-                    Model = new Manuscript { AutoNo = nodeId },
-                    Start = pageSize * (pageIndex - 1),
-                    Stop = pageSize * (pageIndex),
-                    KeyValue = nodeId.ToString()
+                RedisClient redisClient = RedisClient.GetInstance();
+                List<HashEntry> hashList = new List<HashEntry>();
+                r.data.Add(redisClient.HashGetS(key1, nodeId + "_" + idleaf));
+                r.sucess = true;
+            }
+            catch (Exception ex)
+            {
+                r.sucess = false;
+                r.data.Add(ex.Message);
 
-                };
-                FactoryAgent f = new FactoryAgent(registerUser, ExecMethod.Query.Convert(""));
-                f.InvokeFactory();
-                return (RPage<string>)f.Result;
-            });
+            }
+            return r.ToJson().RedisDataToJson();
         }
+
+
+
 
         /// <summary>
         /// 多栏目稿件查询
@@ -159,44 +140,73 @@ namespace CTP.API.Controllers
         [HttpGet("ManyManuscriptQuery")]
         public string ManyManuscriptQuery(string querrycondtion)
         {
-            return ListInvork<string>(() =>
+            RPage<string> rpage = new RPage<string>();
+            rpage.data = new List<string>();
+            try
             {
-                RequestPage<Manuscript> mqueryy = new RequestPage<Manuscript>()
+                RedisClient redisClient = RedisClient.GetInstance();
+                List<HashEntry> hashList = new List<HashEntry>();
+                var querryConditons = querrycondtion.Split(',');
+                foreach (var v in querryConditons)
                 {
-                    isSec = 3,
-                    Model = new Manuscript { content = querrycondtion }
-                };
-                FactoryAgent f = new FactoryAgent(mqueryy, ExecMethod.Specialquery.Convert(""));
-                f.InvokeFactory();
-                return (RList<string>)f.Result;
-            });
+                    var args = v.Split('|');
+                    int size = Convert.ToInt32(args[1]);
+                    int index = Convert.ToInt32(args[2]);
+                    redisClient.GetZsetMultiByPage(pfix + args[0], size * (index - 1), size * index);
+                    rpage.data.AddRange(redisClient.HashGetM(key1, redisClient.Result));
+                    rpage.total += redisClient.Count;
+                }
+                rpage.sucess = true;
+
+            }
+            catch (Exception ex)
+            {
+                rpage.data = new List<string>() { ex.Message };
+                rpage.total = 0;
+                rpage.sucess = false;
+            }
+            return rpage.ToJson().RedisDataToJson();
+
+
         }
 
 
         /// <summary>
-        /// 稿件详情查询
+        /// 
         /// </summary>
-        /// <param name="nodeId">栏目编号</param>
-        /// <param name="idleaf">稿件编号</param> 
+        /// <param name="nodeId"></param>
+        /// <param name="nodeIds"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
         /// <returns></returns>
-        [HttpGet("ManuscriptDetailQuery")]
-        public string ManuscriptDetailQuery(int nodeId, int idleaf)
+        [HttpGet("RootNodeManuscriptQuery")]
+        public string RootNodeManuscriptQuery(string nodeId, string nodeIds, int pageSize, int pageIndex)
         {
-            return ListInvork<string>(() =>
+            RPage<string> rpage = new RPage<string>();
+            rpage.data = new List<string>();
+            try
             {
-                RequestPage<Manuscript> registerUser = new RequestPage<Manuscript>()
-                {
-                    isSec = 1,
-                    Model = new Manuscript { AutoNo = nodeId },
-                    Start = 0,
-                    Stop = 10000,
-                    KeyValue = string.Format("{0}{1}{2}", nodeId.ToString(), ",", idleaf)
-                };
-                FactoryAgent f = new FactoryAgent(registerUser, ExecMethod.Specialquery.Convert(""));
-                f.InvokeFactory();
-                return (RList<string>)f.Result;
-            });
+                RedisClient redisClient = RedisClient.GetInstance();
+                List<HashEntry> hashList = new List<HashEntry>();
+                string[] nodesids = nodeIds.Split(',');
+                List<string> keys = new List<string>();
+                nodesids.ToList().ForEach(p => { keys.Add(pfix + p); });
+                redisClient.ZUNIONSTORE(pfix + nodeId, keys.ToArray());
+                redisClient.GetZsetMultiByPage(pfix + nodeId, pageSize * (pageIndex - 1), pageSize * (pageIndex));
+                rpage.data = redisClient.HashGetM(key1, redisClient.Result);
+                rpage.total = redisClient.Count;
+                rpage.sucess = true;
+            }
+            catch (Exception ex)
+            {
+                rpage.data = new List<string>() { ex.Message };
+                rpage.total = 0;
+                rpage.sucess = false;
+            }
+            return rpage.ToJson().RedisDataToJson();
+
         }
+
 
         /// <summary>
         /// 稿件详情列表信息
@@ -205,43 +215,107 @@ namespace CTP.API.Controllers
         /// <param name="idleafs">稿件编号数组</param> 
         /// <returns></returns>
         [HttpGet("ManuscriptListDetailQuery")]
-        public  string ManuscriptListDetailQuery(int nodeId, string idleafs)
+        public string ManuscriptListDetailQuery(int nodeId, string idleafs)
         {
-            return ListInvork<string>(() =>
+
+            RList<string> rpage = new RList<string>();
+            rpage.data = new List<string>();
+            try
             {
-                RequestPage<Manuscript> registerUser = new RequestPage<Manuscript>()
+                RedisClient redisClient = RedisClient.GetInstance();
+                List<HashEntry> hashList = new List<HashEntry>();
+                string[] idleafss = idleafs.Split(',');
+                idleafss.ToList().ForEach(t =>
                 {
-                    isSec = 1,
-                    Model = new Manuscript { AutoNo = nodeId, content = idleafs },
-                    Start = 0,
-                    Stop = 10000,
-                    KeyValue = string.Format("{0}{1}{2}", nodeId.ToString(), ",", "1")
-                };
-                FactoryAgent f = new FactoryAgent(registerUser, ExecMethod.PageQuery.Convert(""));
-                f.InvokeFactory();
-                return (RList<string>)f.Result;
-            });
+                    rpage.data.Add(redisClient.HashGetS(key1, nodeId + "_" + t));
+                });
+
+                rpage.sucess = true;
+            }
+            catch (Exception ex)
+            {
+                rpage.sucess = false;
+                rpage.data.Add(ex.Message);
+
+            }
+            return rpage.ToJson().RedisDataToJson();
         }
 
         /// <summary>
-        /// 稿件新增
+        /// 
         /// </summary>
-        /// <param name="manuscript">稿件信息</param>
+        /// <param name="rscirpts"></param>
         /// <returns></returns>
-        [HttpPost("AddManuscript")]
-        public string AddManuscript([FromBody]RequesList<List<Manuscript>> manuscript)
+        [HttpPost("RomoveScript")]
+        public string RomoveScript([FromBody]List<RemoveScript> rscirpts)
         {
-            return TextInvork<string>(() =>
+            RList<string> r = new RList<string>();
+            try
             {
-
-                FactoryAgent f = new FactoryAgent(manuscript, ExecMethod.AddOrUpdate.Convert(""));
-                f.InvokeFactory();
-                if (!f.Result.sucess)
+                RedisClient redisClient = RedisClient.GetInstance();
+                rscirpts.ForEach(t =>
                 {
-                    throw new ProcessException(f.Result.ToJson());
-                }
-                return (ReturnData)f.Result;
-            });
+                    redisClient.RemoveZsetByValue(pfix + t.nodeid, t.nodeid + "_" + t.idleaf);
+                    redisClient.RemoveHashByField(key1, t.nodeid + "_" + t.idleaf);
+
+                });
+                r.sucess = true;
+            }
+            catch (Exception ex)
+            {
+                r.sucess = false;
+                r.data.Add(ex.Message);
+            }
+            return r.ToJson().RedisDataToJson();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="scriptScores"></param>
+        /// <returns></returns>
+        [HttpPost("EditScriptScore")]
+        public string EditScriptScore([FromBody]List<Script> scriptScores)
+        {
+            try
+            {
+                RedisClient redisClient = RedisClient.GetInstance();
+                List<HashEntry> hashList = new List<HashEntry>();
+                scriptScores.ForEach(t =>
+                {
+                    redisClient.AddZset(pfix + t.Key, t.Member, Convert.ToDouble(t.Score));
+                });
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            return "success";
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="scripts"></param>
+        /// <returns></returns>
+        [HttpPost("AddScript")]
+        public string AddScript([FromBody]List<Script> scripts)
+        {
+            try
+            {
+                RedisClient redisClient = RedisClient.GetInstance();
+                List<HashEntry> hashList = new List<HashEntry>();
+                scripts.ForEach(t =>
+                {
+                    redisClient.AddZset(pfix + t.Key, t.Member, Convert.ToDouble(t.Score));
+                    redisClient.HashSetS(key1, t.Member, t.Content);
+                });
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            return "success";
         }
 
         /// <summary>
@@ -254,20 +328,19 @@ namespace CTP.API.Controllers
         [HttpPost("AddScriptRate")]
         public string AddScriptRate(int nodeId, string objName, string idLeaf)
         {
-            return TextInvork<string>(() =>
+            ReturnData r = new ReturnData();
+            try
             {
-                RequesList<ScriptClickRate> manuscript = new RequesList<ScriptClickRate>();
-                manuscript.Model = new ScriptClickRate { AutoNo = 0, NodeId = Convert.ToString(nodeId), IDLeaf = idLeaf, ObjName = objName };
-                FactoryAgent f = new FactoryAgent(manuscript, ExecMethod.AddOrUpdate.Convert(""));
-                f.InvokeFactory();
-                if (!f.Result.sucess)
-                {
-                    throw new ProcessException(f.Result.ToJson());
-                }
-                return (ReturnData)f.Result;
-            });
+                RedisClient redisClient = RedisClient.GetInstance();
+                redisClient.ZincrbyZset(key2, nodeId + "_" + objName + "_" + idLeaf);
+                r.sucess = true;
+            }
+            catch (Exception ex)
+            {
+                r.sucess = false;
+            }
+            return r.ToJson();
         }
-
 
         /// <summary>
         /// 点击率查询
@@ -291,27 +364,6 @@ namespace CTP.API.Controllers
                 FactoryAgent f = new FactoryAgent(registerUser, ExecMethod.PageQuery.Convert(""));
                 f.InvokeFactory();
                 return (RPage<string>)f.Result;
-            });
-        }
-
-
-        /// <summary>
-        /// 删除稿件
-        /// </summary>
-        /// <param name="msrcripts">稿件详情列表</param>
-        /// <returns></returns>
-        [HttpPost("RomoveScript")]
-        public string RomoveScript([FromBody]RequesList<List<Manuscript>> msrcripts)
-        {
-            return TextInvork<string>(() =>
-            {
-                 FactoryAgent f = new FactoryAgent(msrcripts, ExecMethod.Delete.Convert(""));
-                f.InvokeFactory();
-                if (!f.Result.sucess)
-                {
-                    throw new ProcessException(f.Result.ToJson());
-                }
-                return (ReturnData)f.Result;
             });
         }
 
@@ -347,81 +399,121 @@ namespace CTP.API.Controllers
             }
         }
 
+        /// <summary>
+        /// 稿件关联图片
+        /// </summary>
+        /// <param name="idleaf"></param>
+        /// <returns></returns>
+        [HttpGet("RefImages")]
+        public string RefImages(int idleaf)
+        {
+            RList<string> r = new RList<string>();
+            try
+            {
+
+                string sql = @"select img.* from media_img_rel  imgUse 
+                                        inner join  media_image        img on imgUse.img_id=img.img_id  
+                                        where imgUse.mapping_val='" + idleaf + "'";
+
+                Logger.Info(sql);
+                var mysql = new MySqlHelper(Profile.con);
+                var json = mysql.GetSqlDataBySql(sql);
+
+                r.sucess = true;
+                r.data = json;
+                return r.ToJson().RedisDataToJson();
+            }
+            catch (Exception ex)
+            {
+                r.sucess = false;
+                r.data.Add(ex.Message);
+                return r.ToJson().RedisDataToJson();
+            }
+        }
 
         /// <summary>
-        /// 关联稿件信息
+        /// 关联稿件查询
         /// </summary>
-        /// <param name="idLeaf">稿件编号</param>
-        /// <returns></returns> 
+        /// <param name="nodeid"></param>
+        /// <param name="IdLeaf"></param>
+        /// <returns></returns>
         [HttpGet("RefscriptQuery")]
-        public string RefscriptQuery(string idLeaf)
+        public string RefscriptQuery(int nodeid, int IdLeaf)
         {
-            return TextInvork<string>(() =>
+            RList<string> rlist = new RList<string>();
+            try
             {
-                RequesList<RefScript> reqRefScript = new RequesList<RefScript>();
-                reqRefScript.Model = new RefScript { IDLeaf = idLeaf };
-                FactoryAgent f = new FactoryAgent(reqRefScript, ExecMethod.Query.Convert(""));
-                f.InvokeFactory();
-                if (!f.Result.sucess)
-                {
-                    throw new ProcessException(f.Result.ToJson());
-                }
-                return (ReturnData)f.Result;
-            });
+                RedisClient redisClient = RedisClient.GetInstance();
+                string refids = redisClient.HashGetS("ref", string.Format("{0}_{1}", nodeid, IdLeaf));
+                string[] values = refids.Split(',');
+                List<string> keys = new List<string>();
+                values.ToList().ForEach(p => keys.Add(string.Format("{0}_{1}", IdLeaf, p)));
+                var rvalues1 = redisClient.HashGetM("ref", keys);
+                rlist.sucess = true;
+                rlist.data = rvalues1;
 
+            }
+            catch (Exception ex)
+            {
+                rlist.sucess = false;
+                rlist.data.Add(ex.Message);
+
+            }
+            return rlist.ToJson().RedisDataToJson();
         }
 
         /// <summary>
-        /// 关联稿件信息数量
+        /// 
         /// </summary>
-        /// <param name="idLeafs">稿件编号数组</param>
-        /// <returns></returns> 
-        [HttpGet("RefscriptNumQuery")]
-        public string RefscriptNumQuery(string idLeafs)
+        /// <param name="nodeid"></param>
+        /// <param name="IdLeaf"></param>
+        /// <param name="refIdleaf"></param>
+        /// <returns></returns>
+        [HttpGet("RefScriptSingleQuery")]
+        public string RefScriptSingleQuery(int nodeid, int IdLeaf, int refIdleaf)
         {
-            return TextInvork<string>(() =>
+            RSingle<string> rlist = new RSingle<string>();
+            try
             {
-                if (string.IsNullOrEmpty(idLeafs))
-                {
-                    throw new ProcessException("idLeafs 为空");
-                }
-                var ids = idLeafs.Split(',');
-                RequesList<List<RefScript>> reqRefScript = new RequesList<List<RefScript>>();
-                foreach (var v in ids)
-                {
-                    reqRefScript.Model.Add(new RefScript { IDLeaf = v });
-                }
-                FactoryAgent f = new FactoryAgent(reqRefScript, ExecMethod.Specialquery.Convert(""));
-                f.InvokeFactory();
-                if (!f.Result.sucess)
-                {
-                    throw new ProcessException(f.Result.ToJson());
-                }
-                return (ReturnData)f.Result;
-            });
+                RedisClient redisClient = RedisClient.GetInstance();
+                string refids = redisClient.HashGetS("ref", string.Format("{0}_{1}_{2}", IdLeaf, nodeid, refIdleaf));
+                rlist.sucess = true;
+                rlist.Result = refids;
 
+            }
+            catch (Exception ex)
+            {
+                rlist.sucess = false;
+
+            }
+            return rlist.ToJson().RedisDataToJson();
         }
 
-
-
         /// <summary>
-        /// 新增关联稿件
+        /// 新增稿件
         /// </summary>
-        /// <param name="refscripts">关连稿件编号数组</param>
+        /// <param name="refscripts"></param>
         /// <returns></returns>
         [HttpPost("AddRefScript")]
-        public string AddRefScript([FromBody]RequesList<List<RefScript>> refscripts)
+        public string AddRefScript([FromBody]List<RefScript> refscripts)
         {
-            return TextInvork<string>(() =>
+            try
             {
-                FactoryAgent f = new FactoryAgent(refscripts, ExecMethod.AddOrUpdate.Convert(""));
-                f.InvokeFactory();
-                if (!f.Result.sucess)
-                {
-                    throw new ProcessException(f.Result.ToJson());
-                }
-                return (ReturnData)f.Result;
-            });
+                RedisClient redisClient = RedisClient.GetInstance();
+                List<HashEntry> hashList = new List<HashEntry>();
+                refscripts.ForEach(p => hashList.Add(new HashEntry(p.filed, p.content)));
+                redisClient.AddZset("ref", hashList.ToArray());
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            return "success";
         }
+
+
+
+
+
     }
 }

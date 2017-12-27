@@ -43,7 +43,7 @@ namespace CTP.Redis
         /// </summary>
         private RedisClient()
         {
-    
+
             Result = new List<string>();
 
             Sucess = true;
@@ -69,6 +69,76 @@ namespace CTP.Redis
         #region 查询
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        public bool HashSetS(string key, string filed, string content)
+        {
+
+            using (var client = ConnectionMultiplexer.Connect(Profile.redisIp + ",abortConnect=false"))
+            {
+                var v = client.GetDatabase(Profile.db);
+
+                v.HashSet(key, filed, content);
+            }
+
+            return false;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        public bool HashSet(string key, HashEntry[] arr)
+        {
+
+            using (var client = ConnectionMultiplexer.Connect(Profile.redisIp + ",abortConnect=false"))
+            {
+                var v = client.GetDatabase(Profile.db);
+
+                v.HashSet(key, arr);
+            }
+
+            return false;
+        }
+
+        public string HashGetS(string key, string filed)
+        {
+
+            using (var client = ConnectionMultiplexer.Connect(Profile.redisIp + ",abortConnect=false"))
+            {
+                var v = client.GetDatabase(Profile.db);
+                return v.HashGet(key, filed);
+            }
+
+
+        }
+
+        public List<string> HashGetM(string key, List<string> keys)
+        {
+
+            using (var client = ConnectionMultiplexer.Connect(Profile.redisIp + ",abortConnect=false"))
+            {
+                var v = client.GetDatabase(Profile.db);
+                IList<HashEntry> entry = new List<HashEntry>();
+                var arr = entry.ToArray();
+                List<RedisValue> rs = new List<RedisValue>();
+                keys.ForEach(p => rs.Add(p));
+                var values = v.HashGet(key, rs.ToArray());
+                List<string> lists = new List<string>();
+                values.ToList().ForEach(p => lists.Add(p));
+                return lists;
+            }
+        }
+
+        /// <summary>
         /// ZSet中是否存在这条记录
         /// </summary>
         /// <param name="key">ZSetkey</param>
@@ -81,7 +151,7 @@ namespace CTP.Redis
             {
                 using (var client = ConnectionMultiplexer.Connect(Profile.redisIp + ",abortConnect=false"))
                 {
-                    var v = client.GetDatabase();
+                    var v = client.GetDatabase(Profile.db);
 
                     var result = v.SortedSetRangeByValue(key, value);
 
@@ -122,7 +192,7 @@ namespace CTP.Redis
             {
                 using (var client = ConnectionMultiplexer.Connect(Profile.redisIp + ",abortConnect=false"))
                 {
-                    var v = client.GetDatabase();
+                    var v = client.GetDatabase(Profile.db);
                     var result = v.KeyExists(key);
                     if (result)
                     {
@@ -159,7 +229,7 @@ namespace CTP.Redis
             {
                 using (var client = ConnectionMultiplexer.Connect(Profile.redisIp + ",abortConnect=false"))
                 {
-                    var v = client.GetDatabase();
+                    var v = client.GetDatabase(Profile.db);
                     var result = v.SortedSetRemoveRangeByRank(key, 0, -1);
                     Sucess = true;
                 }
@@ -186,7 +256,7 @@ namespace CTP.Redis
             {
                 using (var client = ConnectionMultiplexer.Connect(Profile.redisIp + ",abortConnect=false"))
                 {
-                    var vc = client.GetDatabase();
+                    var vc = client.GetDatabase(Profile.db);
                     if (!string.IsNullOrWhiteSpace(keyvalue))
                     {
                         var result = vc.SortedSetScan(key, string.Format("{0}{1}{2}", "*", keyvalue, "*"), 1, 0, 0, CommandFlags.None);
@@ -240,7 +310,7 @@ namespace CTP.Redis
             {
                 using (var client = ConnectionMultiplexer.Connect(Profile.redisIp + ",abortConnect=false"))
                 {
-                    var cv = client.GetDatabase();
+                    var cv = client.GetDatabase(Profile.db);
 
                     var result = cv.SortedSetRangeByScore(key, 0, 9000000000000000000, Exclude.None, Order.Descending, start, end - start);
                     var reg = new Regex("^\\d+$");
@@ -256,7 +326,7 @@ namespace CTP.Redis
                     Result = list;
                     Sucess = true;
                 }
-          
+
             }
             catch (Exception ex)
             {
@@ -279,7 +349,7 @@ namespace CTP.Redis
             {
                 using (var client = ConnectionMultiplexer.Connect(Profile.redisIp + ",abortConnect=false"))
                 {
-                    var cv = client.GetDatabase();
+                    var cv = client.GetDatabase(Profile.db);
                     foreach (var p in keys)
                     {
                         var result = cv.SortedSetCombineAndStore(SetOperation.Union, key, key, p);
@@ -308,7 +378,7 @@ namespace CTP.Redis
             {
                 using (var client = ConnectionMultiplexer.Connect(Profile.redisIp + ",abortConnect=false"))
                 {
-                    var cv = client.GetDatabase();
+                    var cv = client.GetDatabase(Profile.db);
                     var result = cv.SortedSetRangeByRank(key, 0, -1);
                     for (int i = 0; i < result.Count(); i++)
                     {
@@ -339,7 +409,7 @@ namespace CTP.Redis
             {
                 using (var client = ConnectionMultiplexer.Connect(Profile.redisIp + ",abortConnect=false"))
                 {
-                    var cv = client.GetDatabase();
+                    var cv = client.GetDatabase(Profile.db);
                     if (fileds.Count > 0)
                     {
                         foreach (var t in fileds)
@@ -385,7 +455,7 @@ namespace CTP.Redis
             {
                 using (var client = ConnectionMultiplexer.Connect(Profile.redisIp + ",abortConnect=false"))
                 {
-                    var t = client.GetDatabase();
+                    var t = client.GetDatabase(Profile.db);
                     var result = t.SortedSetRangeByScore(key, score, score);
                     for (int i = 0; i < result.Length; i++)
                     {
@@ -423,8 +493,30 @@ namespace CTP.Redis
             {
                 using (var client = ConnectionMultiplexer.Connect(Profile.redisIp + ",abortConnect=false"))
                 {
-                    var cv = client.GetDatabase();
+                    var cv = client.GetDatabase(Profile.db);
                     cv.SortedSetRemove(key, value);
+                    Sucess = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                Message = ex.Message;
+                Code = ErrorCode.ReadRedisErrorCode;
+                Sucess = false;
+            }
+            return Sucess;
+        }
+
+        public bool RemoveHashByField(string key, string value)
+        {
+            Count = 0;
+            try
+            {
+                using (var client = ConnectionMultiplexer.Connect(Profile.redisIp + ",abortConnect=false"))
+                {
+                    var cv = client.GetDatabase(Profile.db);
+                    cv.HashDelete(key, value);
                     Sucess = true;
                 }
             }
@@ -444,6 +536,39 @@ namespace CTP.Redis
         /// <param name="key"></param>
         /// <param name="values"></param>
         /// <returns></returns>
+        public void AddZset(string key, string member, double score)
+        {
+
+            using (var client = ConnectionMultiplexer.Connect(Profile.redisIp + ",abortConnect=false"))
+            {
+                var cv = client.GetDatabase(Profile.db);
+                var result = cv.SortedSetAdd(key, member, score);
+            }
+        }
+
+
+        /// <summary>
+        /// Zset 批量添加
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="values"></param>
+        /// <returns></returns>
+        public void ZincrbyZset(string key, string member)
+        {
+            using (var client = ConnectionMultiplexer.Connect(Profile.redisIp + ",abortConnect=false"))
+            {
+                var cv = client.GetDatabase(Profile.db);
+                var result = cv.SortedSetIncrement(key, member, 1);
+            }
+        }
+
+
+        /// <summary>
+        /// Zset 批量添加
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="values"></param>
+        /// <returns></returns>
         public bool AddZset(string key, List<KeyValuePair<long, string>> values)
         {
             Count = 0;
@@ -451,7 +576,8 @@ namespace CTP.Redis
             {
                 using (var client = ConnectionMultiplexer.Connect(Profile.redisIp + ",abortConnect=false"))
                 {
-                    var cv = client.GetDatabase();
+                    var db = Profile.db;
+                    var cv = client.GetDatabase(db);
 
                     SortedSetEntry[] entryArray = new SortedSetEntry[values.Count];
                     for (int i = 0; i < values.Count; i++)
@@ -501,7 +627,7 @@ namespace CTP.Redis
             {
                 using (var client = ConnectionMultiplexer.Connect(Profile.redisIp + ",abortConnect=false"))
                 {
-                    var cv = client.GetDatabase();
+                    var cv = client.GetDatabase(Profile.db);
                     foreach (var p in values)
                     {
                         var result = cv.SortedSetRangeByScore(key, p.Key, p.Key);
@@ -544,7 +670,7 @@ namespace CTP.Redis
             {
                 using (var client = ConnectionMultiplexer.Connect(Profile.redisIp + ",abortConnect=false"))
                 {
-                    var cv = client.GetDatabase();
+                    var cv = client.GetDatabase(Profile.db);
                     var result = cv.Execute(cmd.ToString(), values.ToArray());
                 }
             }
@@ -572,7 +698,7 @@ namespace CTP.Redis
             {
                 using (var client = ConnectionMultiplexer.Connect(Profile.redisIp + ",abortConnect=false"))
                 {
-                    var cv = client.GetDatabase();
+                    var cv = client.GetDatabase(Profile.db);
                     var batch = cv.CreateBatch();
                     var task = batch.ExecuteAsync(cmd.ToString(), values.ToArray());
                     batch.Execute();

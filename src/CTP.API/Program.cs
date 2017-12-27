@@ -20,18 +20,18 @@ namespace CTP.API
             var profile = new ConfigurationBuilder();
             var v = profile.AddJsonFile("profile.json");
             var p = v.Build();
-
             var value1 = p.GetValue<string>("profile:url1");
             var value2 = p.GetValue<string>("profile:url2");
             Profile.con = p.GetValue<string>("profile:con");
-            Profile.redisIp= p.GetValue<string>("profile:ip");
-            Profile.typeLink= p.GetValue<string>("profile:LinkKey");
+            Profile.redisIp = p.GetValue<string>("profile:ip");
+            Profile.typeLink = p.GetValue<string>("profile:LinkKey");
+            Profile.db = p.GetValue<int>("profile:db");
             var host = new WebHostBuilder()
                            .UseKestrel()
                            .UseContentRoot(Directory.GetCurrentDirectory())
                            .UseIISIntegration()
                            .UseStartup<Startup>()
-                           //.UseUrls(new string[] { value1, value2 })
+                           .UseUrls(new string[] { value1, value2 })
                            .Build();
 
             host.Run();

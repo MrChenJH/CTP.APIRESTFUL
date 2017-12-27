@@ -3204,6 +3204,7 @@
       },
       "util/1.0.0": {
         "dependencies": {
+          "CTP.Redis": "1.0.0",
           "Dapper": "1.50.2",
           "Microsoft.NETCore.App": "1.0.4",
           "SapientGuardian.MySql.Data": "6.9.816",

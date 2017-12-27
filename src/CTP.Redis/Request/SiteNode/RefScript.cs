@@ -6,8 +6,8 @@ namespace CTP.Redis.Request.SiteNode
 {
     public class RefScript : SiteNodeCommon
     {
-        public string RefKeyId { get; set; }
-        public string NodeId { get; set; }
-        public string IDLeaf { get; set; }
+        public string filed { get; set; }
+         
+        public string content { get; set; }
     }
 }

@@ -9,5 +9,6 @@ namespace CTP.Redis
         public static string redisIp = string.Empty;
         public static string typeLink = string.Empty;
         public static string con = string.Empty;
+        public static int db;
     }
 }
